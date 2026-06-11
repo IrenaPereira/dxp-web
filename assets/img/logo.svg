@@ -1,12 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Digital Experiments mark">
-  <rect width="40" height="40" rx="10" fill="#14131a"/>
-  <!-- Stylized "experiment" node-link mark: D + E formed from connected nodes -->
-  <g fill="none" stroke="#5b53e0" stroke-width="2.4" stroke-linecap="round">
-    <path d="M13 10 V30"/>
-    <path d="M13 10 C25 10 27 20 13 20"/>
-    <path d="M13 20 C27 20 25 30 13 30"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 770" fill="none" role="img" aria-label="Digital Experiments">
+  <g stroke="#14131a" stroke-linecap="round" stroke-linejoin="round" stroke-width="30">
+    <path d="M648 300 Q655 240 590 215 Q545 200 525 205 Q540 80 565 45 Q560 40 545 75 Q510 150 500 195 Q494 205 490 210 Q455 90 450 30 Q446 28 440 60 Q420 150 412 210 Q360 250 300 305 Q210 400 172 472 Q130 560 118 612 Q112 660 108 672 Q60 685 35 706 Q55 752 95 745 Q120 740 132 730 Q280 735 432 720 Q470 640 478 560 Q500 470 510 410 Q525 360 562 348 Q620 332 648 300 Z"/>
+    <path d="M486 258 Q508 250 528 263" stroke-width="22"/>
   </g>
-  <circle cx="28" cy="13" r="2.6" fill="#00c08b"/>
-  <circle cx="30" cy="27" r="2.6" fill="#5b53e0"/>
-  <path d="M28 13 L30 27" stroke="#5b53e0" stroke-width="1.6" opacity=".6"/>
 </svg>
