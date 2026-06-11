@@ -1,0 +1,331 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Portfolio gallery. To add a piece: drop the image in public/portfolio/
+// and add an entry here with a category from CATS.
+const CATS = [
+  { id: "all", label: "All" },
+  { id: "game", label: "Game UI" },
+  { id: "worlds", label: "Worlds" },
+  { id: "cards", label: "Cards & Tabletop" },
+  { id: "research", label: "Research & Systems" },
+  { id: "product", label: "Product & AI" },
+  { id: "web", label: "Web Heritage" },
+];
+
+const items = [
+  // ——— World of Warcraft ———
+  { src: "/portfolio/wow-glyphs.gif", cat: "game", tag: "World of Warcraft", title: "Inscription Interface", caption: "Glyphs, slots, and glowing geometry — the animated inscription experience." },
+  { src: "/portfolio/wow-inscription-ingame.jpg", cat: "game", tag: "World of Warcraft", title: "Inscription In-Game", caption: "The shipped inscription frame, in the wild." },
+  { src: "/portfolio/wow-barbershop.jpg", cat: "game", tag: "World of Warcraft", title: "Barber Shop", caption: "Character re-customization for Wrath of the Lich King." },
+  { src: "/portfolio/wow-vehicles.jpg", cat: "game", tag: "World of Warcraft", title: "Vehicle UI", caption: "Siege vehicles needed an interface players already knew how to drive." },
+  { src: "/portfolio/wow-arena-banners.jpg", cat: "game", tag: "World of Warcraft", title: "Arena Banners", caption: "Team identity for rated arena play." },
+  { src: "/portfolio/wow-raid-frames.jpg", cat: "game", tag: "World of Warcraft", title: "Raid Frames", caption: "Forty players of information, legible at combat speed." },
+  { src: "/portfolio/wow-unit-frames.jpg", cat: "game", tag: "World of Warcraft", title: "Unit Frames", caption: "Target-of-target and raid frames working together." },
+  { src: "/portfolio/wow-pvp.jpg", cat: "game", tag: "World of Warcraft", title: "PvP UI", caption: "Battleground interface work." },
+  { src: "/portfolio/wow-elite-loot.jpg", cat: "game", tag: "World of Warcraft", title: "Elite Loot", caption: "Making rare drops feel rare." },
+  { src: "/portfolio/wow-voice-chat.jpg", cat: "game", tag: "World of Warcraft", title: "Voice Chat", caption: "In-game voice — UI for talking while fighting." },
+  { src: "/portfolio/wow-interface-options.jpg", cat: "game", tag: "World of Warcraft", title: "Interface Options", caption: "The settings screen millions configured." },
+  { src: "/portfolio/wow-sound-options.jpg", cat: "game", tag: "World of Warcraft", title: "Sound Options", caption: "Audio configuration, reorganized." },
+  { src: "/portfolio/wow-keybindings-keyboard.jpg", cat: "game", tag: "World of Warcraft", title: "Key Bindings — Keyboard Map", caption: "Concept: bind keys on a visual keyboard instead of a list." },
+  { src: "/portfolio/wow-keybindings-livebind.jpg", cat: "game", tag: "World of Warcraft", title: "Key Bindings — Live Bind", caption: "Concept: press-to-bind, live in the moment." },
+  { src: "/portfolio/wow-factions-tooltip.jpg", cat: "research", tag: "World of Warcraft", title: "Factions Tooltip Spec", caption: "Interface specification — every state documented for engineering." },
+  { src: "/portfolio/wow-ui-feature-status.jpg", cat: "research", tag: "World of Warcraft", title: "UI Feature Status", caption: "Production tracking across the full interface surface." },
+
+  // ——— Project Copernicus ———
+  { src: "/portfolio/copernicus-character-create.jpg", cat: "game", tag: "Project Copernicus", title: "Character Create", caption: "The marquee first-five-minutes moment — billboarded backdrop, 3D model, Scaleform UI." },
+  { src: "/portfolio/copernicus-character-customize.jpg", cat: "game", tag: "Project Copernicus", title: "Character Customize", caption: "An abundance of options inside a tight resolution budget." },
+  { src: "/portfolio/copernicus-environment.jpg", cat: "worlds", tag: "Project Copernicus", title: "City Gardens", caption: "Environment work from the ambitious open-world MMO." },
+  { src: "/portfolio/copernicus-grove.jpg", cat: "worlds", tag: "Project Copernicus", title: "The Grove", caption: "In-engine capture from the world that needed fast travel." },
+
+  // ——— Chief Puzzle Officer ———
+  { src: "/portfolio/cpo-keyart.jpg", cat: "game", tag: "Chief Puzzle Officer", title: "Key Art", caption: "Corporate espionage with anime wackiness." },
+  { src: "/portfolio/cpo-gameboard.jpg", cat: "game", tag: "Chief Puzzle Officer", title: "Game Board", caption: "Accessible gem design for real-time match-3 combat." },
+  { src: "/portfolio/cpo-turbo-mode.jpg", cat: "game", tag: "Chief Puzzle Officer", title: "Turbo Mode", caption: "Moment-to-moment hype, engineered." },
+  { src: "/portfolio/cpo-deck-editor.jpg", cat: "game", tag: "Chief Puzzle Officer", title: "Deck Editor", caption: "Executives, managers, and team members as deck construction." },
+  { src: "/portfolio/cpo-events.jpg", cat: "game", tag: "Chief Puzzle Officer", title: "Events", caption: "Live events surface for the battle screen." },
+
+  // ——— Blankos Block Party ———
+  { src: "/portfolio/blankos-skills.jpg", cat: "game", tag: "Blankos Block Party", title: "Skills Redesign", caption: "Foundation, Perks, and Power — the redesigned skills experience, shipped on a crunch timeline." },
+  { src: "/portfolio/blankos-enter-event.jpg", cat: "game", tag: "Blankos Block Party", title: "Event Entry", caption: "Onboarding new players into live events." },
+  { src: "/portfolio/blankos-events.jpg", cat: "game", tag: "Blankos Block Party", title: "Event Rewards", caption: "Reward challenge cards for live-ops events." },
+
+  // ——— Epic Spell Wars ———
+  { src: "/portfolio/esw-battle-screen.jpg", cat: "game", tag: "Epic Spell Wars", title: "Combat Prototype", caption: "Core combat concepted and prototyped — round-based wizard duels in the arena." },
+  { src: "/portfolio/esw-magicfight-logo.png", cat: "game", tag: "Epic Spell Wars", title: "Magic Fight Logo", caption: "Logo treatment for the video game adaptation." },
+  { src: "/portfolio/esw-wizard.png", cat: "game", tag: "Epic Spell Wars", title: "Wizard Portrait", caption: "Character treatment in the game's signature style." },
+
+  // ——— Mobile / other game UI ———
+  { src: "/portfolio/hero-cards-ui.jpg", cat: "game", tag: "Fantasy Mobile", title: "Hero Cards", caption: "Character sheet exploration: portrait, stat radar, progression." },
+
+  // ——— Cards & tabletop ———
+  { src: "/portfolio/demonwars-cover.jpg", cat: "cards", tag: "DemonWars", title: "Reformation Cover", caption: "Cover treatment for the R.A. Salvatore card game." },
+  { src: "/portfolio/cardframe-gryphon.jpg", cat: "cards", tag: "TCG Design", title: "Creature Frames", caption: "Card frame explorations — creature treatments." },
+  { src: "/portfolio/cardframe-domain.jpg", cat: "cards", tag: "TCG Design", title: "Domain Frame", caption: "Card frame explorations — domain treatments." },
+  { src: "/portfolio/cardframe-persona.jpg", cat: "cards", tag: "TCG Design", title: "Persona Frame", caption: "Card frame explorations — historical persona treatments." },
+  { src: "/portfolio/cards-deck.jpg", cat: "cards", tag: "Tabletop", title: "Playing Cards", caption: "A custom deck, suit by suit." },
+
+  // ——— Research & systems ———
+  { src: "/portfolio/persona-jake.jpg", cat: "research", tag: "UX Research", title: "Persona — Jake", caption: "Designed research persona: the competitive optimizer." },
+  { src: "/portfolio/persona-janice.jpg", cat: "research", tag: "UX Research", title: "Persona — Janice", caption: "Designed research persona from player research." },
+  { src: "/portfolio/persona-jenn.jpg", cat: "research", tag: "UX Research", title: "Persona — Jenn", caption: "Designed research persona from player research." },
+  { src: "/portfolio/player-stage-flow.png", cat: "research", tag: "Design Visualization", title: "Player Stage Flow", caption: "Progression matrix — four motivations from early to elder game." },
+  { src: "/portfolio/monopoly-turn-map.png", cat: "research", tag: "Monopoly", title: "Turn Map", caption: "The full roll/land/resolve logic of a Monopoly turn." },
+
+  // ——— Product & AI ———
+  { src: "/portfolio/silvia-title.jpg", cat: "product", tag: "SILVIA AI", title: "SILVIA", caption: "Conversational AI platform — brand and product design." },
+  { src: "/portfolio/silvia-devtool.jpg", cat: "product", tag: "SILVIA AI", title: "Developer Tool", caption: "The dark-mode IDE for building conversational intelligence." },
+  { src: "/portfolio/silvia-staging.jpg", cat: "product", tag: "SILVIA AI", title: "Platform UI", caption: "Product surfaces for the SILVIA platform." },
+  { src: "/portfolio/cognitive-code.jpg", cat: "product", tag: "Cognitive Code", title: "Cognitive Code", caption: "Web presence for the AI company behind SILVIA." },
+  { src: "/portfolio/dekoder.jpg", cat: "product", tag: "Dekoder", title: "Dekoder", caption: "Brand exploration for a security product." },
+
+  // ——— Web heritage ———
+  { src: "/portfolio/everquest-web-concept.jpg", cat: "web", tag: "Sony / Verant", title: "EverQuest Station", caption: "Station.com concept mock, circa 2000. Where it all started." },
+  { src: "/portfolio/web-realtor-home.jpg", cat: "web", tag: "REALTOR.com", title: "Homepage", caption: "The front door of American real estate." },
+  { src: "/portfolio/web-realtor-resource.jpg", cat: "web", tag: "REALTOR.com", title: "Resource Center", caption: "Content hub design for REALTOR.com." },
+  { src: "/portfolio/web-mortgage-calculator.gif", cat: "web", tag: "REALTOR.com", title: "Mortgage Calculator", caption: "Finance tools, made approachable." },
+  { src: "/portfolio/web-selfservice-spec.gif", cat: "web", tag: "Product Spec", title: "Self-Service Design", caption: "Annotated interaction specification." },
+  { src: "/portfolio/web-rentnet.jpg", cat: "web", tag: "RentNet", title: "RentNet", caption: "Rental search, early-web era." },
+  { src: "/portfolio/web-worldproperties.jpg", cat: "web", tag: "World Properties", title: "World Properties", caption: "Luxury vacation rentals and high-end properties worldwide." },
+  { src: "/portfolio/web-vw-adventure.jpg", cat: "web", tag: "Volkswagen", title: "VW Adventure", caption: "Campaign microsite — Europe edition." },
+  { src: "/portfolio/web-quintons.jpg", cat: "web", tag: "Quinton's", title: "Quinton's", caption: "Restaurant brand and web design." },
+];
+---
+
+<Base
+  title="Portfolio — Digital Experiments"
+  description="A filterable gallery of 20+ years of game UX: World of Warcraft interfaces, MMO character create, card games, AI products, and the web that came before."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Artifacts from the field</h1>
+      <p class="lede">
+        Interfaces, worlds, research, and product design from two decades of
+        making games — and everything else — more playable.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar" role="toolbar" aria-label="Filter portfolio">
+        {CATS.map((c, i) => (
+          <button class="chip" data-cat={c.id} aria-pressed={i === 0 ? "true" : "false"}>
+            {c.label}
+          </button>
+        ))}
+        <span class="count" id="count" aria-live="polite">// {items.length} artifacts</span>
+      </div>
+
+      <div class="masonry" id="masonry">
+        {items.map((it) => (
+          <figure class="piece" data-cat={it.cat}>
+            <button
+              class="piece-btn"
+              data-full={it.src}
+              data-title={it.title}
+              data-tag={it.tag}
+              data-caption={it.caption}
+              aria-label={`View ${it.title}`}
+            >
+              <img src={it.src} alt={`${it.tag} — ${it.title}`} loading="lazy" />
+              <figcaption>
+                <span class="tag">{it.tag}</span>
+                <span class="title">{it.title}</span>
+              </figcaption>
+            </button>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <dialog id="lightbox">
+    <button id="lb-close" aria-label="Close">✕</button>
+    <img id="lb-img" src="" alt="" />
+    <div class="lb-meta">
+      <p class="tag" id="lb-tag"></p>
+      <h2 id="lb-title"></h2>
+      <p class="cap" id="lb-caption"></p>
+    </div>
+  </dialog>
+</Base>
+
+<script>
+  const chips = document.querySelectorAll(".chip");
+  const pieces = document.querySelectorAll<HTMLElement>(".piece");
+  const count = document.getElementById("count")!;
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const cat = (chip as HTMLElement).dataset.cat;
+      chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+      let n = 0;
+      pieces.forEach((p) => {
+        const show = cat === "all" || p.dataset.cat === cat;
+        p.style.display = show ? "" : "none";
+        if (show) n++;
+      });
+      count.textContent = `// ${n} artifacts`;
+    });
+  });
+
+  const lb = document.getElementById("lightbox") as HTMLDialogElement;
+  const lbImg = document.getElementById("lb-img") as HTMLImageElement;
+  const lbTag = document.getElementById("lb-tag")!;
+  const lbTitle = document.getElementById("lb-title")!;
+  const lbCaption = document.getElementById("lb-caption")!;
+
+  document.querySelectorAll<HTMLElement>(".piece-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      lbImg.src = btn.dataset.full!;
+      lbImg.alt = `${btn.dataset.tag} — ${btn.dataset.title}`;
+      lbTag.textContent = btn.dataset.tag!;
+      lbTitle.textContent = btn.dataset.title!;
+      lbCaption.textContent = btn.dataset.caption!;
+      lb.showModal();
+    });
+  });
+
+  document.getElementById("lb-close")!.addEventListener("click", () => lb.close());
+  lb.addEventListener("click", (e) => {
+    if (e.target === lb) lb.close();
+  });
+</script>
+
+<style>
+  /* Filter bar */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding: 0.55rem 1rem;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px));
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .chip:hover { color: var(--text); border-color: var(--border-bright); }
+  .chip[aria-pressed="true"] {
+    background: var(--accent);
+    color: #0a0c07;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .count {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* Masonry */
+  .masonry { columns: 3 300px; column-gap: 1.25rem; }
+  .piece {
+    margin: 0 0 1.25rem;
+    break-inside: avoid;
+  }
+  .piece-btn {
+    all: unset;
+    display: block;
+    width: 100%;
+    cursor: zoom-in;
+    position: relative;
+    border: 1px solid var(--border);
+    background:
+      linear-gradient(var(--accent), var(--accent)) top left / 14px 1px,
+      linear-gradient(var(--accent), var(--accent)) top left / 1px 14px,
+      linear-gradient(var(--accent), var(--accent)) bottom right / 14px 1px,
+      linear-gradient(var(--accent), var(--accent)) bottom right / 1px 14px,
+      var(--surface);
+    background-repeat: no-repeat;
+    overflow: hidden;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .piece-btn:hover { border-color: var(--border-bright); transform: translateY(-3px); }
+  .piece-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .piece-btn img { width: 100%; display: block; }
+
+  .piece-btn figcaption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.5rem 1rem 0.8rem;
+    background: linear-gradient(to top, rgba(8, 9, 12, 0.92), transparent);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    opacity: 0;
+    translate: 0 8px;
+    transition: opacity 0.18s ease, translate 0.18s ease;
+  }
+  .piece-btn:hover figcaption,
+  .piece-btn:focus-visible figcaption { opacity: 1; translate: 0 0; }
+  .piece-btn .tag {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+  }
+  .piece-btn .title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .piece-btn, .piece-btn figcaption { transition: none; }
+  }
+
+  /* Lightbox */
+  #lightbox {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius);
+    padding: 0;
+    max-width: min(1100px, 92vw);
+    max-height: 92vh;
+  }
+  #lightbox::backdrop { background: rgba(5, 6, 8, 0.85); backdrop-filter: blur(4px); }
+  #lb-img { max-width: 100%; max-height: 70vh; display: block; margin: 0 auto; }
+  .lb-meta { padding: 1.1rem 1.5rem 1.4rem; }
+  .lb-meta .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin: 0 0 0.25rem;
+  }
+  .lb-meta h2 { font-size: 1.2rem; margin: 0 0 0.3rem; color: var(--text); }
+  .lb-meta .cap { color: var(--text-muted); margin: 0; font-size: 0.92rem; }
+  #lb-close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    z-index: 2;
+    background: rgba(8, 9, 12, 0.7);
+    color: var(--text);
+    border: 1px solid var(--border-bright);
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  #lb-close:hover { color: var(--accent); border-color: var(--accent); }
+</style>

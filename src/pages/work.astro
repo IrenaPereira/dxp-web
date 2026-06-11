@@ -4,54 +4,67 @@ import Base from "../layouts/Base.astro";
 const cases = [
   {
     client: "Mythical Games — Blankos Block Party",
-    kind: "Tactical UX & UI",
+    kind: "Embedded UX & UI",
     platform: "PC / Console",
-    body: "Special features on a crunch-worthy timeline. We integrated within 24 hours and were turning around working Figma files in days — redesigning access to skills and inventory, plus event experiences with easy onboarding for new players.",
+    body: "Mythical had special features due on a crunch-worthy timeline and no UX bandwidth to spare. We embedded within 24 hours of first contact and were turning around working Figma files in days — redesigning skills and inventory access, plus event onboarding for new players, inside their sprint cadence.",
+    img: "/portfolio/blankos-skills.jpg",
+    imgAlt: "Blankos Block Party skills screen — character with Foundation, Perks and Power skill trees",
   },
   {
     client: "Epic Spell Wars",
     kind: "Combat Design & Prototyping",
     platform: "PC / Console",
-    body: "A vision to turn a famous card game into a web3 video game — fantastic art, short timelines, limited budget. We concepted and prototyped core combat gameplay while designing an intuitive deck-building experience.",
+    body: "Turning a famous card game into a video game — on a short timeline and a lean budget, with art that deserved UX to match. We concepted and prototyped core combat and designed an intuitive deck-builder. The game never made it to market, but the prototype proved the gameplay.",
+    img: "/portfolio/esw-battle-screen.jpg",
+    imgAlt: "Epic Spell Wars: Magic Fight combat screen prototype — spell circle arena with round and player HUD",
   },
   {
-    client: "A new Monopoly title",
+    client: "Monopoly Go",
     kind: "UI Art Direction",
     platform: "Mobile",
-    body: "A hard-to-read UI was hurting the experience. After deep user research we executed a clearer, more appropriate expression of Monopoly for a newly defined target audience.",
+    body: "A hard-to-read UI was hurting a franchise players already trusted. User research drove a clearer, more readable expression of Monopoly for a newly defined target audience — holding the brand while making it playable on a small screen.",
+    img: "/portfolio/monopoly-turn-map.png",
+    imgAlt: "Monopoly turn flow map — roll, land, resolve",
   },
   {
     client: "World of Warcraft",
     kind: "Inscription Interface",
     platform: "PC",
     body: "From a rudimentary design document to a fully functional inscription interface. We began with a summoning circle and expanded it with glyphs, slots and glowing geometry — new customization without breaking familiarity.",
+    img: "/portfolio/wow-inscription-ingame.jpg",
+    imgAlt: "The shipped Inscription glyphs interface, live in World of Warcraft",
   },
   {
     client: "Chief Puzzle Officer",
     kind: "Battle Screen Design",
     platform: "Mobile",
     body: "Corporate espionage with anime wackiness — a real-time card-builder with multiplayer. We brought AAA know-how to an indie mobile title, evolving a dense battle screen into something legible and fun.",
+    img: "/portfolio/cpo-keyart.jpg",
+    imgAlt: "Chief Puzzle Officer key art",
   },
   {
     client: "Project Copernicus",
     kind: "Fast Travel Map Design",
     platform: "PC / Console",
-    body: "Every open-world MMO needs fast travel. We designed a system that made the time investment less tedious and created logical blocks of time — room for players to grab food, take a break, or call their mom.",
+    body: "Every open-world MMO needs fast travel. We designed a system that made the time investment legible and created logical blocks of time — room for players to grab food, take a break, or call their mom. The game never shipped; the systems thinking did.",
+    img: "/portfolio/copernicus-grove.jpg",
+    imgAlt: "Project Copernicus grove environment",
   },
 ];
 ---
 
 <Base
   title="Work — Digital Experiments"
-  description="Selected game UX/UI work: Blankos, Epic Spell Wars, Monopoly, World of Warcraft, Project Copernicus and more."
+  description="Selected game UX/UI work: Valorant, World of Warcraft, Monopoly Go, Blankos, Epic Spell Wars, Project Copernicus and more."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Work highlights</p>
       <h1>Games we've helped ship</h1>
       <p class="lede">
-        Tactical execution and strategic vision for studios big and small —
-        from AAA franchises to ambitious indies.
+        Embedded execution and strategic vision, from AAA franchises to
+        ambitious indies — the games you grew up on, and the ones you're
+        grinding right now.
       </p>
     </div>
   </section>
@@ -60,10 +73,17 @@ const cases = [
     <div class="container">
       <div class="grid">
         {cases.map((c) => (
-          <article class="card">
-            <p class="kind">{c.kind} · {c.platform}</p>
-            <h2>{c.client}</h2>
-            <p>{c.body}</p>
+          <article class="card hud">
+            {c.img && (
+              <div class="thumb">
+                <img src={c.img} alt={c.imgAlt} loading="lazy" />
+              </div>
+            )}
+            <div class="card-body">
+              <p class="kind">{c.kind} · {c.platform}</p>
+              <h2>{c.client}</h2>
+              <p>{c.body}</p>
+            </div>
           </article>
         ))}
       </div>
@@ -77,20 +97,22 @@ const cases = [
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
   }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem;
+  .card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .thumb {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-bottom: 1px solid var(--border);
   }
-  .card h2 { font-size: 1.3rem; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-body { padding: 1.5rem 1.75rem 1.75rem; }
+  .card h2 { font-size: 1.25rem; }
   .card p { color: var(--text-muted); margin: 0; }
   .card .kind {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.72rem;
-    color: var(--accent-2);
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.16em;
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
   }
 </style>

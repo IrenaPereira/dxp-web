@@ -10,6 +10,8 @@ const blog = defineCollection({
     date: z.coerce.date(),
     author: z.string().default("Irena Pereira"),
     excerpt: z.string(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

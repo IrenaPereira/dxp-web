@@ -3,35 +3,74 @@ import Base from "../layouts/Base.astro";
 
 const services = [
   {
-    title: "Tactical UI/UX",
-    body: "Prototyping, wireframing/greyboxing, UX & UI design, UI animation, and implementation. We integrate into your team fast and turn around working Figma files in days.",
+    n: "01",
+    title: "Embedded UX & UI",
+    body: "Your senior hands this sprint. Prototyping, wireframing/greyboxing, UX & UI design, animation, and implementation — embedded in your team within 24 hours, working Figma files in days.",
   },
   {
-    title: "Strategic UX",
-    body: "Game brand design, UI art direction, vision clarification, product/market fit, persona development, and design systems — the senior-level thinking that sets direction.",
+    n: "02",
+    title: "UX Strategy",
+    body: "Clarity before execution: game brand design, UI art direction, vision clarification, product/market fit, personas, and design systems — the senior thinking that sets direction.",
   },
   {
-    title: "UX for Teams",
-    body: "Lean UCD training, maturing UX practices, psychological safety, collaboration workshops, process and service design. We help teams build the way they ship.",
+    n: "03",
+    title: "Team Workshops & Training",
+    body: "We level up the team you already have. UX process, research methods, and collaboration workshops taught by people who've shipped the work — your team leaves stronger.",
+  },
+  {
+    n: "04",
+    title: "UI/UX Audits",
+    body: "A senior teardown of your existing game or build. We find what your players are already saying in Discord — onboarding, moment-to-moment play, readability, accessibility — and deliver prioritized fixes your team can act on immediately.",
   },
 ];
 
 const work = [
   {
     client: "Mythical Games — Blankos Block Party",
-    kind: "Tactical UX & UI",
-    body: "Integrated within 24 hours of first contact to ship special features on a crunch-worthy timeline — redesigning skill and inventory access plus event onboarding.",
+    kind: "Embedded UX & UI",
+    body: "Crunch-timeline features and no UX bandwidth to spare. We embedded within 24 hours and shipped working Figma files in days — skills, inventory, and event onboarding, redesigned inside their sprint cadence.",
   },
   {
     client: "Epic Spell Wars",
     kind: "Combat Design & Prototyping",
-    body: "Concepted and prototyped core combat gameplay and an intuitive deck-building experience to turn a famous card game into a web3 video game.",
+    body: "A famous card game becoming a video game, on a short timeline and a lean budget. We concepted and prototyped core combat and designed the deck-builder UI. The game never made it to market, but the prototype proved the gameplay.",
   },
   {
-    client: "A new Monopoly title",
+    client: "Monopoly Go",
     kind: "UI Art Direction",
-    body: "Deep user research led to a clearer, more appropriate expression of Monopoly for a newly defined target audience — fixing a hard-to-read UI.",
+    body: "A hard-to-read UI was hurting a franchise players already trusted. User research drove a clearer, more readable expression of Monopoly for a newly defined target audience.",
   },
+];
+
+const stats = [
+  { value: "20+", label: "years of games UX" },
+  { value: "24h", label: "from first ping to embedded" },
+  { value: "AAA→indie", label: "studios shipped with" },
+  { value: "100%", label: "remote, senior team" },
+];
+
+const clients = [
+  { src: "/logos/blizzard.png", name: "Blizzard Entertainment" },
+  { src: "/logos/sony.png", name: "Sony" },
+  { src: "/logos/warnerbros.png", name: "Warner Bros." },
+  { src: "/logos/mythical.png", name: "Mythical Games" },
+  { src: "/logos/38studios.png", name: "38 Studios" },
+  { src: "/logos/thirdkindgames.png", name: "Third Kind Games" },
+  { src: "/logos/experian.png", name: "Experian" },
+  { src: "/logos/realtorcom.png", name: "REALTOR.com" },
+  { src: "/logos/babydelight.png", name: "Baby Delight" },
+];
+
+const ticker = [
+  "Valorant",
+  "World of Warcraft",
+  "Monopoly Go",
+  "Blankos Block Party",
+  "Epic Spell Wars",
+  "Jackpot Party",
+  "Goldfish Slots",
+  "Project Copernicus",
+  "Chief Puzzle Officer",
 ];
 ---
 
@@ -39,28 +78,68 @@ const work = [
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <p class="eyebrow">UX/UI design studio for video games</p>
-      <h1>better design,<br /><span>better games.</span></h1>
-      <p class="lede">
-        Digital Experiments is a third-party design studio for video game
-        studios. A veteran team with 20+ years of games UX — from tactical
-        UI/UX execution to senior strategic vision.
+      <p class="eyebrow reveal reveal-1">Game UX studio — better design, better games</p>
+      <h1>
+        <span class="line reveal reveal-2">senior game UX,</span>
+        <span class="line outline reveal reveal-3">embedded in days.<i class="cursor" aria-hidden="true"></i></span>
+      </h1>
+      <p class="lede reveal reveal-3">
+        Digital Experiments embeds senior game UX designers in your team
+        within 24 hours — the same team that shipped UX on Valorant, World of
+        Warcraft, and Monopoly Go. Working Figma files in your hands within
+        the week. Less menu rage, more playtime.
       </p>
-      <div class="actions">
+      <div class="actions reveal reveal-4">
         <a href="/work" class="btn">See our work</a>
         <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-ghost">Start a project</a>
       </div>
     </div>
   </section>
 
+  <!-- Client ticker -->
+  <div class="ticker" aria-label="Games we've worked on">
+    <div class="ticker-track">
+      {[0, 1].map(() => (
+        <span aria-hidden="true">
+          {ticker.map((t) => <span class="tick"><b>▸</b> {t}</span>)}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Stats readout -->
+  <section class="stats">
+    <div class="container stats-grid">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="value">{s.value}</span>
+          <span class="label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Client logo wall -->
+  <section class="clients" aria-label="Clients">
+    <div class="container">
+      <p class="eyebrow">Clients</p>
+      <ul class="logo-wall">
+        {clients.map((c) => (
+          <li><img src={c.src} alt={c.name} title={c.name} loading="lazy" /></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <!-- Services -->
   <section id="services" class="section">
     <div class="container">
-      <p class="eyebrow">What we do</p>
-      <h2 class="section-title">Design services, end to end</h2>
+      <p class="eyebrow">01 — What we do</p>
+      <h2 class="section-title">Four ways to engage</h2>
       <div class="grid">
         {services.map((s) => (
-          <article class="card">
+          <article class="card hud">
+            <p class="kind">[{s.n}]</p>
             <h3>{s.title}</h3>
             <p>{s.body}</p>
           </article>
@@ -72,11 +151,11 @@ const work = [
   <!-- Work -->
   <section id="work" class="section section-alt">
     <div class="container">
-      <p class="eyebrow">Work highlights</p>
+      <p class="eyebrow">02 — Work highlights</p>
       <h2 class="section-title">Trusted by studios shipping real games</h2>
       <div class="grid">
         {work.map((w) => (
-          <article class="card">
+          <article class="card hud">
             <p class="kind">{w.kind}</p>
             <h3>{w.client}</h3>
             <p>{w.body}</p>
@@ -89,7 +168,7 @@ const work = [
   <!-- About -->
   <section id="about" class="section">
     <div class="container about">
-      <p class="eyebrow">About</p>
+      <p class="eyebrow">03 — About</p>
       <h2 class="section-title">Start with the problem. Then sprinkle in delight.</h2>
       <p class="lede">
         We're a senior, distributed team of game UX specialists. We solve the
@@ -102,47 +181,141 @@ const work = [
 
 <style>
   .hero {
-    padding-block: clamp(4rem, 12vw, 8rem);
+    padding-block: clamp(4.5rem, 12vw, 8.5rem);
     background:
-      radial-gradient(60% 80% at 80% -10%, rgba(124, 92, 255, 0.22), transparent 70%),
-      radial-gradient(50% 60% at 0% 10%, rgba(0, 224, 198, 0.12), transparent 70%);
+      linear-gradient(to bottom, rgba(200, 243, 29, 0.06), transparent 55%),
+      repeating-linear-gradient(to right, transparent 0 79px, rgba(255, 255, 255, 0.025) 79px 80px),
+      repeating-linear-gradient(to bottom, transparent 0 79px, rgba(255, 255, 255, 0.02) 79px 80px);
   }
   .hero h1 {
-    font-size: clamp(2.6rem, 8vw, 5rem);
-    letter-spacing: -0.02em;
+    font-size: clamp(2.6rem, 8.5vw, 5.6rem);
+    letter-spacing: 0.005em;
     margin-bottom: 1.5rem;
   }
-  .hero h1 span { color: var(--accent); }
+  .hero h1 .line { display: block; }
+  .outline {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent);
+  }
+  .cursor {
+    display: inline-block;
+    width: 0.14em;
+    height: 0.82em;
+    margin-left: 0.08em;
+    background: var(--accent);
+    -webkit-text-stroke: 0;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
   .lede {
-    max-width: 640px;
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    max-width: 620px;
+    font-size: clamp(1.05rem, 2vw, 1.22rem);
     color: var(--text-muted);
   }
   .actions { display: flex; gap: 1rem; margin-top: 2.25rem; flex-wrap: wrap; }
 
-  .section-alt { background: var(--bg-elev); }
-  .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 2.5rem; }
+  /* Ticker */
+  .ticker {
+    border-block: 1px solid var(--border);
+    background: var(--bg-elev);
+    overflow: hidden;
+    padding-block: 0.8rem;
+  }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 36s linear infinite;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .tick { padding-inline: 1.4rem; }
+  .tick b { color: var(--accent); font-weight: 500; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
+  }
+
+  /* Stats */
+  .stats { border-bottom: 1px solid var(--border); background: var(--bg-elev); }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .stat {
+    padding: 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    border-left: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: 1px solid var(--border); }
+  .value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--accent);
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+  }
+
+  /* Client logo wall */
+  .clients { padding-block: clamp(2.5rem, 6vw, 4rem); }
+  .logo-wall {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(1.75rem, 4vw, 3.25rem);
+  }
+  .logo-wall li { display: flex; align-items: center; }
+  .logo-wall img {
+    height: 40px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+    /* source logos are black — render as white silhouettes on the dark UI */
+    filter: grayscale(1) brightness(0) invert(1);
+    opacity: 0.55;
+    transition: opacity 0.18s ease;
+  }
+  .logo-wall img:hover { opacity: 1; }
+  /* vertical lockups get more height so they don't read undersized */
+  .logo-wall img[src*="38studios"],
+  .logo-wall img[src*="mythical"],
+  .logo-wall img[src*="thirdkindgames"],
+  .logo-wall img[src*="blizzard"] { height: 60px; }
+
+  .section-alt { background: var(--bg-elev); border-block: 1px solid var(--border); }
+  .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: 2.5rem; }
 
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
   }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem;
-  }
-  .card h3 { font-size: 1.3rem; }
+  .card { padding: 1.75rem; }
+  .card h3 { font-size: 1.25rem; }
   .card p { color: var(--text-muted); margin: 0; }
   .card .kind {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.72rem;
-    color: var(--accent-2);
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.16em;
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
   }
-  .about { max-width: 760px; }
+  .about { max-width: 780px; }
 </style>

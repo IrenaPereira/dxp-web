@@ -49,6 +49,15 @@ draft: false            # set true to hide it until ready
 Write the post body in Markdown here.
 ```
 
+## Add a portfolio image
+
+Drop the image in `public/portfolio/` and add an entry to the `items` array in
+`src/pages/portfolio.astro` with a `cat` from the `CATS` list (game, worlds,
+cards, research, product, web) plus tag, title, and caption. The gallery is a
+filterable masonry grid with a built-in lightbox — no extra wiring needed.
+To attach an image to a blog post, add `image:` and `imageAlt:` to its
+frontmatter, or embed inline with standard Markdown `![alt](/portfolio/file.jpg)`.
+
 ## Add or edit a page
 
 Create a `.astro` file in `src/pages/` (the path is the URL) and wrap your

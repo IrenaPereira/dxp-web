@@ -14,7 +14,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const fmt = (d: Date) =>
-  d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 ---
 
 <Base title={`${post.data.title} — Digital Experiments`} description={post.data.excerpt}>
@@ -27,6 +27,11 @@ const fmt = (d: Date) =>
 
   <article class="section">
     <div class="container">
+      {post.data.image && (
+        <figure class="post-hero hud">
+          <img src={post.data.image} alt={post.data.imageAlt ?? post.data.title} />
+        </figure>
+      )}
       <div class="prose">
         <Content />
       </div>
@@ -36,6 +41,19 @@ const fmt = (d: Date) =>
 </Base>
 
 <style>
+  .post-hero {
+    margin: 0 0 2.5rem;
+    max-width: 880px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .post-hero img { width: 100%; display: block; }
   .back { margin-top: 3rem; }
-  .back a { color: var(--accent); font-weight: 600; font-family: var(--font-display); }
+  .back a {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
 </style>

@@ -29,7 +29,7 @@ const team = [
     <div class="container">
       <div class="team-grid">
         {team.map((m) => (
-          <article class="member">
+          <article class="member hud">
             <h2>{m.name}</h2>
             <p class="role">{m.role}</p>
             <p class="bio">{m.bio}</p>
@@ -42,18 +42,15 @@ const team = [
 
 <style>
   .team-grid { display: grid; gap: 1.5rem; max-width: 760px; }
-  .member {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-  }
+  .member { padding: 2rem; }
   .member h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
   .role {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
     color: var(--accent);
     margin: 0 0 1rem;
-    font-weight: 600;
   }
   .bio { color: var(--text-muted); margin: 0; }
 </style>
