@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+
+const cases = [
+  {
+    client: "Mythical Games — Blankos Block Party",
+    kind: "Tactical UX & UI",
+    platform: "PC / Console",
+    body: "Special features on a crunch-worthy timeline. We integrated within 24 hours and were turning around working Figma files in days — redesigning access to skills and inventory, plus event experiences with easy onboarding for new players.",
+  },
+  {
+    client: "Epic Spell Wars",
+    kind: "Combat Design & Prototyping",
+    platform: "PC / Console",
+    body: "A vision to turn a famous card game into a web3 video game — fantastic art, short timelines, limited budget. We concepted and prototyped core combat gameplay while designing an intuitive deck-building experience.",
+  },
+  {
+    client: "A new Monopoly title",
+    kind: "UI Art Direction",
+    platform: "Mobile",
+    body: "A hard-to-read UI was hurting the experience. After deep user research we executed a clearer, more appropriate expression of Monopoly for a newly defined target audience.",
+  },
+  {
+    client: "World of Warcraft",
+    kind: "Inscription Interface",
+    platform: "PC",
+    body: "From a rudimentary design document to a fully functional inscription interface. We began with a summoning circle and expanded it with glyphs, slots and glowing geometry — new customization without breaking familiarity.",
+  },
+  {
+    client: "Chief Puzzle Officer",
+    kind: "Battle Screen Design",
+    platform: "Mobile",
+    body: "Corporate espionage with anime wackiness — a real-time card-builder with multiplayer. We brought AAA know-how to an indie mobile title, evolving a dense battle screen into something legible and fun.",
+  },
+  {
+    client: "Project Copernicus",
+    kind: "Fast Travel Map Design",
+    platform: "PC / Console",
+    body: "Every open-world MMO needs fast travel. We designed a system that made the time investment less tedious and created logical blocks of time — room for players to grab food, take a break, or call their mom.",
+  },
+];
+---
+
+<Base
+  title="Work — Digital Experiments"
+  description="Selected game UX/UI work: Blankos, Epic Spell Wars, Monopoly, World of Warcraft, Project Copernicus and more."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Work highlights</p>
+      <h1>Games we've helped ship</h1>
+      <p class="lede">
+        Tactical execution and strategic vision for studios big and small —
+        from AAA franchises to ambitious indies.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid">
+        {cases.map((c) => (
+          <article class="card">
+            <p class="kind">{c.kind} · {c.platform}</p>
+            <h2>{c.client}</h2>
+            <p>{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .card h2 { font-size: 1.3rem; }
+  .card p { color: var(--text-muted); margin: 0; }
+  .card .kind {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    color: var(--accent-2);
+    margin-bottom: 0.5rem;
+  }
+</style>

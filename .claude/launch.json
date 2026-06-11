@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "/Users/irena/Projects/GitHub/dxp-web/scripts/dev.sh",
+      "runtimeArgs": [],
+      "port": 4321
+    }
+  ]
+}

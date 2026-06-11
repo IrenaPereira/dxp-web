@@ -1,0 +1,59 @@
+---
+import Base from "../layouts/Base.astro";
+
+const team = [
+  {
+    name: "Irena Pereira",
+    role: "Founder & Design Director",
+    bio: "Irena brings 25 years of experience solving major usability challenges — beginning in games with World of Warcraft and extending to platforms like REALTOR.com®. She pioneered methodologies such as A/B testing and data-driven design that are now industry standard. Today she partners with game studios and B2C companies to build experiences that boost engagement and revenue.",
+  },
+];
+---
+
+<Base
+  title="The Team — Digital Experiments"
+  description="Meet the team behind Digital Experiments — a senior, distributed crew of game UX specialists."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">The team</p>
+      <h1>Senior people, scaled to your project</h1>
+      <p class="lede">
+        A veteran core, plus a trusted bench of specialists we bring in per
+        engagement — spanning art, design, production, and engineering.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="team-grid">
+        {team.map((m) => (
+          <article class="member">
+            <h2>{m.name}</h2>
+            <p class="role">{m.role}</p>
+            <p class="bio">{m.bio}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .team-grid { display: grid; gap: 1.5rem; max-width: 760px; }
+  .member {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+  .member h2 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+  .role {
+    font-family: var(--font-display);
+    color: var(--accent);
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+  .bio { color: var(--text-muted); margin: 0; }
+</style>
