@@ -66,9 +66,8 @@ A few spots intentionally avoid fabricated proof. Search for `⚠️` in the HTM
 - Fonts (Playfair Display + Inter) load from Google Fonts with a system-font
   fallback, so the site still looks right if that CDN is blocked. The wordmark is
   Playfair Display — "Digital" bold, "Experiments" regular.
-- The logomark (`assets/img/logo.svg`, `favicon.svg`) is a hand-traced SVG of the
-  Digital Experiments rabbit. To use the exact brand vector, drop your original
-  file in `assets/img/` and update the two `<img src="assets/img/logo.svg">`
-  references (and the favicon `<link>`) in `index.html` and `services.html`.
+- The logomark is the official Digital Experiments rabbit vector
+  (`assets/img/logo.svg`). The favicon (`assets/img/favicon.svg`) reuses the same
+  paths, reversed in light on the dark brand square for browser tabs.
 - Accessible by default: skip link, semantic landmarks, visible focus states,
   keyboard-operable nav, and `prefers-reduced-motion` support.
