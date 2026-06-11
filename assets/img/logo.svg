@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Digital Experiments mark">
+  <rect width="40" height="40" rx="10" fill="#14131a"/>
+  <!-- Stylized "experiment" node-link mark: D + E formed from connected nodes -->
+  <g fill="none" stroke="#5b53e0" stroke-width="2.4" stroke-linecap="round">
+    <path d="M13 10 V30"/>
+    <path d="M13 10 C25 10 27 20 13 20"/>
+    <path d="M13 20 C27 20 25 30 13 30"/>
+  </g>
+  <circle cx="28" cy="13" r="2.6" fill="#00c08b"/>
+  <circle cx="30" cy="27" r="2.6" fill="#5b53e0"/>
+  <path d="M28 13 L30 27" stroke="#5b53e0" stroke-width="1.6" opacity=".6"/>
+</svg>
