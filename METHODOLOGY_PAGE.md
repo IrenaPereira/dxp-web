@@ -5,6 +5,9 @@ Page copy to wrap the framework diagram (the double-diamond with stage-gates). T
 **Working name for the method:** **Discover · Define · Refine · Validate** — *"From opportunity to a plan you can fund."*
 *(Four named stages, two diamonds, three gates. Memorable, ownable, and it mirrors the proven double-diamond so buyers grasp it instantly.)*
 
+**Figma:** simplified, homepage-ready diagram built here → https://www.figma.com/design/v7fFKpXi6cASS0kCTtYSGG
+*(Pending: one cosmetic fix to the Development Plan box text, and a tidied full-detail version with artifact icons + cross-discipline list — both blocked by the Figma Starter plan tool-call limit at time of writing.)*
+
 ---
 
 ## Hero
