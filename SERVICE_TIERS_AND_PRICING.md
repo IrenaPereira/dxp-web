@@ -32,6 +32,15 @@ ALTITUDE (strategic)
 
 **The path:** Audit reveals the problems and proves DXP's judgment → Workshop builds the team's skill to address them → Embedded supplies senior hands to execute → Advisory keeps leadership steering. Each tier is a natural upsell of the one below.
 
+**The framework is the spine.** All four offers run on the same **Discover → Define → Refine → Validate** method (the double-diamond with stage-gates — see `METHODOLOGY_PAGE.md`). Each tier just plugs in at a different point, which makes the ladder feel like one product, not four:
+
+| Offer | Where it plugs into the method |
+|---|---|
+| **Audit** | Runs the **Validate** lens on what you've shipped; deliverable *is* the method's output — a prioritized development plan. |
+| **Workshop** | Installs **Discover → Define** and the **gates** in your team. |
+| **Embedded** | Runs the **full loop** with you through a real production cycle. |
+| **Advisory** | Owns the **gates and priorities** at the leadership level. |
+
 ---
 
 ## 2. The four offers
