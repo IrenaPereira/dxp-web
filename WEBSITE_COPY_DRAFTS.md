@@ -6,19 +6,21 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 
 ## A. Homepage
 
+> **Positioning: "hire this consultant," not "hire an agency."** Voice is first-person ("I," Irena), not corporate "we." Irena is the product; the site sells direct access to a senior principal, with scarcity (a few engagements per quarter) instead of bench depth. Keep "Digital Experiments — Game UX & Player Research" as the practice name in the lockup, but the *person* leads.
+
 ### A1. Hero
 **Headline (primary):**
 > Players quit what they can't figure out.
 
-**Subhead:**
-> Digital Experiments helps game studios and publishers turn UX into retention and revenue — through expert audits, team training, and embedded UX leadership. 25 years in the trenches, from *World of Warcraft* to today's top social and AAA titles.
+**Subhead (consultant voice):**
+> I'm **Irena Pereira.** For 25 years I've helped game teams — from *World of Warcraft* to today's top social and AAA titles — turn UX into retention and revenue. Audits, team training, or embedded leadership: you work directly with me, never a hand-off.
 
 **Primary CTA:** `Book a 30-min UX teardown`
-**Secondary CTA:** `See how we work`
+**Secondary CTA:** `See how I work`
 
-*Alternates if you prefer outcome-forward over problem-forward:*
-- *"We turn game UX into retention and revenue."*
-- *"Great games still lose players to bad UX. We fix that — before launch."*
+*Alternates:*
+- *"I turn game UX into retention and revenue."*
+- *"Great games still lose players to bad UX. I fix that — before launch."*
 
 ### A2. Proof strip (directly under hero)
 > **Trusted by teams at** [Activision Blizzard] · [SciPlay] · [Mythical Games] · [38 Studios]
@@ -26,10 +28,10 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 
 ### A3. The problem (one short section)
 > **UX isn't polish. It's the system that decides whether players stay.**
-> Most game teams treat user experience as a final coat of paint — or one overloaded person's job. By the time the data shows players dropping at onboarding, the store, or the core loop, the fix is expensive. We make UX the whole team's discipline, early enough to matter.
+> Most game teams treat user experience as a final coat of paint — or one overloaded person's job. By the time the data shows players dropping at onboarding, the store, or the core loop, the fix is expensive. I make UX the whole team's discipline, early enough to matter.
 
-### A4. What we do (three cards — see pricing doc)
-> **Three ways to work with us**
+### A4. What I do (three cards — see pricing doc)
+> **Three ways to work with me**
 >
 > **Audit — _find what's costing you players._**
 > Expert teardown of your onboarding, core loop, or monetization UX, with a prioritized fix list — in 1–3 weeks. **From $7,500.**
@@ -50,19 +52,25 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 > **The work**
 > [Top-grossing social casino — Reversing the curve *(name pending clearance)* →]
 > [38 Studios · Project Copernicus — Simplifying MMO UI at scale →]
+> [Unleashed Games — My own studio: the 4D Method, applied end-to-end →] *(see §F)*
 > [Talk — Why UX fails on major game teams →]
 
 ### A6. Methodology teaser
 > **How I work: the 4D Method — Discover → Define → Develop → Deliver**
 > I take a fuzzy opportunity through two cycles of diverge-then-converge thinking — with a gate at every stage, so you only fund what's been validated. You walk away with a prioritized development plan, not a deck. [See the method →]
 
-### A7. Founder credibility
-> **Built by someone who's done it for 25 years.**
-> Irena Pereira helped pioneer A/B testing and data-driven design in games before either was standard practice — including the UI players used to customize *World of Warcraft*. Today she helps studios and publishers turn UX into a measurable driver of engagement and revenue. [Meet the team →]
+### A7. Who you're hiring *(the centerpiece — this is a "hire the consultant" site)*
+> **25 years turning UX into a business result.**
+> I'm Irena Pereira. I helped pioneer A/B testing and data-driven design in games before either was standard practice — including the UI players used to customize *World of Warcraft* — and I've since helped studios and publishers turn UX into a measurable driver of engagement and revenue. When you hire me, you get me: a principal in the room, not a pitch team that disappears after the sale. [More about how I work →]
 
-### A8. Closing CTA
+### A8. Why work with me directly
+> **You get a principal, not a hand-off.** Every engagement is led by me personally — no junior bench, no account managers. That's the point.
+> **Senior judgment, fast.** 25 years of pattern-matching means I find what's costing you players in days, not months.
+> **Limited engagements.** I take a small number of clients each quarter so each gets real attention. If timing matters, reach out early.
+
+### A9. Closing CTA
 > **Curious where your game is losing players?**
-> Book a free 30-minute UX teardown — we'll screen-share your game and point to the three things costing you the most.
+> Book a free 30-minute UX teardown — I'll screen-share your game and point to the three things costing you the most.
 > `Book a UX teardown`
 
 ---
@@ -122,7 +130,7 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 2. **The problem & the stakes** — "Players quit what they can't figure out"; what bad UX costs in retention/revenue.
 3. **What we do** — the three tiers + advisory, one line each, with "From $" anchors.
 4. **Proof** — 2–3 case studies as Problem → Result (number) → logo. ⚠️ real metrics.
-5. **The method & the people** — Define → Design → Deploy; Irena's bio + bench.
+5. **The method & the person** — the 4D Method (Discover → Define → Develop → Deliver); Irena's bio; "you work with me directly."
 6. **How to start & buy** — the Audit front door, fixed fee, NDA-ready, credit-toward-expansion offer, contact + calendar link.
 
 ---
@@ -132,3 +140,27 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 - **The gates are the differentiator.** Sell the traffic-light go/no-go gates as a *decision* framework that de-risks production spend — not just a workflow.
 - **Diagnostic IP:** a *UX Maturity Ladder* a studio can be scored against — natural output of every Audit and the hook for Workshop/Embedded upsell.
 - **Brand lockup:** always pair the name with the niche — **"Digital Experiments — Game UX & Player Research"** — to fix the search-collision with CRO "digital experimentation."
+
+---
+
+## F. Unleashed Games — transparency + proof of practice
+
+**Decision recommended: YES, show it — framed as your own venture, not client work, with a transparency note. Reasoning and risk are in the chat thread.** Two components:
+
+### F1. The transparency note *(place on About + Services; short, plain, disarming)*
+> **On Unleashed Games.** I'm also founder and CEO of Unleashed Games, a game studio. I'm upfront about that because you should know exactly who you're hiring. My consulting practice partners *with* studios and publishers — I don't take engagements that compete with a client, and your IP is firewalled under NDA. If anything, building my own studio is why my advice is grounded in shipping reality, not theory.
+
+*(Tune the specifics — "don't take competing engagements," NDA firewall — to whatever boundary you'll actually commit to. The point is to state a boundary, not to be vague.)*
+
+### F2. The proof-of-practice case study *(this is the asset that makes "hire the consultant" land)*
+> ## Unleashed Games — the 4D Method, applied end-to-end
+> *(Label clearly: "My own studio — where I prove the methods I bring to your team." Not presented as a client engagement.)*
+>
+> **Problem.** [The product/player problem Unleashed set out to solve.]
+> **Approach.** I led UX and product from the ground up using the exact 4D Method I bring to clients — Discover → Define → Develop → Deliver, with gated decisions at each step. [Specifics: research, prototyping, playtesting, the gates you actually held.]
+> **Result.** [⚠️ What it produced — funding raised, players/testers, retention, a shipped milestone. Use real, cleared figures; same honest-attribution rule as the other studies.]
+> **Why it matters to you.** I don't just advise from the sidelines. I've made the hard calls — budget, scope, risk — as the person accountable for the outcome. That's the judgment you're hiring.
+
+**Why this is worth the conflict-of-interest risk:** for a "hire the consultant" site, *operator credibility* is the strongest possible differentiator over every other UX consultant — and transparency converts the studio-founder fact from a hidden liability into a stated asset. Bury it and a publisher discovers it themselves → distrust. Lead with it, bounded → credibility.
+
+**The one thing to confirm before publishing:** the scope boundary you're willing to state (no competing engagements / NDA firewall), so the note is a real commitment, not marketing.
