@@ -32,13 +32,13 @@ ALTITUDE (strategic)
 
 **The path:** Audit reveals the problems and proves DXP's judgment → Workshop builds the team's skill to address them → Embedded supplies senior hands to execute → Advisory keeps leadership steering. Each tier is a natural upsell of the one below.
 
-**The framework is the spine.** All four offers run on the same **Discover → Define → Refine → Validate** method (the double-diamond with stage-gates — see `METHODOLOGY_PAGE.md`). Each tier just plugs in at a different point, which makes the ladder feel like one product, not four:
+**The framework is the spine.** All four offers run on the same **4D Method — Discover → Define → Develop → Deliver** (the double-diamond with stage-gates — see `METHODOLOGY_PAGE.md`). Each tier just plugs in at a different point, which makes the ladder feel like one product, not four:
 
-| Offer | Where it plugs into the method |
+| Offer | Where it plugs into the 4D Method |
 |---|---|
-| **Audit** | Runs the **Validate** lens on what you've shipped; deliverable *is* the method's output — a prioritized development plan. |
+| **Audit** | Runs the **Deliver** lens on what you've shipped; deliverable *is* the method's output — a prioritized development plan. |
 | **Workshop** | Installs **Discover → Define** and the **gates** in your team. |
-| **Embedded** | Runs the **full loop** with you through a real production cycle. |
+| **Embedded** | Runs the **full 4D loop** with you through a real production cycle. |
 | **Advisory** | Owns the **gates and priorities** at the leadership level. |
 
 ---
@@ -126,3 +126,37 @@ These rates anchor every package below; packages are sold at a fixed/retainer pr
 > *Audit fee credited toward any Workshop or Embedded engagement booked within 60 days.*
 
 **Procurement-friendly add-ons to surface near the pricing:** fixed-fee on Audits/Workshops, NDA-ready, experience with unreleased IP, can work embedded with producers. These remove the enterprise buyer's silent objections.
+
+---
+
+## 5. Pricing-page layout — lead with the 4D Method graphic
+
+**Put the 4D Method diagram at the top of the pricing page, then hang the tiers off it.** This is the page's single best move: instead of four disconnected price cards, the buyer sees *one method* and understands each tier as a way to buy into a different stage of it. The graphic does the selling; the prices just say "here's how to start."
+
+**Figma source:** https://www.figma.com/design/v7fFKpXi6cASS0kCTtYSGG — export the "Homepage — Simplified Framework" frame as SVG/PNG for the page.
+
+**Recommended page structure:**
+
+> ### Section 1 — The method (the graphic)
+> **Heading:** "One method. Four ways to start."
+> **Sub:** "Every engagement runs on our 4D Method — Discover, Define, Develop, Deliver — with a gate at every stage, so you only build what's been validated. Where you plug in is up to you."
+> *(Embed the 4D Method diagram here, full-width.)*
+>
+> ### Section 2 — The tiers, mapped to the method
+> Show the three cards + advisory strip from §4 **immediately under the graphic**, each card tagged with the 4D stage it owns so the connection is explicit:
+>
+> | Tier | 4D stage it plugs into | Price |
+> |---|---|---|
+> | **Audit** — *find what's costing you players* | **Deliver** — runs the validation lens on what you've shipped and hands you the prioritized development plan | **from $7,500** |
+> | **Workshop** — *make UX your whole team's job* | **Discover → Define** — installs the front of the method, and the gates, in your team | **from $15,000** |
+> | **Embedded** — *senior UX leadership, inside your team* | **Full 4D loop** — we run Develop → Deliver alongside you through a real production cycle | **from $20,000/mo** |
+> | **Advisory** — *fractional Head of Player Experience* | **The gates** — leadership owns the go/no-go calls and the priorities | **from $8,000/mo** |
+>
+> *Audit fee credited toward any Workshop or Embedded engagement booked within 60 days.*
+>
+> ### Section 3 — Reassurance + CTA
+> Procurement add-ons (fixed-fee, NDA-ready, unreleased-IP experience) + a single primary CTA ("Book a 30-min UX teardown").
+
+**Visual treatment:** color or highlight each tier's stage on the graphic when its card is hovered/active (e.g., the Audit card lights up the "Deliver" half of the second diamond). Even a static version — four small captioned crops of the diagram, one per card — makes the method-to-price link land.
+
+**⚠️ Pending Figma edits (blocked by Starter-plan rate limit at time of writing):** relabel 2nd diamond REFINE→**DEVELOP**, VALIDATE→**DELIVER**; retitle graphic to "The 4D Method"; fix the Development Plan box text overlap. The diagram is otherwise final and exportable.

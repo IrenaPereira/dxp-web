@@ -2,8 +2,8 @@
 
 Page copy to wrap the framework diagram (the double-diamond with stage-gates). The diagram is the hero of this page; the words below give a buyer the *why it matters.*
 
-**Working name for the method:** **Discover · Define · Refine · Validate** — *"From opportunity to a plan you can fund."*
-*(Four named stages, two diamonds, three gates. Memorable, ownable, and it mirrors the proven double-diamond so buyers grasp it instantly.)*
+**Method name:** **The 4D Method — Discover · Define · Develop · Deliver** — *"From opportunity to a plan you can fund."*
+*(Four named stages, two diamonds, three gates. The four D's mirror the proven Double Diamond so buyers grasp it instantly, and "4D" is a clean, ownable shorthand.)*
 
 **Figma:** simplified, homepage-ready diagram built here → https://www.figma.com/design/v7fFKpXi6cASS0kCTtYSGG
 *(Pending: one cosmetic fix to the Development Plan box text, and a tidied full-detail version with artifact icons + cross-discipline list — both blocked by the Figma Starter plan tool-call limit at time of writing.)*
@@ -30,10 +30,10 @@ We converge on the concept worth pursuing — made tangible as concept art, wire
 
 > **🟢 Gate.** Go / no-go on evidence, not opinion. Nothing advances until the *what* is clear.
 
-**3 · Refine — _How._**
+**3 · Develop — _How._**
 We diverge on execution, integrating every discipline that touches the player — design, art, audio, engineering, production, QA, analytics, marketing, legal — through consultation and prototyping.
 
-**4 · Validate — _Proof._**
+**4 · Deliver — _Proof._**
 We converge on what's proven. Real **users** at the center, tested against analytics, cost, risk, and team capability — so you know it works *and* that you can build it.
 
 > **🟢 Gate.** Only what survives validation moves forward.
@@ -53,14 +53,14 @@ The framework is the spine. Each engagement plugs in at a different point:
 
 | Service | Where it lives in the method |
 |---|---|
-| **Audit** | Runs the **Validate** lens on what you've already shipped — and hands you the **prioritized Development Plan** as the deliverable. |
+| **Audit** | Runs the **Deliver** lens on what you've already shipped — and hands you the **prioritized Development Plan** as the deliverable. |
 | **Workshop** | Installs the method in your team — they learn to run **Discover → Define** and hold the **gates** themselves. |
-| **Embedded** | We run the **full loop** alongside you through a real production cycle — **Refine → Validate**, cross-discipline. |
+| **Embedded** | We run the **full 4D loop** alongside you through a real production cycle — **Develop → Deliver**, cross-discipline. |
 | **Advisory** | We help leadership own the **gates and priorities** — the go/no-go calls and the development plan. |
 
 ---
 
 ## Presentation notes (for the site)
-- **Lead simple, let the detail be the proof.** On the homepage, show only the four stage labels + gates (Discover → Define → ▸gate▸ → Refine → Validate → Plan). Reserve the full, icon-dense diagram for *this* page and the sales deck, where its rigor reads as credibility rather than clutter.
+- **Lead simple, let the detail be the proof.** On the homepage, show only the four stage labels + gates (Discover → Define → ▸gate▸ → Develop → Deliver → Plan). Reserve the full, icon-dense diagram for *this* page and the sales deck, where its rigor reads as credibility rather than clutter.
 - **Lean into the gates as the differentiator.** Most "process" slides are linear arrows. The traffic-light gates are what make this a *decision* framework, not a workflow — name them and sell them.
 - **Make the output concrete.** "A prioritized development plan" is the tangible thing a buyer takes away — say it everywhere the method appears.

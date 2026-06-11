@@ -53,8 +53,8 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 > [Talk — Why UX fails on major game teams →]
 
 ### A6. Methodology teaser
-> **How we work: Discover → Define → Refine → Validate**
-> We take a fuzzy opportunity through two cycles of diverge-then-converge thinking — with a gate at every stage, so you only fund what's been validated. You walk away with a prioritized development plan, not a deck. [See the method →]
+> **How I work: the 4D Method — Discover → Define → Develop → Deliver**
+> I take a fuzzy opportunity through two cycles of diverge-then-converge thinking — with a gate at every stage, so you only fund what's been validated. You walk away with a prioritized development plan, not a deck. [See the method →]
 
 ### A7. Founder credibility
 > **Built by someone who's done it for 25 years.**
@@ -128,7 +128,7 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 ---
 
 ## E. Naming / methodology to formalize
-- **Method:** **Discover → Define → Refine → Validate** — the existing double-diamond-with-gates framework. This is real, ownable IP; make it the named, diagrammed spine of the brand. Full page copy in `METHODOLOGY_PAGE.md`. Promise: *"From a fuzzy opportunity to a plan you can fund."* Output: *a prioritized development plan.*
+- **Method:** **The 4D Method — Discover → Define → Develop → Deliver** — the existing double-diamond-with-gates framework. This is real, ownable IP; make it the named, diagrammed spine of the brand. Full page copy in `METHODOLOGY_PAGE.md`. Promise: *"From a fuzzy opportunity to a plan you can fund."* Output: *a prioritized development plan.*
 - **The gates are the differentiator.** Sell the traffic-light go/no-go gates as a *decision* framework that de-risks production spend — not just a workflow.
 - **Diagnostic IP:** a *UX Maturity Ladder* a studio can be scored against — natural output of every Audit and the hook for Workshop/Embedded upsell.
 - **Brand lockup:** always pair the name with the niche — **"Digital Experiments — Game UX & Player Research"** — to fix the search-collision with CRO "digital experimentation."
