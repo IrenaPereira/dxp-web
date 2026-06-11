@@ -21,8 +21,8 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 - *"Great games still lose players to bad UX. We fix that — before launch."*
 
 ### A2. Proof strip (directly under hero)
-> **Trusted by teams at** [Activision Blizzard] · [SciPlay] · [Mythical Games] · [38 Studios]
-*(Logo wall — secure usage permission. ⚠️ Only show logos you're cleared to display.)*
+> **Trusted by teams at** [Activision Blizzard] · [Mythical Games] · [38 Studios] · [social casino studio — pending clearance]
+*(Logo wall — secure usage permission. ⚠️ Only show logos you're cleared to display. Hold the social-casino studio's name/logo until the claim is validated with Josh & Justin.)*
 
 ### A3. The problem (one short section)
 > **UX isn't polish. It's the system that decides whether players stay.**
@@ -43,11 +43,12 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 > *For studio leadership: a fractional Head of Player Experience. [Learn more →]*
 
 ### A5. Proof (case studies — link to reformatted studies)
-> **Headline stat (feature this prominently — it's your strongest single proof point):**
-> **$90M** — *We helped SciPlay's Jackpot Party reverse a declining revenue curve. It went on to its biggest year ever.*
+> **Headline stat — your strongest single proof point. ⚠️ Hold until validated (Josh & Justin); run the anonymized version below until the studio name + $90M are cleared.**
+> *Anonymized (publish now):* **"We helped a top-grossing social casino reverse a declining revenue curve — into its biggest year ever."*
+> *Cleared version (after validation):* **$90M** — *We helped [studio]'s [title] reverse a declining revenue curve. It went on to its biggest year ever.*
 >
 > **The work**
-> [SciPlay · Jackpot Party — Reversing the curve on a top-grossing social casino →]
+> [Top-grossing social casino — Reversing the curve *(name pending clearance)* →]
 > [38 Studios · Project Copernicus — Simplifying MMO UI at scale →]
 > [Talk — Why UX fails on major game teams →]
 
@@ -89,20 +90,20 @@ Every case study, one screen, four beats:
 > **3. Result** — **the number.** Retention, conversion, completion, review-score, or efficiency lift.
 > **4. Proof** — a one-line quote from a named client (title + studio).
 
-### C2. Worked example — SciPlay / Jackpot Party
-*(Structure is final. The $90M record-year figure is real — confirm it's cleared for public use and add a named client quote before publishing. Keep the attribution honest: we contributed the UX practice, we don't claim sole credit for the revenue.)*
+### C2. Worked example — top-grossing social casino *(client anonymized)*
+> ⚠️ **PENDING VALIDATION (Josh & Justin).** Do NOT name the studio/title or state the $90M figure publicly until the claim is validated and cleared. Until then, run the anonymized version below. Once cleared, swap in the studio name, the title, the dollar figure, and a named quote.
 
-> ## Reversing the curve at SciPlay — Jackpot Party
+> ## Reversing the curve on a top-grossing social casino
 >
-> **Problem.** Jackpot Party Social Casino, one of SciPlay's largest titles, was on a **declining revenue curve.** The team knew UX mattered to retention and spend, but had no in-house UX practice and no shared way to find or fix the friction costing them players.
+> **Problem.** One of the largest social casino titles on the market was on a **declining revenue curve.** The team knew UX mattered to retention and spend, but had no in-house UX practice and no shared way to find or fix the friction costing them players.
 >
 > **Approach.** Digital Experiments came in as external UX consultants. We ran an expert teardown of the core flows, then worked alongside the team to diagnose the real friction and **upskill them** — installing the methods to define, test, and fix player experience themselves, so the capability stayed after we left.
 >
-> **Result.** The decline reversed. Jackpot Party went on to its **biggest year ever — $90M** — with UX established as a core part of how the team builds.
+> **Result.** The decline reversed. The title went on to its **biggest year ever**, with UX established as a core part of how the team builds. *(Pending clearance: name the studio + the $90M figure once validated.)*
 >
-> **Proof.** *"[One-line quote on what the UX work changed — ideally from a SciPlay lead.]"* — [Name, Title, SciPlay]
+> **Proof.** *"[One-line quote on what the UX work changed — from the studio lead, once cleared.]"* — [Name, Title]
 
-*Honest-attribution note for the live page: phrase as "UX became a core discipline as the title went on to its biggest year ever ($90M)" — a contribution claim, not a sole-cause claim. A sharp partnerships manager will respect the former and distrust the latter.*
+*Honest-attribution note for the live page: phrase as "UX became a core discipline as the title went on to its biggest year ever" — a contribution claim, not a sole-cause claim. A sharp partnerships manager will respect the former and distrust the latter.*
 
 ### C3. Worked example — 38 Studios / Project Copernicus
 > **Problem.** Copernicus, a sprawling MMO, layered a deeply complex user experience under a deceptively simple interface (e.g., the Mana Streamers fast-travel system). The challenge: keep MMO depth without overwhelming players.
