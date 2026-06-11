@@ -43,8 +43,11 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 > *For studio leadership: a fractional Head of Player Experience. [Learn more →]*
 
 ### A5. Proof (case studies — link to reformatted studies)
+> **Headline stat (feature this prominently — it's your strongest single proof point):**
+> **$90M** — *We helped SciPlay's Jackpot Party reverse a declining revenue curve. It went on to its biggest year ever.*
+>
 > **The work**
-> [SciPlay · Jackpot Party — Levelling up UX on a top-grossing social casino →]
+> [SciPlay · Jackpot Party — Reversing the curve on a top-grossing social casino →]
 > [38 Studios · Project Copernicus — Simplifying MMO UI at scale →]
 > [Talk — Why UX fails on major game teams →]
 
@@ -87,17 +90,19 @@ Every case study, one screen, four beats:
 > **4. Proof** — a one-line quote from a named client (title + studio).
 
 ### C2. Worked example — SciPlay / Jackpot Party
-*(Structure is final; ⚠️ the bracketed metrics and quote are placeholders — replace with real or anonymized figures and a cleared quote before publishing. Do not ship the brackets.)*
+*(Structure is final. The $90M record-year figure is real — confirm it's cleared for public use and add a named client quote before publishing. Keep the attribution honest: we contributed the UX practice, we don't claim sole credit for the revenue.)*
 
-> ## Levelling up UX at SciPlay — Jackpot Party
+> ## Reversing the curve at SciPlay — Jackpot Party
 >
-> **Problem.** SciPlay's largest title, Jackpot Party Social Casino, knew UX mattered to retention and spend but had no in-house UX practice — and no shared way to find or fix the friction costing them players.
+> **Problem.** Jackpot Party Social Casino, one of SciPlay's largest titles, was on a **declining revenue curve.** The team knew UX mattered to retention and spend, but had no in-house UX practice and no shared way to find or fix the friction costing them players.
 >
-> **Approach.** Digital Experiments came in as external UX consultants. We ran an expert teardown of the core flows, then worked alongside the team to diagnose the real issues and **upskill them** — installing the methods to define, test, and fix player friction themselves.
+> **Approach.** Digital Experiments came in as external UX consultants. We ran an expert teardown of the core flows, then worked alongside the team to diagnose the real friction and **upskill them** — installing the methods to define, test, and fix player experience themselves, so the capability stayed after we left.
 >
-> **Result.** [⚠️ e.g., "Cut drop-off in the first-session flow by X%," or "Lifted tutorial completion by Y points," or "Raised store-conversion on the redesigned flow by Z%." Use real or anonymized numbers — directional is fine, none is not.]
+> **Result.** The decline reversed. Jackpot Party went on to its **biggest year ever — $90M** — with UX established as a core part of how the team builds.
 >
-> **Proof.** *"[One-line quote on the impact.]"* — [Name, Title, SciPlay]
+> **Proof.** *"[One-line quote on what the UX work changed — ideally from a SciPlay lead.]"* — [Name, Title, SciPlay]
+
+*Honest-attribution note for the live page: phrase as "UX became a core discipline as the title went on to its biggest year ever ($90M)" — a contribution claim, not a sole-cause claim. A sharp partnerships manager will respect the former and distrust the latter.*
 
 ### C3. Worked example — 38 Studios / Project Copernicus
 > **Problem.** Copernicus, a sprawling MMO, layered a deeply complex user experience under a deceptively simple interface (e.g., the Mana Streamers fast-travel system). The challenge: keep MMO depth without overwhelming players.
