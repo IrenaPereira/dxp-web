@@ -21,8 +21,8 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 - *"Great games still lose players to bad UX. We fix that — before launch."*
 
 ### A2. Proof strip (directly under hero)
-> **Trusted by teams at** [Activision Blizzard] · [Mythical Games] · [38 Studios] · [social casino studio — pending clearance]
-*(Logo wall — secure usage permission. ⚠️ Only show logos you're cleared to display. Hold the social-casino studio's name/logo until the claim is validated with Josh & Justin.)*
+> **Trusted by teams at** [Activision Blizzard] · [SciPlay] · [Mythical Games] · [38 Studios]
+*(Logo wall — secure usage permission. ⚠️ Only show logos you're cleared to display. SciPlay logo is cleared for the logo wall. Note: this names SciPlay as a client only — keep SciPlay decoupled from the $90M revenue claim in the case study/stat until that figure is validated with Josh & Justin.)*
 
 ### A3. The problem (one short section)
 > **UX isn't polish. It's the system that decides whether players stay.**
