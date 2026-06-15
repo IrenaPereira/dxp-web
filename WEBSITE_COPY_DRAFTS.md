@@ -148,9 +148,7 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 **Decision recommended: YES, show it — framed as your own venture, not client work, with a transparency note. Reasoning and risk are in the chat thread.** Two components:
 
 ### F1. The transparency note *(place on About + Services; short, plain, disarming)*
-> **On Unleashed Games.** I'm also founder and CEO of Unleashed Games, a game studio. I'm upfront about that because you should know exactly who you're hiring. My consulting practice partners *with* studios and publishers — I don't take engagements that compete with a client, and your IP is firewalled under NDA. If anything, building my own studio is why my advice is grounded in shipping reality, not theory.
-
-*(Tune the specifics — "don't take competing engagements," NDA firewall — to whatever boundary you'll actually commit to. The point is to state a boundary, not to be vague.)*
+> **On Unleashed Games.** I'm also founder and CEO of Unleashed Games, a game studio. I'm upfront about that because you should know exactly who you're hiring. My consulting practice partners *with* studios and publishers: **your confidential IP is protected under NDA and never crosses into Unleashed, and while we're working together I won't take a competing engagement in your specific genre or title space.** If anything, building my own studio is why my advice is grounded in shipping reality, not theory.
 
 ### F2. The proof-of-practice case study *(this is the asset that makes "hire the consultant" land)*
 > ## Unleashed Games — the 4D Method, applied end-to-end
@@ -163,7 +161,7 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 
 **Why this is worth the conflict-of-interest risk:** for a "hire the consultant" site, *operator credibility* is the strongest possible differentiator over every other UX consultant — and transparency converts the studio-founder fact from a hidden liability into a stated asset. Bury it and a publisher discovers it themselves → distrust. Lead with it, bounded → credibility.
 
-**The one thing to confirm before publishing:** the scope boundary you're willing to state (no competing engagements / NDA firewall), so the note is a real commitment, not marketing.
+**Scope boundary — CONFIRMED (balanced):** *"Your confidential IP is protected under NDA and never crosses into Unleashed, and while we're working together I won't take a competing engagement in your specific genre or title space."* This is now the committed language in F1 and G5.
 
 ---
 
@@ -194,7 +192,7 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 > *(When a project needs more hands, I bring in trusted, senior collaborators I've worked with for years — including [Gentry Stanley] on production and delivery — but the UX judgment you're hiring stays mine.)*
 
 ### G5. Transparency — on Unleashed Games
-> I'm also founder and CEO of **Unleashed Games**, a game studio. I'm telling you up front because you should know exactly who you're hiring. My consulting practice partners *with* studios and publishers: **I don't take engagements that compete with a client, and your IP is firewalled under NDA.** *(← default boundary — adjust to the exact commitment you'll stand behind.)* If anything, running my own studio is why my advice is grounded in shipping reality, not theory. [See what that looks like →] *(links to the Unleashed proof-of-practice study, §F2)*
+> I'm also founder and CEO of **Unleashed Games**, a game studio. I'm telling you up front because you should know exactly who you're hiring. My consulting practice partners *with* studios and publishers: **your confidential IP is protected under NDA and never crosses into Unleashed, and while we're working together I won't take a competing engagement in your specific genre or title space.** If anything, running my own studio is why my advice is grounded in shipping reality, not theory. [See what that looks like →] *(links to the Unleashed proof-of-practice study, §F2)*
 
 ### G6. CTA
 > **Let's find out where your game is losing players.**
