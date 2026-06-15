@@ -4,23 +4,23 @@ import Base from "../layouts/Base.astro";
 const services = [
   {
     n: "01",
-    title: "Embedded UX & UI",
-    body: "Your senior hands this sprint. Prototyping, wireframing/greyboxing, UX & UI design, animation, and implementation — embedded in your team within 24 hours, working Figma files in days.",
+    title: "Ideation workshops",
+    body: "Our UX processes are one and many. Collaborative sessions that help your product scale to the next level.",
   },
   {
     n: "02",
-    title: "UX Strategy",
-    body: "Clarity before execution: game brand design, UI art direction, vision clarification, product/market fit, personas, and design systems — the senior thinking that sets direction.",
+    title: "UI/UX design",
+    body: "The core of our projects: the interfaces and their usability. Everything from design to implementation.",
   },
   {
     n: "03",
-    title: "Team Workshops & Training",
-    body: "We level up the team you already have. UX process, research methods, and collaboration workshops taught by people who've shipped the work — your team leaves stronger.",
+    title: "Audits & UXR",
+    body: "Lean UX research, retrospectives, and turning player & market data into a concrete action plan.",
   },
   {
     n: "04",
-    title: "UI/UX Audits",
-    body: "A senior teardown of your existing game or build. We find what your players are already saying in Discord — onboarding, moment-to-moment play, readability, accessibility — and deliver prioritized fixes your team can act on immediately.",
+    title: "Embedded designers",
+    body: "DE designers and artists working inside your team — for a sprint, a season, or a console cycle.",
   },
 ];
 
@@ -148,15 +148,26 @@ const ticker = [
     </div>
   </section>
 
+  <!-- Statement band — campaign-style punchy provocation -->
+  <section class="statement-band">
+    <div class="container">
+      <p class="eyebrow">Why it matters</p>
+      <p class="statement-line">UX gets bolted on <em class="flair">way too late</em>.</p>
+      <p class="statement-sub">
+        We embed early — when a fix still costs a sprint, not a relaunch.
+      </p>
+    </div>
+  </section>
+
   <!-- Services -->
   <section id="services" class="section">
     <div class="container">
-      <p class="eyebrow">01 — What we do</p>
-      <h2 class="section-title">Four ways to <em class="flair">engage</em></h2>
+      <p class="eyebrow">What we do</p>
+      <h2 class="section-title">One team, the whole <em class="flair">UX pipeline</em></h2>
       <div class="grid">
         {services.map((s) => (
-          <article class="card hud">
-            <p class="kind">[{s.n}]</p>
+          <article class="svc">
+            <span class="svc-n">{s.n}</span>
             <h3>{s.title}</h3>
             <p>{s.body}</p>
           </article>
@@ -422,6 +433,49 @@ const ticker = [
   }
   .about { max-width: 780px; }
 
+  /* Services — editorial "pipeline" treatment: hairline top-rule + mono number */
+  .svc {
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border-bright);
+  }
+  .svc-n {
+    display: block;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    letter-spacing: 0.22em;
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+  }
+  .svc h3 { font-size: clamp(1.3rem, 2.2vw, 1.65rem); margin: 0 0 0.8rem; }
+  .svc p { color: var(--text-muted); margin: 0; }
+
+  /* Statement band — borrowed from the social campaign's poster voice */
+  .statement-band {
+    padding-block: clamp(4rem, 10vw, 7rem);
+    text-align: center;
+    border-block: 1px solid var(--border);
+    background:
+      radial-gradient(60% 120% at 50% 0%, rgba(49, 170, 183, 0.08), transparent 70%),
+      var(--bg);
+  }
+  .statement-band .eyebrow { display: inline-block; }
+  .statement-line {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(2.1rem, 6vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    max-width: 16ch;
+    margin: 0 auto 1.1rem;
+  }
+  .statement-sub {
+    color: var(--text-muted);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 42ch;
+    margin: 0 auto;
+  }
+
   /* Featured project spotlight */
   .featured {
     background:
@@ -465,18 +519,27 @@ const ticker = [
   }
   .shot {
     margin: 0;
-    width: clamp(116px, 13vw, 170px);
-    aspect-ratio: 9 / 16;
-    border-radius: 16px;
+    width: clamp(116px, 13vw, 168px);
+    /* no fixed aspect — each phone takes its screenshot's natural shape so
+       nothing is cropped (the mask was cutting off the screenshots) */
+    border-radius: 20px;
     overflow: hidden;
-    border: 1px solid var(--border-bright);
-    background: #000;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    background: #0b0b0d;
+    padding: 5px;                 /* thin device bezel around the screen */
+    border: 1px solid #2a2a2e;
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04);
     transform: rotate(var(--rot)) translateY(var(--ty));
     transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
   }
   .shot:not(:first-child) { margin-left: -3.4rem; }
-  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;          /* inner screen radius */
+  }
   .shot:nth-child(1) { --rot: -9deg; --ty: 14px; z-index: 1; }
   .shot:nth-child(2) { --rot: -3deg; --ty: -8px; z-index: 2; }
   .shot:nth-child(3) { --rot: 3deg;  --ty: -8px; z-index: 3; }
