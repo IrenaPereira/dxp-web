@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Digital Experiments — Capabilities</title>
-  <meta name="description" content="Digital Experiments — Game UX & Player Research. Capabilities overview: audits, team training, embedded UX leadership, and strategy for game studios and publishers." />
+  <meta name="description" content="Digital Experiments — better design, better games. Bespoke user experience design for video game studios: tactical UI/UX, strategic UX, and UX for teams." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
     :root{
       --ink:#14131a; --ink-2:#1d1d1d; --paper:#ffffff; --paper-2:#f6f5f2;
       --line:#e3e1e4; --muted:#6c6a76; --muted-2:#9b99a4;
-      --accent:#5b53e0; --accent-300:#b9b5f4; --accent-tint:#f0effd; --signal:#00c08b;
+      --accent:#5b53e0; --accent-700:#463fbf; --accent-300:#b9b5f4; --accent-tint:#f0effd; --signal:#00c08b;
       --on-ink:#f5f4f7; --on-ink-muted:#b5b2c2; --on-ink-line:#322f3d;
       --font-display:"Playfair Display",Georgia,serif;
       --font-sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -24,7 +24,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;}
     html{scroll-behavior:smooth;}
     body{font-family:var(--font-sans);color:var(--ink);background:#0c0b10;line-height:1.5;-webkit-font-smoothing:antialiased;}
-    h1,h2,h3{font-family:var(--font-display);font-weight:540;line-height:1.05;letter-spacing:-.015em;}
+    h1,h2,h3,h4{font-family:var(--font-display);font-weight:540;line-height:1.05;letter-spacing:-.015em;}
     em{font-style:italic;}
     .mono{font-family:var(--font-mono);}
 
@@ -33,105 +33,90 @@
     .slide{
       position:relative;scroll-snap-align:start;scroll-snap-stop:always;
       width:100vw;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-      padding:clamp(2.5rem,6vw,6rem) clamp(2rem,7vw,8rem);
+      padding:clamp(2.5rem,6vw,5.5rem) clamp(2rem,7vw,7.5rem);
     }
-    .slide__inner{width:100%;max-width:1100px;margin-inline:auto;}
-    /* themes */
+    .slide__inner{width:100%;max-width:1120px;margin-inline:auto;}
     .s-light{background:var(--paper);color:var(--ink);}
     .s-soft{background:var(--paper-2);color:var(--ink);}
     .s-ink{background:var(--ink);color:var(--on-ink);}
-    .s-ink h1,.s-ink h2,.s-ink h3{color:var(--on-ink);}
-    .s-accent{background:linear-gradient(135deg,var(--accent-700,#463fbf),var(--accent) 55%,#6f67ea);color:#fff;}
-    .s-accent h1,.s-accent h2,.s-accent h3{color:#fff;}
+    .s-ink h1,.s-ink h2,.s-ink h3,.s-ink h4{color:var(--on-ink);}
+    .s-accent{background:linear-gradient(135deg,var(--accent-700),var(--accent) 55%,#6f67ea);color:#fff;}
+    .s-accent h1,.s-accent h2{color:#fff;}
 
-    /* ===== Type scale ===== */
-    .eyebrow{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;}
-    .s-ink .eyebrow,.s-accent .eyebrow{color:var(--accent-300);}
-    .s-accent .eyebrow{color:rgba(255,255,255,.8);}
+    .eyebrow{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block;}
+    .s-ink .eyebrow{color:var(--accent-300);}
+    .s-accent .eyebrow{color:rgba(255,255,255,.85);}
     .display{font-size:clamp(2.4rem,6vw,5rem);}
-    .h-xl{font-size:clamp(2rem,4.5vw,3.6rem);}
-    .h-lg{font-size:clamp(1.6rem,3.2vw,2.6rem);}
-    .lead{font-size:clamp(1.05rem,1.7vw,1.5rem);color:var(--muted);max-width:46ch;}
-    .s-ink .lead,.s-accent .lead{color:var(--on-ink-muted);}
+    .h-xl{font-size:clamp(2rem,4.5vw,3.4rem);}
+    .h-lg{font-size:clamp(1.7rem,3.2vw,2.6rem);}
+    .lead{font-size:clamp(1.05rem,1.6vw,1.4rem);color:var(--muted);max-width:60ch;}
+    .s-ink .lead{color:var(--on-ink-muted);}
     .s-accent .lead{color:rgba(255,255,255,.9);}
-    .kicker{font-size:clamp(1.05rem,1.7vw,1.4rem);max-width:52ch;margin-top:1.25rem;}
 
-    /* ===== Components ===== */
-    .brandbar{position:absolute;top:clamp(1.5rem,3vw,2.5rem);left:clamp(2rem,7vw,8rem);right:clamp(2rem,7vw,8rem);
-      display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--muted-2);}
+    .brandbar{position:absolute;top:clamp(1.5rem,3vw,2.4rem);left:clamp(2rem,7vw,7.5rem);right:clamp(2rem,7vw,7.5rem);
+      display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--muted-2);}
     .s-ink .brandbar,.s-accent .brandbar{color:var(--on-ink-muted);}
-    .brandbar .lockup{display:flex;align-items:center;gap:.55rem;font-family:var(--font-display);font-size:1rem;color:inherit;}
+    .brandbar .lockup{display:flex;align-items:center;gap:.5rem;font-family:var(--font-display);font-size:1rem;color:var(--muted);}
     .brandbar .lockup b{font-weight:700;color:var(--ink);}
+    .s-ink .brandbar .lockup,.s-accent .brandbar .lockup{color:var(--on-ink-muted);}
     .s-ink .brandbar .lockup b,.s-accent .brandbar .lockup b{color:#fff;}
-    .brandbar .rabbit{width:22px;height:26px;}
+    .brandbar .rabbit{width:20px;height:24px;}
 
+    .pagenum{position:absolute;bottom:clamp(1.25rem,3vw,2.1rem);right:clamp(2rem,7vw,7.5rem);font-family:var(--font-mono);font-size:.76rem;color:var(--muted-2);}
+    .s-ink .pagenum,.s-accent .pagenum{color:var(--on-ink-muted);}
+
+    /* grids */
     .grid{display:grid;gap:1.25rem;}
     .g-3{grid-template-columns:repeat(3,1fr);}
     .g-2{grid-template-columns:repeat(2,1fr);}
-    @media (max-width:820px){.g-3,.g-2{grid-template-columns:1fr;}}
+    @media (max-width:860px){.g-3,.g-2{grid-template-columns:1fr;}}
 
     .card{border:1px solid var(--line);border-radius:14px;padding:1.5rem;background:var(--paper);display:flex;flex-direction:column;gap:.5rem;}
-    .s-ink .card,.s-soft .card{background:rgba(255,255,255,.55);}
     .s-ink .card{background:rgba(255,255,255,.04);border-color:var(--on-ink-line);}
-    .card .tag{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.05em;color:var(--accent);}
+    .card .tag{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);}
     .s-ink .card .tag{color:var(--accent-300);}
-    .card h3{font-size:1.5rem;}
-    .card h3 em{display:block;font-size:.95rem;color:var(--muted);font-weight:400;margin-top:.2rem;}
-    .s-ink .card h3 em{color:var(--on-ink-muted);}
-    .card p{font-size:.95rem;color:var(--muted);}
-    .s-ink .card p{color:var(--on-ink-muted);}
-    .card .price{margin-top:auto;font-family:var(--font-display);font-size:1.3rem;color:inherit;padding-top:.5rem;}
-    .card .price small{display:block;font-family:var(--font-mono);font-size:.72rem;color:var(--muted-2);}
+    .card h3{font-size:1.45rem;}
 
-    /* method steps */
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
-    @media (max-width:820px){.steps{grid-template-columns:1fr;}}
-    .step{border-top:2px solid var(--on-ink-line);padding-top:1rem;}
-    .step .n{font-family:var(--font-mono);font-size:.8rem;color:var(--accent-300);}
-    .step h3{font-size:1.6rem;margin:.4rem 0 .5rem;}
-    .step p{color:var(--on-ink-muted);font-size:.98rem;}
+    .list{list-style:none;padding:0;display:grid;gap:.5rem;margin-top:.4rem;}
+    .list li{font-size:.96rem;color:var(--muted);padding-left:1.1rem;position:relative;}
+    .s-ink .list li{color:var(--on-ink-muted);}
+    .list li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:2px;background:var(--accent);}
+    .s-ink .list li::before{background:var(--accent-300);}
 
-    /* case studies */
-    .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem;}
-    @media (max-width:820px){.cases{grid-template-columns:1fr;}}
-    .case{border:1px solid var(--line);border-radius:14px;padding:1.4rem;background:var(--paper);}
-    .case h3{font-size:1.3rem;margin-bottom:.75rem;}
-    .case dt{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
-    .case dd{margin:.15rem 0 .75rem;font-size:.92rem;color:var(--ink-2);}
-    .case .result{font-weight:600;color:var(--ink);}
+    /* roster */
+    .roster{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.75rem;}
+    @media (max-width:860px){.roster{grid-template-columns:repeat(2,1fr);}}
+    .person{border:1px solid var(--on-ink-line);border-radius:12px;padding:1.1rem 1.2rem;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:.9rem;}
+    .person .avatar{width:40px;height:46px;flex:none;color:var(--accent-300);}
+    .person b{font-family:var(--font-display);font-size:1.18rem;font-weight:600;display:block;}
+    .person span{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--on-ink-muted);}
 
-    .chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;list-style:none;padding:0;}
-    .chips li{font-size:.85rem;font-weight:500;border:1px solid var(--on-ink-line);border-radius:999px;padding:.45rem 1rem;color:var(--on-ink);}
-    .chips li::before{content:"✓ ";color:var(--signal);font-weight:700;}
+    /* bio */
+    .bio-head{display:flex;align-items:flex-end;gap:1.25rem;}
+    .bio-head .avatar{width:64px;height:74px;flex:none;color:var(--accent);}
+    .s-soft .bio-head .avatar{color:var(--accent);}
+    .role{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-top:.35rem;}
+    .biotext{font-size:clamp(.98rem,1.25vw,1.12rem);color:var(--ink-2);max-width:70ch;margin-top:1.25rem;line-height:1.55;}
+    .minicols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem;}
+    @media (max-width:760px){.minicols{grid-template-columns:1fr;}}
+    .minicols h4{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;font-weight:500;}
+    .minicols ul{list-style:none;padding:0;display:grid;gap:.35rem;}
+    .minicols li{font-size:.92rem;color:var(--muted);}
 
-    .two-col{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
-    @media (max-width:820px){.two-col{grid-template-columns:1fr;}}
-    .portrait{aspect-ratio:1;border-radius:20px;background:radial-gradient(120% 120% at 30% 20%,var(--accent),#463fbf 55%,var(--ink));display:grid;place-items:center;color:#fff;}
-    .portrait .rabbit{width:46%;height:46%;color:#fff;opacity:.95;}
-    blockquote{font-family:var(--font-display);font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.25;}
+    /* clients */
+    .logowall{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.75rem;}
+    @media (max-width:760px){.logowall{grid-template-columns:repeat(2,1fr);}}
+    .logowall div{border:1px solid var(--line);border-radius:12px;min-height:92px;display:grid;place-items:center;
+      font-family:var(--font-display);font-size:1.15rem;color:var(--ink-2);text-align:center;padding:1rem;}
+    .tools{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.5rem;list-style:none;padding:0;}
+    .tools li{font-size:.92rem;font-weight:500;border:1px solid var(--line);border-radius:999px;padding:.5rem 1.1rem;background:var(--paper);}
 
-    .big-list{list-style:none;padding:0;display:grid;gap:1rem;margin-top:1.5rem;}
-    .big-list li{display:flex;gap:1rem;align-items:baseline;font-size:clamp(1rem,1.5vw,1.25rem);}
-    .big-list .num{font-family:var(--font-mono);color:var(--accent);font-size:.9rem;flex:none;width:2rem;}
-    .s-ink .big-list .num{color:var(--accent-300);}
-
-    .stat-row{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:2rem;}
-    .stat .figure{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;}
-    .stat .label{font-size:.9rem;color:var(--on-ink-muted);margin-top:.4rem;max-width:18ch;}
-
-    .cta-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;align-items:center;}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;padding:.9rem 1.5rem;border-radius:999px;background:#fff;color:var(--ink);}
-    .btn--out{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);}
     .contact{font-family:var(--font-mono);font-size:1.05rem;margin-top:1.5rem;}
-    .fineprint{font-size:.82rem;color:var(--muted-2);margin-top:1.25rem;}
+    .fineprint{font-size:.8rem;color:var(--muted-2);margin-top:1.25rem;}
     .s-ink .fineprint,.s-accent .fineprint{color:var(--on-ink-muted);}
 
-    .pagenum{position:absolute;bottom:clamp(1.25rem,3vw,2.2rem);right:clamp(2rem,7vw,8rem);font-family:var(--font-mono);font-size:.78rem;color:var(--muted-2);}
-    .s-ink .pagenum,.s-accent .pagenum{color:var(--on-ink-muted);}
-
-    /* nav hint */
     .hint{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:20;
-      font-family:var(--font-mono);font-size:.72rem;color:var(--muted-2);background:rgba(20,19,26,.7);color:#cfcdd8;
+      font-family:var(--font-mono);font-size:.72rem;color:#cfcdd8;background:rgba(20,19,26,.7);
       padding:.4rem .9rem;border-radius:999px;backdrop-filter:blur(6px);transition:opacity .4s;}
 
     /* ===== Print → clean 16:9 PDF ===== */
@@ -141,7 +126,6 @@
       .deck{height:auto;overflow:visible;display:block;}
       .slide{min-height:7.5in;height:7.5in;width:13.333in;page-break-after:always;break-after:page;}
       .hint{display:none !important;}
-      .s-soft .card{background:var(--paper-2);}
     }
     @media (prefers-reduced-motion:reduce){html,.deck{scroll-behavior:auto;}}
   </style>
@@ -160,182 +144,216 @@
     <section class="slide s-ink">
       <div class="brandbar">
         <span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span>
-        <span class="mono">Capabilities · 2026</span>
+        <span class="mono">Capabilities</span>
       </div>
       <div class="slide__inner">
-        <span class="eyebrow">Game UX &amp; Player Research</span>
-        <h1 class="display">We turn game UX<br>into retention<br>and revenue.</h1>
-        <p class="lead" style="margin-top:1.5rem">Expert audits, team training, and embedded UX leadership for game studios and publishers. 25 years in the trenches — from <em>World of Warcraft</em> to today&rsquo;s top social and AAA titles.</p>
+        <span class="eyebrow">Bespoke Game UX &amp; Player Research</span>
+        <h1 class="display">better design,<br>better games.</h1>
+        <p class="lead" style="margin-top:1.5rem">Digital Experiments is a third-party developer providing bespoke user experience design for video game studios — from tactical UX/UI execution to senior-level strategic UX.</p>
+        <p class="contact" style="color:var(--on-ink-muted)">www.digitalexperiments.com</p>
       </div>
       <span class="pagenum">01</span>
     </section>
 
-    <!-- 02 · THE STAKES -->
+    <!-- 02 · CAPABILITIES -->
     <section class="slide s-light">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The stakes</span></div>
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Capabilities</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">The problem</span>
-        <h2 class="display" style="max-width:16ch">Players quit what they can&rsquo;t figure out.</h2>
-        <p class="kicker" style="color:var(--muted)">Onboarding, the store, the core loop — when players drop, it rarely shows up as &ldquo;a UX problem.&rdquo; It shows up as churn and flat spend. By the time the data is undeniable, the fix is expensive.</p>
+        <span class="eyebrow">Capabilities</span>
+        <h2 class="h-lg" style="margin-bottom:1.5rem">Everything from tactical execution to strategic UX.</h2>
+        <div class="grid g-3">
+          <div class="card">
+            <span class="tag">Tactical UI/UX</span>
+            <ul class="list">
+              <li>High Fidelity Prototyping</li>
+              <li>Wireframing / Greyboxing</li>
+              <li>UX Design</li>
+              <li>UI Design</li>
+              <li>UI Animation</li>
+              <li>UI Implementation</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="tag">Strategic UX</span>
+            <ul class="list">
+              <li>Vision Clarification</li>
+              <li>Vision Deck Design</li>
+              <li>Game Brand Design</li>
+              <li>Product / Market Fit</li>
+              <li>Persona Development</li>
+              <li>Design Systems</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="tag">UX for Teams</span>
+            <ul class="list">
+              <li>LEAN UCD Training</li>
+              <li>Maturing UX Practices</li>
+              <li>Psychological Safety</li>
+              <li>Collaboration Workshops</li>
+              <li>Process Design</li>
+              <li>Service Design</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <span class="pagenum">02</span>
     </section>
 
-    <!-- 03 · UX IS A SYSTEM -->
+    <!-- 03 · CLIENTS & GAMES -->
     <section class="slide s-soft">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Our point of view</span></div>
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Clients &amp; games</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">Why it matters</span>
-        <h2 class="h-xl" style="max-width:20ch">UX isn&rsquo;t polish. It&rsquo;s the system that decides whether players stay.</h2>
-        <p class="kicker">Most game teams treat user experience as a final coat of paint — or one overloaded person&rsquo;s job. We make UX the whole team&rsquo;s discipline, early enough to matter, and we leave the method behind so it sticks.</p>
+        <span class="eyebrow">Clients &amp; games</span>
+        <h2 class="h-lg" style="max-width:24ch">Trusted on shipped and unreleased titles across the industry.</h2>
+        <!-- ⚠️ Replace text tiles with cleared client/title logos before distributing externally. -->
+        <div class="logowall">
+          <div>Activision&nbsp;Blizzard</div>
+          <div>SciPlay</div>
+          <div>Mythical&nbsp;Games</div>
+          <div>38&nbsp;Studios</div>
+        </div>
+        <p class="fineprint">Engagements span AAA, social casino, and MMO — including work on titles such as Jackpot Party (SciPlay) and Blankos Block Party (Mythical Games). NDA-ready and experienced with unreleased IP.</p>
       </div>
       <span class="pagenum">03</span>
     </section>
 
-    <!-- 04 · WHAT WE DO -->
-    <section class="slide s-light">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">What we do</span></div>
+    <!-- 04 · OUR TEAM -->
+    <section class="slide s-ink">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Our team</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">Three ways to work with us</span>
-        <h2 class="h-lg" style="margin-bottom:1.5rem">Start small. Scale as it works.</h2>
-        <div class="grid g-3">
-          <div class="card">
-            <span class="tag">01 — Audit</span>
-            <h3>Audit <em>Find what&rsquo;s costing you players.</em></h3>
-            <p>Expert teardown of onboarding, core loop, or monetization UX, with a prioritized fix list — in 1–3 weeks.</p>
-            <div class="price">from $7,500<small>fixed fee · 1–3 weeks</small></div>
-          </div>
-          <div class="card">
-            <span class="tag">02 — Workshop</span>
-            <h3>Workshop <em>Make UX your whole team&rsquo;s job.</em></h3>
-            <p>Hands-on training that aligns design, product &amp; engineering around the player and installs a method that sticks.</p>
-            <div class="price">from $15,000<small>2-day sprint / 4–6 wk program</small></div>
-          </div>
-          <div class="card">
-            <span class="tag">03 — Embedded</span>
-            <h3>Embedded <em>Senior UX leadership, inside your team.</em></h3>
-            <p>A principal UX lead embedded 2–3 days a week to direct design, run research, and level up your people.</p>
-            <div class="price">from $20,000/mo<small>2–3 days/wk · 3-mo min</small></div>
-          </div>
+        <span class="eyebrow">Our team</span>
+        <p class="lead" style="color:var(--on-ink);max-width:64ch;font-size:clamp(1.1rem,1.8vw,1.5rem)">Digital Experiments is a third party developer that provides bespoke user experience design for video game studios. Staffed by a veteran team with over 20 years of UX experience in games, DXP offers everything from tactical UX/UI execution as well as more senior level strategic UX work.</p>
+        <div class="roster">
+          <div class="person"><svg class="avatar"><use href="#rabbit"/></svg><div><b>Irena Pereira</b><span>Director · Lead Designer / Engineer</span></div></div>
+          <div class="person"><svg class="avatar"><use href="#rabbit"/></svg><div><b>SJ Dalmar</b><span>UI/UX Designer · Animator</span></div></div>
+          <div class="person"><svg class="avatar"><use href="#rabbit"/></svg><div><b>Alyssa Yeo</b><span>UI/UX Designer</span></div></div>
+          <div class="person"><svg class="avatar"><use href="#rabbit"/></svg><div><b>Kelsey Phelan</b><span>UI/UX Designer · Research</span></div></div>
+          <div class="person"><svg class="avatar"><use href="#rabbit"/></svg><div><b>Hannah Kinzinger</b><span>Engineer · Gameplay</span></div></div>
+          <div class="person"><svg class="avatar"><use href="#rabbit"/></svg><div><b>Leslie Crystal</b><span>Associate Producer · Operations</span></div></div>
         </div>
-        <p class="fineprint">For studio leadership: a <strong>Fractional Head of Player Experience</strong> — strategy, org design &amp; UX maturity roadmapping. From $8,000/mo.</p>
       </div>
       <span class="pagenum">04</span>
     </section>
 
-    <!-- 05 · HOW TO ENGAGE / LAND-EXPAND -->
-    <section class="slide s-ink">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">How to engage</span></div>
+    <!-- 05 · TOOLS -->
+    <section class="slide s-light">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Design team · tools</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">Land &amp; expand</span>
-        <h2 class="h-xl" style="max-width:18ch">A low-risk first step that compounds.</h2>
-        <ul class="big-list">
-          <li><span class="num">→</span><span><strong>Audit</strong> reveals the problems and proves our judgment.</span></li>
-          <li><span class="num">→</span><span><strong>Workshop</strong> builds your team&rsquo;s skill to address them.</span></li>
-          <li><span class="num">→</span><span><strong>Embedded</strong> supplies senior hands to execute.</span></li>
-          <li><span class="num">→</span><span><strong>Advisory</strong> keeps leadership steering UX maturity.</span></li>
+        <span class="eyebrow">Design team · tools</span>
+        <h2 class="h-lg" style="max-width:22ch">A senior, cross-discipline team — designers, engineers &amp; producers.</h2>
+        <ul class="tools">
+          <li>Figma</li>
+          <li>Adobe Creative Suite</li>
+          <li>Unity</li>
+          <li>C# &amp; multiple languages</li>
+          <li>Visual Studio</li>
+          <li>Google &amp; Office Suite</li>
         </ul>
-        <p class="kicker" style="color:var(--on-ink-muted)">We credit 100% of the audit fee toward any Workshop or Embedded engagement booked within 60 days — so the first &ldquo;yes&rdquo; is nearly free.</p>
       </div>
       <span class="pagenum">05</span>
     </section>
 
-    <!-- 06 · METHOD -->
-    <section class="slide s-ink">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The method</span></div>
+    <!-- 06 · IRENA -->
+    <section class="slide s-soft">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Team · 1 / 6</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">How we work</span>
-        <h2 class="h-xl">Define → Design → Deploy.</h2>
-        <p class="lead">A method, not a hand-off. The capability stays after we leave.</p>
-        <div class="steps">
-          <div class="step"><div class="n">01</div><h3>Define</h3><p>Find the player problem actually costing you retention or revenue — scored against behavior principles, not opinions in the room.</p></div>
-          <div class="step"><div class="n">02</div><h3>Design</h3><p>Design and test against how players really behave. Prioritize fixes by severity and effort so the team knows what to do next.</p></div>
-          <div class="step"><div class="n">03</div><h3>Deploy</h3><p>Ship alongside your team and install the practice — personas, playtest cadence, a maturity baseline — so UX outlives the engagement.</p></div>
+        <div class="bio-head"><svg class="avatar"><use href="#rabbit"/></svg><div><h2 class="h-lg">Irena Pereira</h2><p class="role">Director · Product / Design / Engineering · Product Leader</p></div></div>
+        <p class="biotext">From World of Warcraft to REALTOR.com&reg;, Irena has spent an over 20-year career as an engineer, NATSEC product designer, and game designer. Irena has been a trailblazer in UX/UI where her work was instrumental in defining the field in our industry. She pioneered work methodologies we take for granted today, such as A/B testing and data-driven design. She is a speaker, designer, and educator. Today she helps game studios and B2C organizations define and craft groundbreaking user experiences to increase engagement and revenue.</p>
+        <div class="minicols">
+          <div><h4>Skills</h4><ul><li>Game Design</li><li>Strategic UX</li><li>Team Leadership</li><li>Alignment</li><li>Prioritization</li></ul></div>
+          <div><h4>Hobbies</h4><ul><li>Photography</li><li>Mycology</li><li>Hiking</li><li>Diplomacy (Board Game)</li></ul></div>
+          <div><h4>Favorite Games</h4><ul><li>Final Fantasy VII</li><li>EverQuest</li><li>World of Warcraft</li><li>Diablo</li><li>Civilization II</li></ul></div>
         </div>
       </div>
       <span class="pagenum">06</span>
     </section>
 
-    <!-- 07 · PROOF / THE WORK -->
+    <!-- 07 · SJ DALMAR -->
     <section class="slide s-light">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The work</span></div>
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Team · 2 / 6</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">Proof, not promises</span>
-        <h2 class="h-lg">Across social casino, AAA, and MMO.</h2>
-        <!-- ⚠️ Replace bracketed result lines with real/anonymized metrics before sending externally. -->
-        <div class="cases">
-          <div class="case">
-            <h3>SciPlay · Jackpot Party</h3>
-            <dl>
-              <dt>Problem</dt><dd>A top-grossing social casino with no in-house UX practice and no shared way to find friction.</dd>
-              <dt>Approach</dt><dd>External UX teardown of core flows, then upskilled the team to fix friction themselves.</dd>
-              <dt>Result</dt><dd class="result"><!-- ⚠️ metric -->Installed a repeatable UX method the team still runs.</dd>
-            </dl>
-          </div>
-          <div class="case">
-            <h3>38 Studios · Copernicus</h3>
-            <dl>
-              <dt>Problem</dt><dd>A sprawling MMO hiding deep systems under a simple interface without overwhelming players.</dd>
-              <dt>Approach</dt><dd>Simplified MMO UI at scale, including systems like the Mana Streamers fast-travel flow.</dd>
-              <dt>Result</dt><dd class="result"><!-- ⚠️ outcome -->Design principles for taming MMO complexity, validated since.</dd>
-            </dl>
-          </div>
-          <div class="case">
-            <h3>Talk · Why UX Fails</h3>
-            <dl>
-              <dt>Format</dt><dd>Conference talk — Game UX Summit.</dd>
-              <dt>Topic</dt><dd>Why UX fails on major game teams, and how to reorganize around the player.</dd>
-              <dt>Result</dt><dd class="result">Industry talk &amp; thought leadership.</dd>
-            </dl>
-          </div>
+        <div class="bio-head"><svg class="avatar"><use href="#rabbit"/></svg><div><h2 class="h-lg">SJ Dalmar</h2><p class="role">UI/UX Designer · Animation / 2D Illustration</p></div></div>
+        <p class="biotext">SJ has been fascinated by art their whole life, especially animation. After graduating from VanArts in 2016, they worked as a character animator at Bardel Entertainment before stepping into UX/UI design. Their animation work combined with an eye for composition honed by 15+ years of illustration gives them a unique design perspective. SJ accomplished creating a task management app focusing on alleviating challenges for folks with ADHD. Today, as a designer with Digital Experiments, they&rsquo;re focused on designing delightful and accessible play experiences from their home in the Pacific Northwest.</p>
+        <div class="minicols">
+          <div><h4>Skills</h4><ul><li>Wireframing</li><li>Prototyping</li><li>Data Visualization</li><li>Motion Graphics</li><li>Character Design</li></ul></div>
+          <div><h4>Hobbies</h4><ul><li>Taxidermy</li><li>TTRPGs</li><li>Sewing</li></ul></div>
+          <div><h4>Favorite Games</h4><ul><li>Persona 4</li><li>Dragon Age</li><li>Sekiro</li><li>Genshin Impact</li></ul></div>
         </div>
       </div>
       <span class="pagenum">07</span>
     </section>
 
-    <!-- 08 · THE PEOPLE -->
+    <!-- 08 · ALYSSA YEO -->
     <section class="slide s-soft">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The people</span></div>
-      <div class="slide__inner two-col">
-        <div class="portrait"><svg class="rabbit"><use href="#rabbit"/></svg></div>
-        <div>
-          <span class="eyebrow">Senior-only. You work with principals.</span>
-          <blockquote>Irena Pereira helped pioneer A/B testing and data-driven design in games before either was standard practice — including the UI players used to customize <em>World of Warcraft</em>.</blockquote>
-          <p class="kicker" style="color:var(--muted)">Today she helps studios and publishers turn UX into a measurable driver of engagement and revenue — on every platform, from MMO to mobile.</p>
-          <p class="contact" style="color:var(--ink-2)">Irena Pereira · Founder &amp; Principal</p>
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Team · 3 / 6</span></div>
+      <div class="slide__inner">
+        <div class="bio-head"><svg class="avatar"><use href="#rabbit"/></svg><div><h2 class="h-lg">Alyssa Yeo</h2><p class="role">UI/UX Designer · Game Development / Tech</p></div></div>
+        <p class="biotext">Alyssa first started out her product design journey in corporate CX, having co-facilitated and strategized workshops for the banking sector in Kuala Lumpur, Malaysia. She&rsquo;s been sketching, designing, iterating and reiterating prototypes for most of her professional life, drawing from her background in human psychology and natural instincts for branding. Her pivot into video games began with a pandemic-induced dabble into TTRPG design where she reinvigorated her love for narrative writing and producing. With Digital Experiments, Alyssa has completed indie UX projects for startups and gamedev companies, notably Mythical Games and SciPlay. On the side, Alyssa is exploring UI implementation, while indulging in game writing with a love for making unlikely combinations of seemingly incompatible genres.</p>
+        <div class="minicols">
+          <div><h4>Skills</h4><ul><li>UI / UX Design</li><li>Narrative Design</li><li>High–Low Fidelity Prototyping</li><li>Adobe Creative Suite, Figma</li></ul></div>
+          <div><h4>Hobbies</h4><ul><li>Designing tabletop story games</li><li>Antique / vintage fashions</li><li>Theatre</li><li>Big meals from a tiny kitchen</li></ul></div>
+          <div><h4>Favorite Games</h4><ul><li>Red Dead Redemption 2</li><li>Disco Elysium</li><li>Inside</li><li>Dragon Age</li></ul></div>
         </div>
       </div>
       <span class="pagenum">08</span>
     </section>
 
-    <!-- 09 · HOW TO BUY -->
-    <section class="slide s-ink">
-      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">How to start</span></div>
+    <!-- 09 · KELSEY PHELAN -->
+    <section class="slide s-light">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Team · 4 / 6</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">Built for how studios actually buy</span>
-        <h2 class="h-xl" style="max-width:20ch">Start with a fixed-fee audit. Expand as the wins compound.</h2>
-        <ul class="chips">
-          <li>Fixed-fee audits &amp; workshops</li>
-          <li>NDA-ready</li>
-          <li>Experienced with unreleased IP</li>
-          <li>Embedded alongside producers</li>
-          <li>Senior-only, no junior hand-off</li>
-        </ul>
+        <div class="bio-head"><svg class="avatar"><use href="#rabbit"/></svg><div><h2 class="h-lg">Kelsey Phelan</h2><p class="role">UI/UX Designer · Research / Game Development</p></div></div>
+        <p class="biotext">Kelsey has always had a fascination with research. During her Biomedical Engineering master&rsquo;s program, she conducted research with Alzheimer&rsquo;s Disease patients. It became clear that a person&rsquo;s interactions with technology would be a limiting factor in their understanding. From there, Kelsey delved into UX Design to better understand how we could utilize technology as a society to create a more understanding and inclusive culture overall. Her background in research has provided valuable insight for finding research artifacts, a go-getter attitude and crafting solutions. Her UX work has focused on XR apps for science study, a social scavenger hunt game, and other games.</p>
+        <div class="minicols">
+          <div><h4>Skills</h4><ul><li>Wireframing</li><li>UX Design</li><li>Data Visualization</li><li>Research Synthesis</li></ul></div>
+          <div><h4>Hobbies</h4><ul><li>Activity map of the city</li><li>Aerial Arts</li><li>DM of 5E DnD</li><li>Animations</li></ul></div>
+          <div><h4>Favorite Games</h4><ul><li>Persona 3</li><li>Chrono Trigger</li><li>Shadow of the Colossus</li><li>Psychonauts</li></ul></div>
+        </div>
       </div>
       <span class="pagenum">09</span>
     </section>
 
-    <!-- 10 · CLOSING CTA -->
+    <!-- 10 · HANNAH KINZINGER -->
+    <section class="slide s-soft">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Team · 5 / 6</span></div>
+      <div class="slide__inner">
+        <div class="bio-head"><svg class="avatar"><use href="#rabbit"/></svg><div><h2 class="h-lg">Hannah Kinzinger</h2><p class="role">Engineer · Gameplay / Generalist</p></div></div>
+        <p class="biotext">A talented software engineer with a broad range of knowledge in multiple disciplines, Hannah has worn several hats in her game design career. She lead an ad hoc indie game team on designing and developing several projects using flexible, scalable software solutions in a high pressure environment. Her work teaching programming fundamentals to hundreds of students between the ages of 11 and 14 honed her communication skills. Hannah brings all of this and more to Digital Experiments, where she has coordinated, implemented, and tested software systems on upcoming titles.</p>
+        <div class="minicols">
+          <div><h4>Skills</h4><ul><li>Unity</li><li>C# and multiple other languages</li><li>Flexible Interdisciplinary Communicator</li><li>Visual Studio</li></ul></div>
+          <div><h4>Hobbies</h4><ul><li>Tabletop RPGs</li><li>Digital Painting</li><li>Stargazing</li></ul></div>
+          <div><h4>Favorite Games</h4><ul><li>Final Fantasy XIV</li><li>Elden Ring</li><li>Monster Hunter</li><li>Terra Nil</li></ul></div>
+        </div>
+      </div>
+      <span class="pagenum">10</span>
+    </section>
+
+    <!-- 11 · LESLIE CRYSTAL -->
+    <section class="slide s-light">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Team · 6 / 6</span></div>
+      <div class="slide__inner">
+        <div class="bio-head"><svg class="avatar"><use href="#rabbit"/></svg><div><h2 class="h-lg">Leslie Crystal</h2><p class="role">Associate Producer · Operations Manager</p></div></div>
+        <p class="biotext">With a lifelong love for RPG&rsquo;s and nearly two decades as a paralegal + legal ghostwriter (intellectual property law, employment law, corporate compliance/business operations, et al.), Leslie pivoted into the world of game design and development in 2020. Since then, Leslie has served as the production scrum master for Tochi (Snackpass), B4CKP4CK (Studio Rebase), Begone Beast (Studio Tandemi), Town of Zoz (Studio Pixanoh), and a number of unannounced projects under game designer Alexander Brazie and Atomech LLC. Leslie currently serves as the Operations Manager for Digital Experiments, providing the organizational support and administrative framework to a talented group of artists, engineers, and designers headed by Director and UX/UI Trailblazer, Irena Pereira.</p>
+        <div class="minicols">
+          <div><h4>Skills</h4><ul><li>Team Organization</li><li>Project Production &amp; Development</li><li>Legal / Business Operations</li><li>Google, Adobe &amp; Office Suite</li></ul></div>
+          <div><h4>Hobbies</h4><ul><li>Tarot &amp; The Arcane</li><li>Homesteading</li><li>Handcrafted Cosmetics</li><li>Embroidery</li></ul></div>
+          <div><h4>Favorite Games</h4><ul><li>World of Warcraft</li><li>Witchy Life Story</li><li>The Witcher</li><li>Wylde Flowers</li></ul></div>
+        </div>
+      </div>
+      <span class="pagenum">11</span>
+    </section>
+
+    <!-- 12 · CLOSING -->
     <section class="slide s-accent">
       <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Let&rsquo;s talk</span></div>
       <div class="slide__inner">
-        <span class="eyebrow">Curious where your game is losing players?</span>
-        <h2 class="display" style="max-width:16ch">Book a free 30-minute UX teardown.</h2>
-        <p class="lead" style="color:rgba(255,255,255,.92)">We&rsquo;ll screen-share your game and point to the three things costing you the most.</p>
-        <p class="contact">irena@digitalexperiments.com&nbsp;&nbsp;·&nbsp;&nbsp;digitalexperiments.com</p>
-        <p class="fineprint" style="color:rgba(255,255,255,.8)">Digital Experiments — Game UX &amp; Player Research</p>
+        <span class="eyebrow">Let&rsquo;s build something players love</span>
+        <h2 class="display" style="max-width:14ch">better design, better games.</h2>
+        <p class="contact">irena@digitalexperiments.com&nbsp;&nbsp;·&nbsp;&nbsp;www.digitalexperiments.com</p>
+        <p class="fineprint" style="color:rgba(255,255,255,.85)">Digital Experiments — bespoke Game UX &amp; Player Research</p>
       </div>
-      <span class="pagenum">10</span>
+      <span class="pagenum">12</span>
     </section>
 
   </div>
@@ -346,11 +364,7 @@
     (function(){
       var deck=document.getElementById('deck');
       var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
-      function current(){
-        var i=0,min=Infinity;
-        slides.forEach(function(s,idx){var d=Math.abs(s.getBoundingClientRect().top);if(d<min){min=d;i=idx;}});
-        return i;
-      }
+      function current(){var i=0,min=Infinity;slides.forEach(function(s,idx){var d=Math.abs(s.getBoundingClientRect().top);if(d<min){min=d;i=idx;}});return i;}
       function go(n){n=Math.max(0,Math.min(slides.length-1,n));slides[n].scrollIntoView({behavior:'smooth'});}
       document.addEventListener('keydown',function(e){
         if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(current()+1);}
@@ -358,7 +372,6 @@
         else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(slides.length-1);}
         else if(e.key==='p'||e.key==='P'){window.print();}
       });
-      // Fade the hint after a few seconds
       var hint=document.getElementById('hint');
       setTimeout(function(){hint.style.opacity='0';},4500);
       deck.addEventListener('scroll',function(){hint.style.opacity='0';},{once:true});

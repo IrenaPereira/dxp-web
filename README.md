@@ -56,18 +56,19 @@ and pricing come from the strategy docs on the
 
 ## Capabilities deck
 
-`deck/index.html` is a self-contained, on-brand slide deck (10 slides) built on
-the same consulting frame as the site — cover, the stakes, point of view, the
-three tiers + advisory, land-and-expand, the Define→Design→Deploy method, proof,
-the founder, how-to-buy, and a closing CTA.
+`deck/index.html` is a self-contained, on-brand capabilities deck (12 slides)
+reflavored from the original "DXP – Team Layout" deck, content used 1:1 — cover
+("better design, better games"), the CAPABILITIES matrix (Tactical UI/UX,
+Strategic UX, UX for Teams), clients & games, OUR TEAM, tools, full team bios
+(Irena, SJ, Alyssa, Kelsey, Hannah, Leslie), and a closing slide.
 
 - **Present:** open `deck/index.html` and use `←` / `→` / `Space` to move between
   slides (`Home`/`End` jump to first/last).
 - **Export a forwardable PDF:** press `P` (or `Cmd/Ctrl+P`) → "Save as PDF". The
   print stylesheet lays each slide out as a clean 16:9 page (13.333in × 7.5in).
 - Single file, no dependencies (rabbit logomark is inlined), so it shares cleanly.
-- ⚠️ Two case-study result lines are honest placeholders — swap in real or
-  anonymized metrics before sending externally (search `⚠️` in the file).
+- ⚠️ The Clients & Games slide uses text tiles — swap in cleared client/title
+  logos before distributing externally (search `⚠️` in the file).
 
 ## ⚠️ Before going live — supply real data
 
