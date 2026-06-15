@@ -2,7 +2,7 @@
 title: "Evolution of a Battle Screen"
 date: 2019-01-02
 author: "Irena Pereira"
-excerpt: "DuoFun brought me on as a consultant to help bring some AAA know how to an indy mobile title. I’ve posted work from CPO before, but for those of you catching up, Chief Puzzle Officer was a Real Time Multiplayer Collectible Card Role Playing Game. Take a breath."
+excerpt: "As Chief Creative Officer at DuoFun, I drove creative direction on Chief Puzzle Officer — a Real Time Multiplayer Collectible Card Role Playing Game. Take a breath. Here's how we evolved its battle screen."
 image: "/blog-images/evolution-of-a-battle-screen/PromoHeader.jpg"
 imageAlt: "Evolution of a Battle Screen"
 ---
@@ -11,7 +11,7 @@ imageAlt: "Evolution of a Battle Screen"
 
 ## Chief Puzzle Officer
 
-DuoFun hired us as external consultants to help bring some AAA know how to an independent mobile title. Chief Puzzle Officer is a Real Time Multiplayer Collectible Card Role Playing Game, and this project arrived at our doorstep with a number of UX challenges. 
+As Chief Creative Officer at DuoFun, I led creative direction on this independent mobile title, bringing AAA know-how to the team. Chief Puzzle Officer is a Real Time Multiplayer Collectible Card Role Playing Game, and it came with a number of UX challenges. 
 
 We had basic match-3 gameplay. (easy)
 
@@ -25,7 +25,7 @@ All of these factors were our mandate and problem to solve - without affecting g
 
 ## Usability First
 
-CPO was in an Alpha state with a rudimentarily functioning gameplay loop when we started work with the client. An illustrator had been at the helm of the UI as it stood, and the art style had a very strong skeuomorphic focus. 
+CPO was in an Alpha state with a rudimentarily functioning gameplay loop when we picked it up. An illustrator had been at the helm of the UI as it stood, and the art style had a very strong skeuomorphic focus. 
 
 The theme of the game was corporate espionage with an anime wackiness that allowed for a lot of thematic flexibility. There was no clear brand defined, nor was there a context for the art outside of a beige background that was supposed to refer to manilla folders and a female main character in a business suit holding a clipboard.
 
@@ -59,7 +59,7 @@ BEFORE
 
 * * *
 
-It is always essential to establish trust and confidence between our team and the client. To achieve this, it was necessary for us to demonstrate the potential outcomes that arise from investing time and effort into thorough research and upfront planning for the user experience (UX) of a project. 
+It is always essential to build trust and confidence across the team and with stakeholders. To do that, we had to demonstrate the outcomes that come from investing time and effort into thorough research and upfront planning for the user experience (UX) of a project. 
 
 **Step 1: Tent Poles**
 
