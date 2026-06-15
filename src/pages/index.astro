@@ -87,13 +87,16 @@ const ticker = [
       <p class="eyebrow reveal reveal-1">Game UX studio — better design, better games</p>
       <h1>
         <span class="line reveal reveal-2">senior game UX,</span>
-        <span class="line flair reveal reveal-3">embedded in days.<i class="cursor" aria-hidden="true"></i></span>
+        <span class="line flair reveal reveal-3">
+          <span class="typed" aria-hidden="true">embedded in days.</span><i class="cursor" aria-hidden="true"></i>
+          <span class="sr-only">embedded in days.</span>
+        </span>
       </h1>
       <p class="lede reveal reveal-3">
         Digital Experiments embeds senior game UX designers in your team
         within 24 hours — the same team that shipped UX on Valorant, World of
-        Warcraft, and Monopoly Go. Working Figma files in your hands within
-        the week. Less menu rage, more playtime.
+        Warcraft, and Monopoly Go. New retention opportunities surfaced within
+        the week, and the revenue that follows.
       </p>
       <div class="actions reveal reveal-4">
         <a href="/work" class="btn">See our work</a>
@@ -184,6 +187,47 @@ const ticker = [
     </div>
   </section>
 </Base>
+
+<script>
+  // Typewriter: cycle value-prop phrases after the static "senior game UX,".
+  const PHRASES = [
+    "embedded in days.",
+    "revenue incoming.",
+    "retention lifted.",
+    "fewer drop-offs.",
+    "more dailies.",
+    "churn reduced.",
+    "shipped fast.",
+    "built to retain.",
+    "players hooked.",
+    "no ramp-up.",
+  ];
+  const typed = document.querySelector<HTMLElement>(".hero .typed");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (typed && !reduce) {
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+    let last = -1;
+    const next = () => {
+      let i;
+      do { i = Math.floor(Math.random() * PHRASES.length); }
+      while (i === last && PHRASES.length > 1);
+      last = i;
+      return PHRASES[i];
+    };
+    (async () => {
+      let current = (typed.textContent || "").trim();
+      await sleep(1600);
+      while (true) {
+        for (let n = current.length; n >= 0; n--) { typed.textContent = current.slice(0, n); await sleep(30); }
+        await sleep(220);
+        const phrase = next();
+        for (let n = 1; n <= phrase.length; n++) { typed.textContent = phrase.slice(0, n); await sleep(58); }
+        current = phrase;
+        await sleep(1800);
+      }
+    })();
+  }
+</script>
 
 <style>
   .hero {
