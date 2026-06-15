@@ -164,3 +164,39 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 **Why this is worth the conflict-of-interest risk:** for a "hire the consultant" site, *operator credibility* is the strongest possible differentiator over every other UX consultant — and transparency converts the studio-founder fact from a hidden liability into a stated asset. Bury it and a publisher discovers it themselves → distrust. Lead with it, bounded → credibility.
 
 **The one thing to confirm before publishing:** the scope boundary you're willing to state (no competing engagements / NDA firewall), so the note is a real commitment, not marketing.
+
+---
+
+## G. About / Work with me page *(the old "team" page, reborn for "hire the consultant")*
+
+> This page replaces "The Team." On a consultant site, the About page *is* the sales page — it's where a buyer decides you're the person. Voice: first-person, direct, senior. No corporate "we."
+
+### G1. Hero
+> # Hi, I'm Irena Pereira.
+> **I help game teams turn UX into retention and revenue — and I do it with you, not for a slide.**
+> 25 years in the trenches of game and product UX, from *World of Warcraft* to today's top social and AAA titles.
+>
+> `Book a 30-min UX teardown`
+
+### G2. The story / why my judgment is worth hiring
+> I started solving usability problems before the industry had a word for them. I helped pioneer A/B testing and data-driven design in games when both were heresy — including the system players used to customize their *World of Warcraft* interface. Since then I've helped studios and publishers — [Activision Blizzard, SciPlay, Mythical Games, 38 Studios] — find the friction costing them players and build the practice to fix it.
+>
+> What I've learned: UX doesn't fail on game teams because people don't care. It fails because it shows up too late, owned by too few. My whole job is to fix that — early, and with the whole team.
+
+### G3. How I work
+> Every engagement runs on my **4D Method — Discover → Define → Develop → Deliver** — with a gate at every stage, so you only build what's been validated. You don't get a deck; you get a prioritized development plan you can fund. [See the method →]
+
+### G4. Why work with me directly
+> - **You get a principal, not a hand-off.** Every engagement is led by me — no junior bench, no account manager relay.
+> - **Senior judgment, fast.** 25 years of pattern-matching finds what's costing you players in days, not months.
+> - **A few clients at a time.** I keep the roster small so each gets real attention. If timing matters, reach out early.
+>
+> *(When a project needs more hands, I bring in trusted, senior collaborators I've worked with for years — including [Gentry Stanley] on production and delivery — but the UX judgment you're hiring stays mine.)*
+
+### G5. Transparency — on Unleashed Games
+> I'm also founder and CEO of **Unleashed Games**, a game studio. I'm telling you up front because you should know exactly who you're hiring. My consulting practice partners *with* studios and publishers: **I don't take engagements that compete with a client, and your IP is firewalled under NDA.** *(← default boundary — adjust to the exact commitment you'll stand behind.)* If anything, running my own studio is why my advice is grounded in shipping reality, not theory. [See what that looks like →] *(links to the Unleashed proof-of-practice study, §F2)*
+
+### G6. CTA
+> **Let's find out where your game is losing players.**
+> Book a free 30-minute UX teardown — I'll screen-share your game and point to the three things costing you the most.
+> `Book a UX teardown`
