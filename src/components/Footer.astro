@@ -1,16 +1,69 @@
 ---
 const year = new Date().getFullYear();
+const needs = ["UX Workshop", "UI/UX Audit", "Embedded UX & UI team", "UX Strategy", "Not sure yet"];
 ---
 
 <footer id="contact" class="site-footer">
-  <div class="container">
-    <div class="cta">
-      <img src="/brand/bunny-teal.svg" alt="" aria-hidden="true" class="bunny" />
-      <p class="eyebrow">Initiate contact</p>
-      <h2>Got a game that<br />deserves <em class="flair flair-hot">better UX</em>?</h2>
-      <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot">sayhi@digitalexperiments.com</a>
+  <div class="container contact-block">
+    <!-- left: copy + contact details -->
+    <div class="contact-copy">
+      <p class="eyebrow">Say hi</p>
+      <h2>Let's make your game <em class="flair">better</em>.</h2>
+      <p class="contact-lede">
+        Tell us about the problem you're solving. We'll come back with how we'd
+        approach it — workshop, audit, or embedded team.
+      </p>
+      <hr class="rule" />
+      <ul class="contact-details">
+        <li><a href="mailto:sayhi@digitalexperiments.com" class="email">sayhi@digitalexperiments.com</a></li>
+        <li><a href="tel:+19782939231">978-293-9231</a></li>
+        <li><a href="https://www.linkedin.com/company/digitalexperiments" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li class="addr">Cumberland · Rhode Island 02864 · USA</li>
+      </ul>
     </div>
 
+    <!-- right: contact form (posts to contact.php on DreamHost) -->
+    <form id="contact-form" class="contact-form hud" action="/contact.php" method="POST" novalidate>
+      <div class="row">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="cf-studio">Studio</label>
+          <input id="cf-studio" name="studio" type="text" placeholder="Studio name" autocomplete="organization" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-email">Work email</label>
+        <input id="cf-email" name="email" type="email" placeholder="you@studio.com" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="cf-need">What do you need?</label>
+        <div class="select-wrap">
+          <select id="cf-need" name="need" required>
+            <option value="" selected disabled>Choose one…</option>
+            {needs.map((n) => <option value={n}>{n}</option>)}
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="cf-message">Tell us about your game</label>
+        <textarea id="cf-message" name="message" rows="4" placeholder="An open-world MMO that needs a fast-travel system…" required></textarea>
+      </div>
+
+      <!-- honeypot -->
+      <div class="hp" aria-hidden="true">
+        <label for="cf-company-url">Company URL</label>
+        <input id="cf-company-url" name="company_url" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <button type="submit" class="btn" id="cf-submit">Send message</button>
+      <p class="form-msg" id="cf-msg" role="status" aria-live="polite" hidden></p>
+    </form>
+  </div>
+
+  <div class="container foot-bottom">
     <nav class="foot-nav" aria-label="Footer">
       <a href="/work">Work</a>
       <a href="/portfolio">Portfolio</a>
@@ -18,52 +71,185 @@ const year = new Date().getFullYear();
       <a href="/about">About</a>
       <a href="/team">Team</a>
     </nav>
-
-    <div class="meta">
-      <div class="wordmark">digital<b>experiments</b></div>
-      <address>
-        Cumberland, Rhode Island 02864, USA<br />
-        <a href="tel:+19782939231">978-293-9231</a> ·
-        <a href="mailto:sayhi@digitalexperiments.com">sayhi@digitalexperiments.com</a>
-      </address>
-      <p class="copyright">© {year} Digital Experiments — better design, better games. <span class="waves">make waves</span></p>
-    </div>
+    <p class="copyright">
+      <span class="wordmark">digital<b>experiments</b></span>
+      <span class="legal">© {year} — better design, better games.</span>
+      <span class="waves">make waves</span>
+    </p>
   </div>
 </footer>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  if (form) {
+    const msg = document.getElementById("cf-msg")!;
+    const btn = document.getElementById("cf-submit") as HTMLButtonElement;
+    const show = (text: string, kind: "ok" | "err") => {
+      msg.textContent = text;
+      msg.dataset.kind = kind;
+      msg.hidden = false;
+    };
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      btn.disabled = true;
+      const label = btn.textContent;
+      btn.textContent = "Sending…";
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+        const data = await res.json().catch(() => ({ ok: res.ok }));
+        if (res.ok && data.ok) {
+          form.reset();
+          show("Got it — thanks! We'll be in touch within a day or two.", "ok");
+          btn.hidden = true;
+        } else {
+          show(data.error || "Something went wrong. Please email us directly.", "err");
+          btn.disabled = false;
+          btn.textContent = label;
+        }
+      } catch {
+        show("Couldn't reach the server. Please email sayhi@digitalexperiments.com.", "err");
+        btn.disabled = false;
+        btn.textContent = label;
+      }
+    });
+  }
+</script>
 
 <style>
   .site-footer {
     border-top: 1px solid var(--border);
     background:
-      linear-gradient(to top, rgba(49, 170, 183, 0.04), transparent 50%),
+      linear-gradient(to top, rgba(49, 170, 183, 0.05), transparent 55%),
       var(--bg-elev);
     padding-block: clamp(3.5rem, 8vw, 6rem) 2.5rem;
   }
-  .cta { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
-  .cta .eyebrow { margin-bottom: 1.25rem; }
-  .cta h2 { font-size: clamp(1.7rem, 4.5vw, 2.8rem); margin-bottom: 1.75rem; }
-  .cta .bunny {
-    height: 52px;
-    width: auto;
-    margin: 0 auto 1.5rem;
-    opacity: 0.95;
-  }
-  .waves {
-    font-family: var(--font-script);
-    font-size: 1.25em;
-    color: var(--accent);
-    margin-left: 0.5em;
-    vertical-align: -0.05em;
+
+  .contact-block {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
   }
 
-  .foot-nav {
+  /* left column */
+  .contact-copy h2 {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    margin: 0 0 1.25rem;
+    line-height: 1.05;
+  }
+  .contact-lede { color: var(--text-muted); max-width: 30rem; margin: 0; }
+  .rule { border: 0; border-top: 1px solid var(--border); margin: 2rem 0 1.75rem; }
+  .contact-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+  .contact-details a { color: var(--text-muted); transition: color 0.15s ease; }
+  .contact-details a:hover { color: var(--accent); }
+  .contact-details .email { color: var(--accent); }
+  .contact-details .addr { color: var(--text-muted); }
+
+  /* right column — form */
+  .contact-form { padding: clamp(1.5rem, 3vw, 2.25rem); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  .field { margin-bottom: 1.2rem; }
+  .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 0.45rem;
+  }
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.98rem;
+    padding: 0.7rem 0.85rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field textarea { resize: vertical; }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(49, 170, 183, 0.22);
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--text-muted); opacity: 0.7; }
+
+  /* custom select arrow */
+  .select-wrap { position: relative; }
+  .select-wrap select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 2.2rem;
+    cursor: pointer;
+  }
+  .select-wrap::after {
+    content: "";
+    position: absolute;
+    right: 0.95rem;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
+  }
+  .contact-form select option { background: var(--bg-elev); color: var(--text); }
+
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  #cf-submit { margin-top: 0.4rem; }
+  .form-msg {
+    margin: 1.1rem 0 0;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+  }
+  .form-msg[data-kind="ok"] {
+    color: var(--text);
+    border: 1px solid var(--accent);
+    background: linear-gradient(to right, rgba(49, 170, 183, 0.12), transparent);
+  }
+  .form-msg[data-kind="err"] {
+    color: var(--text);
+    border: 1px solid var(--danger);
+    background: linear-gradient(to right, rgba(196, 85, 77, 0.14), transparent);
+  }
+
+  /* bottom meta row */
+  .foot-bottom {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    padding-bottom: 2.25rem;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
   }
+  .foot-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
   .foot-nav a {
     font-family: var(--font-mono);
     text-transform: uppercase;
@@ -73,37 +259,28 @@ const year = new Date().getFullYear();
     transition: color 0.15s ease;
   }
   .foot-nav a:hover { color: var(--accent); }
-
-  .meta {
+  .copyright {
+    margin: 0;
     display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-    padding-top: 2.25rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.76rem;
+    color: var(--text-muted);
   }
-  .wordmark {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: 1.35rem;
-    color: var(--text);
+  .copyright .wordmark { font-family: var(--font-serif); font-size: 1.05rem; color: var(--text); }
+  .copyright .wordmark b { font-weight: 700; }
+  .waves {
+    font-family: var(--font-script);
+    font-size: 1.15em;
+    color: var(--accent);
   }
-  .wordmark b { font-weight: 700; }
-  address { font-style: normal; }
-  .meta a:hover { color: var(--text); }
-  .copyright { margin: 0; }
 
-  @media (max-width: 760px) {
-    /* keep the long email CTA inside the screen */
-    .cta .btn {
-      max-width: 100%;
-      white-space: normal;
-      overflow-wrap: anywhere;
-      font-size: 0.74rem;
-      padding: 0.7rem 1.1rem;
-    }
-    .foot-nav { gap: 1rem 1.5rem; }
+  @media (max-width: 820px) {
+    .contact-block { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; }
   }
 </style>

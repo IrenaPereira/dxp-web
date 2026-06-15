@@ -24,6 +24,7 @@ if (!empty($_POST['company_url'])) {
 $name    = trim($_POST['name'] ?? '');
 $email   = trim($_POST['email'] ?? '');
 $studio  = trim($_POST['studio'] ?? '');
+$need    = trim($_POST['need'] ?? '');
 $message = trim($_POST['message'] ?? '');
 
 if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -33,7 +34,7 @@ if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL
 }
 
 // Header-injection guard: no newlines in header-bound fields.
-foreach ([$name, $email, $studio] as $v) {
+foreach ([$name, $email, $studio, $need] as $v) {
   if (preg_match('/[\r\n]/', $v)) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'error' => 'Invalid input.']);
@@ -45,6 +46,7 @@ $subject = 'New inquiry — ' . $name . ($studio !== '' ? ' (' . $studio . ')' :
 $body    = "Name:   $name\n"
          . "Email:  $email\n"
          . "Studio: " . ($studio !== '' ? $studio : '—') . "\n"
+         . "Need:   " . ($need !== '' ? $need : '—') . "\n"
          . "-------------------------------------------\n\n"
          . $message . "\n";
 
