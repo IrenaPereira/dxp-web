@@ -91,25 +91,6 @@ const items = [
   { src: "/portfolio/web-quintons.jpg", cat: "web", tag: "Quinton's", title: "Quinton's", caption: "Restaurant brand and web design." },
 ];
 
-// Die face pip layouts on a 3×3 grid (cells 1–9, reading order)
-const PIPS: Record<number, number[]> = {
-  1: [5],
-  2: [3, 7],
-  3: [3, 5, 7],
-  4: [1, 3, 7, 9],
-  5: [1, 3, 5, 7, 9],
-  6: [1, 3, 4, 6, 7, 9],
-};
-// Face placement on the cube: value → face class
-const FACES = [
-  { v: 1, cls: "f-front" },
-  { v: 6, cls: "f-back" },
-  { v: 3, cls: "f-right" },
-  { v: 4, cls: "f-left" },
-  { v: 2, cls: "f-top" },
-  { v: 5, cls: "f-bottom" },
-];
-const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
 ---
 
 <Base
@@ -133,19 +114,8 @@ const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
     <div class="container">
       <div class="dice-table hud">
         <button id="roll" class="dice-btn" aria-label="Roll the dice to deal a new hand of work samples">
-          {["a", "b"].map((d) => (
-            <span class={`die die-${d}`}>
-              <span class="cube" id={`cube-${d}`}>
-                {FACES.map((f) => (
-                  <span class={`face ${f.cls}`} data-v={f.v}>
-                    {PIPS[f.v].map((n) => (
-                      <i class="pip" style={`grid-area: ${cell(n)}`}></i>
-                    ))}
-                  </span>
-                ))}
-              </span>
-            </span>
-          ))}
+          <span class="die" id="die-a"><span class="face"></span></span>
+          <span class="die" id="die-b"><span class="face"></span></span>
           <span class="roll-label">Roll</span>
         </button>
         <div class="roll-meta">
@@ -217,31 +187,34 @@ const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
 
 <script>
   /* ---------- Dice ---------- */
-  // cube rotation (rx, ry) that brings each value to the front
-  const ORIENT: Record<number, [number, number]> = {
-    1: [0, 0],
-    2: [-90, 0],
-    3: [0, -90],
-    4: [0, 90],
-    5: [90, 0],
-    6: [0, 180],
+  // pip layouts on a 3×3 grid (cells 1–9, reading order)
+  const PIPS: Record<number, number[]> = {
+    1: [5], 2: [3, 7], 3: [3, 5, 7],
+    4: [1, 3, 7, 9], 5: [1, 3, 5, 7, 9], 6: [1, 3, 4, 6, 7, 9],
   };
-  const cubeA = document.getElementById("cube-a")!;
-  const cubeB = document.getElementById("cube-b")!;
+  const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
+  const faceA = document.querySelector<HTMLElement>("#die-a .face")!;
+  const faceB = document.querySelector<HTMLElement>("#die-b .face")!;
+  const dice = [...document.querySelectorAll<HTMLElement>(".die")];
   const status = document.getElementById("dice-status")!;
   const hand = document.getElementById("hand")!;
   const rollBtn = document.getElementById("roll") as HTMLButtonElement;
   const deck = [...document.querySelectorAll<HTMLElement>("#masonry .piece")];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  let spins = 0;
   let rolling = false;
-
   const d6 = () => 1 + Math.floor(Math.random() * 6);
 
-  function setFace(cube: HTMLElement, v: number) {
-    const [rx, ry] = ORIENT[v];
-    cube.style.transform = `rotateX(${rx + 360 * spins}deg) rotateY(${ry + 360 * spins}deg)`;
+  function setFace(face: HTMLElement, v: number) {
+    face.replaceChildren(
+      ...PIPS[v].map((n) => {
+        const pip = document.createElement("i");
+        pip.className = "pip";
+        pip.style.gridArea = cell(n);
+        return pip;
+      }),
+    );
+    (face.parentElement as HTMLElement).dataset.v = String(v);
   }
 
   function deal(n: number) {
@@ -262,27 +235,38 @@ const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
     });
   }
 
-  function roll(animate = true) {
+  function roll() {
     if (rolling) return;
     rolling = true;
     const a = d6();
     const b = d6();
     const sum = a + b;
-    spins += 2;
-    setFace(cubeA, a);
-    setFace(cubeB, b);
 
-    if (animate && !reduceMotion) {
-      document.querySelectorAll(".die").forEach((d) => {
-        d.classList.remove("hop");
-        void (d as HTMLElement).offsetWidth; // restart animation
-        d.classList.add("hop");
-      });
-      status.textContent = `// rolling…`;
-      setTimeout(() => finish(a, b, sum), 1050);
-    } else {
+    if (reduceMotion) {
+      setFace(faceA, a);
+      setFace(faceB, b);
       finish(a, b, sum);
+      return;
     }
+
+    status.textContent = `// rolling…`;
+    dice.forEach((d) => {
+      d.classList.remove("rolling");
+      void d.offsetWidth; // restart animation
+      d.classList.add("rolling");
+    });
+    // tumble: flash random faces while the dice shake
+    const tumble = setInterval(() => {
+      setFace(faceA, d6());
+      setFace(faceB, d6());
+    }, 90);
+    setTimeout(() => {
+      clearInterval(tumble);
+      setFace(faceA, a);
+      setFace(faceB, b);
+      dice.forEach((d) => d.classList.remove("rolling"));
+      finish(a, b, sum);
+    }, 760);
   }
 
   function finish(a: number, b: number, sum: number) {
@@ -293,6 +277,10 @@ const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
     deal(sum);
     rolling = false;
   }
+
+  // seed faces so the dice read as dice before the first roll
+  setFace(faceA, 5);
+  setFace(faceB, 2);
 
   rollBtn.addEventListener("click", () => roll());
   // opening hand
@@ -386,58 +374,51 @@ const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
   .dice-btn:hover .roll-label { color: var(--accent); border-color: var(--accent); }
 
   .die {
-    width: 64px;
-    height: 64px;
-    perspective: 440px;
-    display: inline-block;
-  }
-  .die.hop { animation: hop 1.05s cubic-bezier(0.3, 0.8, 0.3, 1) both; }
-  .die-b.hop { animation-delay: 0.06s; }
-  @keyframes hop {
-    0% { transform: translateY(0); }
-    30% { transform: translateY(-26px) rotate(-7deg); }
-    55% { transform: translateY(2px) rotate(3deg); }
-    72% { transform: translateY(-9px); }
-    100% { transform: translateY(0); }
-  }
-  .cube {
     position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 1.05s cubic-bezier(0.2, 0.65, 0.25, 1.02);
+    width: 68px;
+    height: 68px;
+    border-radius: 14px;
+    background: linear-gradient(152deg, #2c2c31, #161619);
+    border: 1px solid var(--border-bright);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 -3px 8px rgba(0, 0, 0, 0.45),
+      0 8px 16px rgba(0, 0, 0, 0.45);
+    display: inline-block;
+    will-change: transform;
   }
-  .face {
+  .die .face {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 55%),
-      var(--surface);
-    border: 1px solid var(--border-bright);
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    padding: 10px;
-    gap: 2px;
+    padding: 11px;
+    gap: 3px;
   }
-  .f-front  { transform: translateZ(32px); }
-  .f-back   { transform: rotateY(180deg) translateZ(32px); }
-  .f-right  { transform: rotateY(90deg) translateZ(32px); }
-  .f-left   { transform: rotateY(-90deg) translateZ(32px); }
-  .f-top    { transform: rotateX(90deg) translateZ(32px); }
-  .f-bottom { transform: rotateX(-90deg) translateZ(32px); }
-
-  .pip {
-    width: 9px;
-    height: 9px;
+  /* pips are created in JS (no scoped attr) → must be global */
+  :global(#die-a .pip),
+  :global(#die-b .pip) {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     place-self: center;
     background: var(--accent);
-    box-shadow: 0 0 7px rgba(49, 170, 183, 0.65);
+    box-shadow: 0 0 8px rgba(49, 170, 183, 0.7);
   }
-  /* die B rolls in heritage teal */
-  .die-b .pip {
+  /* second die rolls in heritage teal */
+  :global(#die-b .pip) {
     background: var(--accent-2);
-    box-shadow: 0 0 7px rgba(54, 226, 207, 0.65);
+    box-shadow: 0 0 8px rgba(54, 226, 207, 0.7);
+  }
+
+  .die.rolling { animation: tumble 0.78s cubic-bezier(0.3, 0.7, 0.3, 1); }
+  #die-b.rolling { animation-delay: 0.06s; }
+  @keyframes tumble {
+    0%   { transform: translateY(0) rotate(0) scale(1); }
+    22%  { transform: translateY(-30px) rotate(-24deg) scale(1.06); }
+    48%  { transform: translateY(3px) rotate(16deg) scale(0.97); }
+    70%  { transform: translateY(-10px) rotate(-9deg) scale(1.01); }
+    100% { transform: translateY(0) rotate(0) scale(1); }
   }
 
   .roll-meta { flex: 1; min-width: 260px; }
@@ -479,8 +460,7 @@ const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
   .link-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   @media (prefers-reduced-motion: reduce) {
-    .cube { transition: none; }
-    .die.hop { animation: none; }
+    .die.rolling { animation: none; }
     :global(.dealt) { animation: none; }
   }
 

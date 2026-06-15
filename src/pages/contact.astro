@@ -1,0 +1,167 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Say hi — Digital Experiments"
+  description="Got a game that deserves better UX? Tell us what you're working on and we'll get back to you."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Say hi</p>
+      <h1>Let's make your game<br /><em class="flair flair-hot">more playable</em>.</h1>
+      <p class="lede">
+        Tell us what you're working on. We read every note and reply within a
+        day or two — usually with questions, sometimes with a quick idea.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container form-wrap">
+      <form id="contact-form" class="hud" action="/contact.php" method="POST" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="studio">Studio / company <span class="opt">(optional)</span></label>
+          <input id="studio" name="studio" type="text" autocomplete="organization" />
+        </div>
+        <div class="field">
+          <label for="message">What are you working on?</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <!-- honeypot: hidden from people, catnip for bots -->
+        <div class="hp" aria-hidden="true">
+          <label for="company_url">Company URL</label>
+          <input id="company_url" name="company_url" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-hot" id="submit-btn">Send it</button>
+          <p class="alt">…or email us directly at
+            <a href="mailto:sayhi@digitalexperiments.com">sayhi@digitalexperiments.com</a>
+          </p>
+        </div>
+
+        <p class="form-msg" id="form-msg" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const msg = document.getElementById("form-msg")!;
+  const btn = document.getElementById("submit-btn") as HTMLButtonElement;
+
+  const show = (text: string, kind: "ok" | "err") => {
+    msg.textContent = text;
+    msg.dataset.kind = kind;
+    msg.hidden = false;
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      show("Please add your name, a valid email, and a message.", "err");
+      form.reportValidity();
+      return;
+    }
+    btn.disabled = true;
+    const label = btn.textContent;
+    btn.textContent = "Sending…";
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      const data = await res.json().catch(() => ({ ok: res.ok }));
+      if (res.ok && data.ok) {
+        form.reset();
+        show("Got it — thanks! We'll be in touch within a day or two.", "ok");
+        btn.hidden = true;
+      } else {
+        show(data.error || "Something went wrong. Please email us directly.", "err");
+        btn.disabled = false;
+        btn.textContent = label;
+      }
+    } catch {
+      show("Couldn't reach the server. Please email sayhi@digitalexperiments.com.", "err");
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
+</script>
+
+<style>
+  .form-wrap { max-width: 640px; }
+  form.hud { padding: clamp(1.5rem, 4vw, 2.5rem); }
+  .field { margin-bottom: 1.4rem; }
+  .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .field .opt { color: var(--text-muted); letter-spacing: 0.1em; }
+  .field input,
+  .field textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    padding: 0.75rem 0.9rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field textarea { resize: vertical; }
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(49, 170, 183, 0.25);
+  }
+
+  /* honeypot — hidden from users */
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+  .actions .alt { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
+  .actions .alt a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
+
+  .form-msg {
+    margin: 1.5rem 0 0;
+    padding: 0.9rem 1.1rem;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+  }
+  .form-msg[data-kind="ok"] {
+    color: var(--text);
+    border: 1px solid var(--accent);
+    background: linear-gradient(to right, rgba(49, 170, 183, 0.12), transparent);
+  }
+  .form-msg[data-kind="err"] {
+    color: var(--text);
+    border: 1px solid var(--danger);
+    background: linear-gradient(to right, rgba(196, 85, 77, 0.14), transparent);
+  }
+</style>

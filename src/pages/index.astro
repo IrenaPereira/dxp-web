@@ -47,6 +47,14 @@ const work = [
   },
 ];
 
+// Featured project spotlight — Chief Puzzle Officer samples, front and center
+const cpoShots = [
+  { src: "/portfolio/cpo-gameboard.jpg", alt: "Chief Puzzle Officer — match-3 gem battle board" },
+  { src: "/portfolio/cpo-turbo-mode.jpg", alt: "Chief Puzzle Officer — turbo mode" },
+  { src: "/portfolio/cpo-events.jpg", alt: "Chief Puzzle Officer — live events screen" },
+  { src: "/portfolio/cpo-deck-editor.jpg", alt: "Chief Puzzle Officer — deck editor" },
+];
+
 const stats = [
   { value: "20+", label: "years of games UX" },
   { value: "24h", label: "from first ping to embedded" },
@@ -100,7 +108,7 @@ const ticker = [
       </p>
       <div class="actions reveal reveal-4">
         <a href="/work" class="btn">See our work</a>
-        <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot">Start a project</a>
+        <a href="/contact" class="btn btn-hot">Start a project</a>
       </div>
     </div>
   </section>
@@ -169,6 +177,32 @@ const ticker = [
             <h3>{w.client}</h3>
             <p>{w.body}</p>
           </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured project — samples front and center -->
+  <section id="featured" class="featured section">
+    <div class="container featured-grid">
+      <div class="featured-copy">
+        <p class="eyebrow">From the portfolio</p>
+        <h2 class="featured-title">Chief Puzzle <em class="flair">Officer</em></h2>
+        <p class="lede">
+          Irena was Chief Creative Officer at DuoFun Studios, driving creative
+          direction on Chief Puzzle Officer — a real-time Match-3 PVP RPG card
+          game. We brought AAA UX rigor to a dense indie battle screen.
+        </p>
+        <div class="featured-actions">
+          <a href="/portfolio" class="btn btn-ghost">Portfolio gallery</a>
+          <a href="/blog/evolution-of-a-battle-screen" class="text-link">Read the deep dive →</a>
+        </div>
+      </div>
+      <div class="fan">
+        {cpoShots.map((s) => (
+          <figure class="shot">
+            <img src={s.src} alt={s.alt} loading="lazy" />
+          </figure>
         ))}
       </div>
     </div>
@@ -387,4 +421,79 @@ const ticker = [
     margin-bottom: 0.6rem;
   }
   .about { max-width: 780px; }
+
+  /* Featured project spotlight */
+  .featured {
+    background:
+      radial-gradient(60% 90% at 88% 50%, rgba(49, 170, 183, 0.08), transparent 70%),
+      var(--bg-elev);
+    border-block: 1px solid var(--border);
+  }
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .featured-title { font-size: clamp(2rem, 5vw, 3.3rem); margin-bottom: 1.25rem; }
+  .featured-copy .lede { color: var(--text-muted); max-width: 32rem; }
+  .featured-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.9rem;
+  }
+  .text-link {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.25rem;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .text-link:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+
+  /* Fanned phone screens */
+  .fan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 380px;
+  }
+  .shot {
+    margin: 0;
+    width: clamp(116px, 13vw, 170px);
+    aspect-ratio: 9 / 16;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border-bright);
+    background: #000;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    transform: rotate(var(--rot)) translateY(var(--ty));
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+  }
+  .shot:not(:first-child) { margin-left: -3.4rem; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shot:nth-child(1) { --rot: -9deg; --ty: 14px; z-index: 1; }
+  .shot:nth-child(2) { --rot: -3deg; --ty: -8px; z-index: 2; }
+  .shot:nth-child(3) { --rot: 3deg;  --ty: -8px; z-index: 3; }
+  .shot:nth-child(4) { --rot: 9deg;  --ty: 14px; z-index: 4; }
+  .shot:hover {
+    transform: rotate(0deg) translateY(-16px) scale(1.05);
+    box-shadow: 0 26px 54px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--accent);
+    z-index: 5;
+  }
+
+  @media (max-width: 860px) {
+    .featured-grid { grid-template-columns: 1fr; }
+    .fan { min-height: 0; margin-top: 1.5rem; }
+    .shot { width: clamp(108px, 24vw, 150px); }
+    .shot:not(:first-child) { margin-left: -2.6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .shot { transition: none; }
+  }
 </style>
