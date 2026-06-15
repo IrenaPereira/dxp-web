@@ -45,8 +45,8 @@ changing them rebrands the whole site. Replace the placeholder palette with the
 exact hex values and typefaces from digitalexperiments.com when you have them.
 
 **Booking link** — the "Book a UX teardown" buttons currently open an email to
-`irena@unleashedgames.io`. To use a scheduler instead (Calendly, Cal.com, etc.),
-search the two HTML files for `Replace BOOKING_URL` / `mailto:irena@unleashedgames.io`
+`sayhi@digitalexperiments.com`. To use a scheduler instead (Calendly, Cal.com, etc.),
+search the two HTML files for `Replace BOOKING_URL` / `mailto:sayhi@digitalexperiments.com`
 and swap in your scheduling URL.
 
 **Copy** — all text lives directly in `index.html` and `services.html`. Source copy
