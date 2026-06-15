@@ -8,13 +8,13 @@ const links = [
 ];
 ---
 
-<header class="site-header">
+<header class="site-header" data-open="false">
   <div class="container bar">
     <a href="/" class="wordmark" aria-label="Digital Experiments home">
       <img src="/brand/bunny-white.svg" alt="" aria-hidden="true" class="bunny" />
-      <span class="mark"><b>digital</b>experiments</span>
+      <span class="mark">digital<b>experiments</b></span>
     </a>
-    <nav aria-label="Primary">
+    <nav id="primary-nav" aria-label="Primary">
       <ul>
         {links.map((l) => (
           <li>
@@ -23,9 +23,27 @@ const links = [
         ))}
       </ul>
     </nav>
-    <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot">Say hi</a>
+    <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot say-hi">Say hi</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<script>
+  const header = document.querySelector<HTMLElement>(".site-header")!;
+  const toggle = header.querySelector<HTMLButtonElement>(".nav-toggle")!;
+  const setOpen = (open: boolean) => {
+    header.setAttribute("data-open", String(open));
+    toggle.setAttribute("aria-expanded", String(open));
+  };
+  toggle.addEventListener("click", () =>
+    setOpen(header.getAttribute("data-open") !== "true"),
+  );
+  header
+    .querySelectorAll("#primary-nav a")
+    .forEach((a) => a.addEventListener("click", () => setOpen(false)));
+</script>
 
 <style>
   .site-header {
@@ -89,8 +107,60 @@ const links = [
   }
   nav a:hover { color: var(--text); }
 
+  /* Hamburger — hidden on desktop */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--border-bright);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin-inline: auto;
+    background: var(--text);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  [data-open="true"] .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  [data-open="true"] .nav-toggle span:nth-child(2) { opacity: 0; }
+  [data-open="true"] .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   @media (max-width: 760px) {
-    nav { display: none; }
-    .bar { justify-content: space-between; }
+    .nav-toggle { display: flex; flex: none; }
+    .bar { gap: 0.6rem; }
+    .wordmark .mark { font-size: 1.05rem; }
+    .wordmark .bunny { height: 22px; margin-right: 0.45rem; }
+    .say-hi { margin-left: auto; padding: 0.55rem 0.85rem; font-size: 0.74rem; }
+    nav {
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      margin: 0;
+      background: var(--bg-elev);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.25s ease;
+    }
+    [data-open="true"] nav { max-height: 70vh; }
+    nav ul {
+      flex-direction: column;
+      gap: 0;
+      padding: 0.25rem var(--gutter) 1rem;
+    }
+    nav li { border-top: 1px solid var(--border); }
+    nav a { display: block; padding: 1rem 0; font-size: 0.95rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    nav, .nav-toggle span { transition: none; }
   }
 </style>

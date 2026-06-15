@@ -11,8 +11,16 @@ const year = new Date().getFullYear();
       <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot">sayhi@digitalexperiments.com</a>
     </div>
 
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="/work">Work</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/blog">Blog</a>
+      <a href="/about">About</a>
+      <a href="/team">Team</a>
+    </nav>
+
     <div class="meta">
-      <div class="wordmark"><b>digital</b>experiments</div>
+      <div class="wordmark">digital<b>experiments</b></div>
       <address>
         Cumberland, Rhode Island 02864, USA<br />
         <a href="tel:+19782939231">978-293-9231</a> ·
@@ -47,6 +55,24 @@ const year = new Date().getFullYear();
     margin-left: 0.5em;
     vertical-align: -0.05em;
   }
+
+  .foot-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-bottom: 2.25rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+  .foot-nav a {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+  }
+  .foot-nav a:hover { color: var(--accent); }
 
   .meta {
     display: flex;
