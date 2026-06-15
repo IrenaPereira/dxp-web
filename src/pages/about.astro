@@ -109,7 +109,7 @@ const extras = [
 
   <section class="section">
     <div class="container">
-      <p class="statement">Your players decide in the first five minutes.</p>
+      <p class="statement">Your players decide in the <em class="flair flair-accent">first five minutes</em>.</p>
       <p class="phil">
         We put players at the core of everything we do. Start with the
         problem you're trying to solve, address that first — then layer in
@@ -143,7 +143,7 @@ const extras = [
   <section class="section">
     <div class="container">
       <p class="eyebrow">Other capabilities</p>
-      <h2 class="section-title">Beyond the screen</h2>
+      <h2 class="section-title">Beyond the <em class="flair">screen</em></h2>
       <div class="extras">
         {extras.map((e) => (
           <article class="extra hud">
@@ -158,10 +158,10 @@ const extras = [
 
 <style>
   .statement {
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: clamp(1.5rem, 4vw, 2.3rem);
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    letter-spacing: -0.01em;
     margin: 0 0 1rem;
   }
   .phil { color: var(--text-muted); max-width: 680px; margin: 0; }

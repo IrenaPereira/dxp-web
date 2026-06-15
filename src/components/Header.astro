@@ -11,7 +11,8 @@ const links = [
 <header class="site-header">
   <div class="container bar">
     <a href="/" class="wordmark" aria-label="Digital Experiments home">
-      digital<span>experiments</span><i class="cursor" aria-hidden="true"></i>
+      <img src="/brand/bunny-white.svg" alt="" aria-hidden="true" class="bunny" />
+      <span class="mark"><b>digital</b>experiments</span>
     </a>
     <nav aria-label="Primary">
       <ul>
@@ -22,7 +23,7 @@ const links = [
         ))}
       </ul>
     </nav>
-    <a href="mailto:sayhi@digitalexperiments.com" class="btn">Say hi</a>
+    <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot">Say hi</a>
   </div>
 </header>
 
@@ -42,25 +43,29 @@ const links = [
     height: 64px;
   }
   .wordmark {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
     display: flex;
     align-items: center;
   }
-  .wordmark span { color: var(--accent); }
-  .cursor {
-    width: 8px;
-    height: 1.05em;
-    margin-left: 4px;
-    background: var(--accent);
-    animation: blink 1.1s steps(1) infinite;
+  .wordmark .mark {
+    font-family: var(--font-serif);
+    font-size: 1.34rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1;
+    color: var(--text);
   }
-  @keyframes blink { 50% { opacity: 0; } }
-  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
-
+  .wordmark .mark b { font-weight: 700; }
+  .wordmark .bunny {
+    height: 26px;
+    width: auto;
+    margin-right: 0.6rem;
+    opacity: 0.85;
+    transition: opacity 0.15s ease, filter 0.15s ease;
+  }
+  .wordmark:hover .bunny {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(49, 170, 183, 0.6));
+  }
   nav { margin-inline: auto; }
   nav ul {
     display: flex;

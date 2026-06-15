@@ -5,19 +5,20 @@ const year = new Date().getFullYear();
 <footer id="contact" class="site-footer">
   <div class="container">
     <div class="cta">
+      <img src="/brand/bunny-teal.svg" alt="" aria-hidden="true" class="bunny" />
       <p class="eyebrow">Initiate contact</p>
-      <h2>Got a game that<br />deserves better UX?</h2>
-      <a href="mailto:sayhi@digitalexperiments.com" class="btn">sayhi@digitalexperiments.com</a>
+      <h2>Got a game that<br />deserves <em class="flair flair-hot">better UX</em>?</h2>
+      <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot">sayhi@digitalexperiments.com</a>
     </div>
 
     <div class="meta">
-      <div class="wordmark">digital<span>experiments</span></div>
+      <div class="wordmark"><b>digital</b>experiments</div>
       <address>
         Cumberland, Rhode Island 02864, USA<br />
         <a href="tel:+19782939231">978-293-9231</a> ·
         <a href="mailto:sayhi@digitalexperiments.com">sayhi@digitalexperiments.com</a>
       </address>
-      <p class="copyright">© {year} Digital Experiments — better design, better games.</p>
+      <p class="copyright">© {year} Digital Experiments — better design, better games. <span class="waves">make waves</span></p>
     </div>
   </div>
 </footer>
@@ -26,13 +27,26 @@ const year = new Date().getFullYear();
   .site-footer {
     border-top: 1px solid var(--border);
     background:
-      linear-gradient(to top, rgba(200, 243, 29, 0.04), transparent 50%),
+      linear-gradient(to top, rgba(49, 170, 183, 0.04), transparent 50%),
       var(--bg-elev);
     padding-block: clamp(3.5rem, 8vw, 6rem) 2.5rem;
   }
   .cta { text-align: center; max-width: 680px; margin: 0 auto 4rem; }
   .cta .eyebrow { margin-bottom: 1.25rem; }
   .cta h2 { font-size: clamp(1.7rem, 4.5vw, 2.8rem); margin-bottom: 1.75rem; }
+  .cta .bunny {
+    height: 52px;
+    width: auto;
+    margin: 0 auto 1.5rem;
+    opacity: 0.95;
+  }
+  .waves {
+    font-family: var(--font-script);
+    font-size: 1.25em;
+    color: var(--accent);
+    margin-left: 0.5em;
+    vertical-align: -0.05em;
+  }
 
   .meta {
     display: flex;
@@ -45,13 +59,12 @@ const year = new Date().getFullYear();
     font-size: 0.82rem;
   }
   .wordmark {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.35rem;
     color: var(--text);
   }
-  .wordmark span { color: var(--accent); }
+  .wordmark b { font-weight: 700; }
   address { font-style: normal; }
   .meta a:hover { color: var(--text); }
   .copyright { margin: 0; }

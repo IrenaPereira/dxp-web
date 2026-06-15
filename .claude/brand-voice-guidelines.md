@@ -91,6 +91,41 @@ Voice is constant — it doesn't change by channel or audience.
 
 ---
 
+## Visual Identity (Confidence: High — founder-directed 2026-06-11)
+
+The defining architecture: **the brand looks classic, anchored, and refined — and talks like a veteran who ships games and has opinions.** Visual identity and voice are deliberately different layers. The elegance of the container is what lets the snark land as premium rather than cheap. Direction locked with the founder as **"dark editorial."**
+
+### Wordmark (the centerpiece lockup)
+- The wordmark is **`digitalexperiments`** — one word, all lowercase, set in **Playfair Display**, with **`digital` bold (700)** and `experiments` regular (400). No color split, no uppercase, no letter-spacing. This is the literal logo; render it exactly, everywhere.
+- Never set the wordmark in the UI display face (Josefin Sans), never uppercase it, never accent `experiments` in the accent color. (All three were wrong on the site before this lock.)
+- The **bunny mark** sits to the left of the wordmark and is the brand's centerpiece — heraldic, classic, allowed to wink. Treat it with room and care, not as a faint watermark. Heritage equity; keep it prominent.
+
+### Typography system (brand-book true, synced to live tokens 2026-06-15)
+- **Playfair Display (serif)** = primary display face. All headings (h1–h3), the hero, big statements. Sentence case, tight tracking (~−0.01em), weight 500–600. One word per headline may be set in Playfair *italic* as the emphasis "flair" (e.g. *embedded in days*, Games we've helped *ship*).
+- **Lato (sans)** = body copy — the clean, readable counterpoint.
+- **Josefin Sans** = UI chrome only (buttons, nav). Light, airy, geometric; never headings.
+- **Source Code Pro (mono)** = tracked-out system labels, eyebrows (`// 02 — SERVICES`), kickers, stat captions. The mono labels are on-brand editorial (the brand book's own "tracked-out labels, big numbers" instinct).
+- **Kaushan Script** = reserved for the "make waves" whisper only — never body or headings.
+
+### Direction: dark editorial ("brand-true, after dark")
+- Classic serif on a warm near-black (ink `#111112`, descended from the brand's `#232323`) canvas — that pairing *is* "classic but forward-thinking," literally.
+- **Brand teal `#31AAB7` is THE one accent** — used as a scalpel, never a flood. On the dark canvas it lifts to `#5fc6d1` for legibility (hover, links). **Gold `#FCC762`** is a rare warm garnish. (The earlier volt-green direction is retired; teal is the brand's true accent.)
+- Editorial restraint leads. A whisper of film grain for warmth — no CRT scanlines, no neon glow. The clipped-corner / corner-bracket motif survives as a quiet structural accent on buttons and cards, not as an arcade skin.
+- Premium reads through restraint, space, and craft. The litmus test from the voice section applies visually too: would it sit comfortably next to a Riot or Blizzard title treatment?
+
+### Signature move
+Hard/utilitarian meets classic/elegant: tracked mono teal labels and clipped buttons against big Playfair serif headlines, with the bunny presiding. That tension — refined house, gamer's wit — is the brand. (Heritage "make waves" survives as a small script sign-off.)
+
+### The DXP monogram & the XP metaphor (founder-directed 2026-06-11)
+- **`DXP`** is the authentic internal shorthand and the secondary brand mark. It works because "Digital eXPeriments" already contains **XP** — experience points. The metaphor is *discovered, not manufactured*.
+- **Why DXP, not DEX.** DEX (dexterity) is a trait the studio claims about *itself* — a "we" metaphor, an innate base stat ("we were born good"). DXP/XP is what the *client* gains — a "you" metaphor, earned progression. It encodes the brand's central voice correction (we → you) into the name itself. It also reads both directions: outward, the XP your team banks by embedding us; inward, the 20 years of XP DXP has already banked — the max-level studio that drops into your party and power-levels you. DEX has only one reading ("we're deft").
+- **Two-mark system.** The primary `digitalexperiments` wordmark emphasizes **digital** (bold). The **DXP monogram** emphasizes **XP** (teal accent). Different marks, different jobs: the elegant lockup carries *refined craft*, the XP badge carries *you level up*. Don't merge them — the wordmark is never abbreviated in the logo, and the badge never spells out the full name.
+- **Usage.** DXP monogram → social avatar, section/stat markers, shorthand and internal contexts, anywhere ≥32px. Full wordmark → primary lockup, site header/footer, signatures. At true favicon scale (~16px) three letters lose legibility — favor the **bunny mark** there and reserve the DXP badge for larger contexts.
+- **Message spine.** DXP-as-XP underwrites the "level up your team" line — strongest on **UX Strategy** and **Team Workshops & Training**, the engagements where the client visibly gains XP.
+- **Guardrail.** Premium, not gamified-cheap. The metaphor is an undercurrent, not "+50 XP!" confetti. Same litmus test as the voice: would it sit next to a Riot credit.
+
+---
+
 ## Messaging Framework
 
 ### Primary Value Proposition
@@ -114,6 +149,7 @@ Variations observed in sources:
    - Example phrasing: "The team behind UX on Valorant, World of Warcraft, and Monopoly Go."
    - Effectiveness: High when names are surfaced (currently buried mid-deck in sources)
    - Claim strength: use "shipped UX on" / "worked on" until per-title scope is documented; never inflate to "designed" without verification.
+   - **Engagement vs. pedigree (hard rule):** "We" case studies are reserved for actual DXP client engagements (Mythical, Epic Spell Wars, Chief Puzzle Officer). Work done by team members as in-house employees (Monopoly Go at Scopely, World of Warcraft at Blizzard, Project Copernicus at 38 Studios) is **pedigree** — always label the employer ("in-house at Scopely") and credit the person ("Irena led…"). Team-level claims like "the same team that shipped UX on Valorant, WoW, and Monopoly Go" are fine — individuals on the team did ship that work. What's never fine is letting a prospect believe an in-house credit was a consulting engagement; the discovery call where that unravels costs the deal.
 
 3. **Tactical to strategic, same team**
    - Core idea: The same senior people who execute sprint-level UI will also clarify your product vision, run research, and level up your team — a rare bundle.
@@ -233,6 +269,14 @@ Voice is constant. Tone flexes by context.
 
 ## Content Examples
 
+### Excellent Example (pedigree story in PAR form — Monopoly Go, founder credit)
+> *Founder credit — Irena led this work in-house at Scopely.*
+> **The situation:** The team was struggling to align and communicate — and the product showed it.
+> **What Irena did:** Led GTM clarification on an aligned player-persona strategy, then a full art overhaul coordinated moment-to-moment with music, audio, animation, and VFX.
+> **The result:** Gameplay changes that built an organic UA loop through social design — the game grows because players bring their friends. Validated weekly with team playtests and post-play surveys.
+
+*Why it works: opens in the team's problem, not the designer's activity; the action shows cross-discipline leadership (premium AAA); the result is a business outcome (organic UA), not a deliverable list; the playtest cadence is the receipt; and the in-house provenance is labeled plainly — candor that builds trust. The work spans everything DXP now sells, which is exactly what pedigree is for. DXP engagement proof leads with Mythical Games.*
+
 ### Excellent Example (target voice — homepage hero)
 > **Your ship date isn't moving. Your UX is the final boss.**
 > DXP embeds senior game UX designers in your team within 24 hours — the same team that shipped UX on Valorant, World of Warcraft, and Monopoly Go. Working Figma files in your hands within the week. Less menu rage. More playtime.
@@ -270,9 +314,11 @@ Aggregate: 0.69 → **Medium**. What would raise it: validating the speed-led me
    - Need from you: which past clients can be approached, and any results you already know but never wrote down.
 
 2. **Can named credits be claimed publicly?**
-   - What was found: World of Warcraft and Monopoly appear in decks without studio attribution; Project Copernicus (cancelled) is included. Founder added Valorant and Monopoly Go as credits (2026-06-11) — neither appears in the source decks, so per-title scope (what DXP/team members actually did, when, for whom) is undocumented.
-   - Agent recommendation: confirm contractual right to name Riot/Blizzard/Scopely-adjacent work on the public site; document one line of scope per credit ("UX on X feature/system") so claims can be defended in a sales call; keep Project Copernicus framed as team-pedigree ("the game never shipped; the systems thinking did").
-   - Need from you: legal/NDA status per credit, plus scope notes for Valorant and Monopoly Go.
+   - What was found: World of Warcraft and Monopoly appear in decks without studio attribution; Project Copernicus (cancelled) is included. Founder added Valorant and Monopoly Go as credits (2026-06-11).
+   - **Monopoly Go scope: RESOLVED (Irena, 2026-06-11).** In-house at Scopely as a full-time employee — **not a DXP engagement; always present as founder credit/pedigree.** Led GTM clarification on an aligned player-persona strategy; led a full art overhaul coordinated moment-to-moment with music, audio, animation, and VFX; drove gameplay changes prioritizing an organic UA loop through social design; ran weekly team playtests with post-play surveys. Art samples shareable in live meetings (employer work product — confirm what can be shown publicly).
+   - Agent recommendation: document one line of scope for Valorant and whether it was in-house or a DXP/contract engagement; confirm public-naming comfort for Riot/Blizzard/Scopely work (naming an employer credit is standard portfolio convention; showing work product is the riskier part); keep all in-house credits labeled with the employer.
+   - Need from you: Valorant scope + provenance, and confirmation of what Monopoly Go material can be shown publicly vs. in meetings only.
+   - Also resolved (Irena, 2026-06-11): Epic Spell Wars outcome — the game never made it to market, but the prototype proved the gameplay. Use that line verbatim; honesty about a dead project is on-brand candor.
 
 ### Medium Priority
 3. **Engagement shape**

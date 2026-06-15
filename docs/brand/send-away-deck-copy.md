@@ -48,9 +48,9 @@ Led by Irena Pereira. Twenty years. A dozen shipped titles.
 Digital Experiments is a game UX studio founded by Irena Pereira, a UX lead with nearly 20 years of shipped experience across mobile, PC/console, and live-service games.
 
 Credits include:
-- Valorant [CONFIRM: scope + public-naming rights]
-- World of Warcraft (Blizzard Entertainment)
-- Monopoly Go [CONFIRM: scope + public-naming rights]
+- Valorant [CONFIRM: scope + in-house vs. engagement + public-naming rights]
+- World of Warcraft (in-house at Blizzard Entertainment)
+- Monopoly Go (in-house at Scopely) — GTM strategy, full art overhaul, social-design UA loop
 - Blankos Block Party (Mythical Games)
 - Epic Spell Wars
 - Chief Puzzle Officer
@@ -161,27 +161,31 @@ Epic Spell Wars needed playable combat UX on a tight budget. Constraints didn't 
 
 **What we did:** We concepted the combat prototype and shipped the deck-builder UI — UX and UI execution together, scoped to what the timeline and budget could bear without cutting what players actually needed to play the game.
 
-**The result:** [OUTCOME NEEDED: ask the Epic Spell Wars client — shipped on schedule? Re-engaged? Player feedback on combat clarity?]
+**The result:** The game never made it to market — but the prototype proved the gameplay, which is exactly what a prototype is for.
 
 **Layout/Visual Note:** Deck-builder UI screenshots flanking a three-row Problem/Action/Result structure; no apology language for the budget constraint.
 
 ---
 
-## Slide 9 — Case Study: Monopoly Go
+## Slide 9 — Founder Credit: Monopoly Go (in-house at Scopely)
 
-**Slide Title:** UI art direction refresh
+**Slide Title:** From misaligned team to organic growth loop
 
 **Headline Copy:**
-A franchise players already knew. UI that needed to earn that trust on a small screen.
+The team was struggling to align and communicate — and the product showed it.
 
 **Body Copy:**
-**The situation:** Monopoly Go carried a brand players recognized — and a hard-to-read UI that was hurting the experience.
+*Founder credit — Irena led this work as a full-time member of the Scopely team, before DXP.*
 
-**What we did:** Deep user research, then a UI art direction refresh across the core screens — holding the franchise visual language while making the interface readable and playable on mobile, for a newly defined target audience.
+**The situation:** Monopoly Go carried a brand players recognized, but the team behind it was struggling to align and communicate, and the product showed it.
 
-**The result:** [OUTCOME NEEDED: confirm with the client — shipped? Store ratings? Any measurable retention or UX metric?]
+**What Irena did:** Led a GTM clarification built on an aligned player-persona strategy. Then a full art overhaul — coordinated moment-to-moment with music, audio, animation, and VFX — so every beat of play landed as one experience, not five departments' output.
 
-**Layout/Visual Note:** Before/after split-screen — strongest visual in the deck; label both panels "Before" and "After" explicitly so the slide works without a presenter.
+**The result:** Distinct gameplay changes that prioritized an organic UA loop through social design — the game grows because players bring their friends, not because the UA budget says so. Validated week over week with team playtests and post-play surveys measuring fun and engagement.
+
+Before/after art overhaul samples available in a live meeting.
+
+**Layout/Visual Note:** Label the in-house provenance plainly — it builds trust, and the work spans everything DXP now sells (strategy, embedded execution, research, team process). Place adjacent to the WoW and Copernicus pedigree slides, or directly after the team slide. Before/after split-screen if samples are cleared; otherwise tease "samples shared in person" as a meeting driver.
 
 ---
 
@@ -282,13 +286,14 @@ better design, better games
 
 **Outcomes to collect (contact clients):**
 - [ ] Mythical Games / Andrew Petrie: ship confirmation, outcome line, and a substantive replacement quote
-- [ ] Epic Spell Wars client: shipped on schedule? re-engagement? player feedback
-- [ ] Monopoly mobile client: relaunch confirmation, store ratings, or retention metric
-- [ ] World of Warcraft: NDA/credit clearance; patch/expansion name
+- [x] Epic Spell Wars: resolved — the game never made it to market, but the prototype proved the gameplay (Irena, 2026-06-11)
+- [x] Monopoly Go: scope resolved (Irena, 2026-06-11) — **in-house at Scopely as a full-time employee, not a DXP engagement; always present as founder credit/pedigree.** GTM clarification on aligned player-persona strategy; full art overhaul coordinated with music/audio/animation/VFX; gameplay changes driving an organic UA loop via social design; weekly playtests + post-play surveys. Art samples shareable in live meetings only (employer work product — confirm what can be shown).
+- [ ] Monopoly Go (optional upgrade): any post-launch metric tied to the social/UA changes — retention, viral coefficient, store-rating delta
+- [ ] World of Warcraft: patch/expansion name (in-house at Blizzard — pedigree framing already applied)
 - [ ] Chief Puzzle Officer: shipped confirmation, player-test data
 
 **Items to confirm internally:**
-- [ ] Slide 3: Valorant and Monopoly Go — one line of scope per credit ("UX on X feature/system") and public-naming rights (Riot / Scopely NDAs)
+- [ ] Slide 3: Valorant — one line of scope ("UX on X feature/system"), whether it was in-house or a DXP/contract engagement, and public-naming rights (Riot NDA)
 - [ ] Slide 4: 24–48h integration — standing promise or track record?
 - [ ] Slide 4: paid discovery sprint entry point? typical duration (2–8 weeks?)
 - [ ] Slide 6 & 14: insert a real calendar link (Calendly or similar)

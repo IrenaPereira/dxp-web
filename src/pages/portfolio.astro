@@ -90,24 +90,83 @@ const items = [
   { src: "/portfolio/web-vw-adventure.jpg", cat: "web", tag: "Volkswagen", title: "VW Adventure", caption: "Campaign microsite — Europe edition." },
   { src: "/portfolio/web-quintons.jpg", cat: "web", tag: "Quinton's", title: "Quinton's", caption: "Restaurant brand and web design." },
 ];
+
+// Die face pip layouts on a 3×3 grid (cells 1–9, reading order)
+const PIPS: Record<number, number[]> = {
+  1: [5],
+  2: [3, 7],
+  3: [3, 5, 7],
+  4: [1, 3, 7, 9],
+  5: [1, 3, 5, 7, 9],
+  6: [1, 3, 4, 6, 7, 9],
+};
+// Face placement on the cube: value → face class
+const FACES = [
+  { v: 1, cls: "f-front" },
+  { v: 6, cls: "f-back" },
+  { v: 3, cls: "f-right" },
+  { v: 4, cls: "f-left" },
+  { v: 2, cls: "f-top" },
+  { v: 5, cls: "f-bottom" },
+];
+const cell = (n: number) => `${Math.ceil(n / 3)} / ${((n - 1) % 3) + 1}`;
 ---
 
 <Base
   title="Portfolio — Digital Experiments"
-  description="A filterable gallery of 20+ years of game UX: World of Warcraft interfaces, MMO character create, card games, AI products, and the web that came before."
+  description="Roll the dice on 20+ years of game UX: World of Warcraft interfaces, MMO character create, card games, AI products, and the web that came before."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Portfolio</p>
-      <h1>Artifacts from the field</h1>
+      <h1>Artifacts from the <em class="flair">field</em></h1>
       <p class="lede">
-        Interfaces, worlds, research, and product design from two decades of
-        making games — and everything else — more playable.
+        Two decades of game UX in one deck — {items.length} artifacts strong.
+        Roll the dice and let the bones decide what you see. Doubles? You know
+        the rule.
       </p>
     </div>
   </section>
 
-  <section class="section">
+  <!-- Dice table -->
+  <section class="section" id="dice-mode">
+    <div class="container">
+      <div class="dice-table hud">
+        <button id="roll" class="dice-btn" aria-label="Roll the dice to deal a new hand of work samples">
+          {["a", "b"].map((d) => (
+            <span class={`die die-${d}`}>
+              <span class="cube" id={`cube-${d}`}>
+                {FACES.map((f) => (
+                  <span class={`face ${f.cls}`} data-v={f.v}>
+                    {PIPS[f.v].map((n) => (
+                      <i class="pip" style={`grid-area: ${cell(n)}`}></i>
+                    ))}
+                  </span>
+                ))}
+              </span>
+            </span>
+          ))}
+          <span class="roll-label">Roll</span>
+        </button>
+        <div class="roll-meta">
+          <p class="status" id="dice-status" aria-live="polite">// shuffling the deck…</p>
+          <p class="hint">
+            Click to roll. The deck reshuffles and deals <em class="flair">the sum</em> —
+            every hand is different.
+          </p>
+        </div>
+      </div>
+
+      <div class="masonry hand" id="hand" aria-live="polite"></div>
+
+      <p class="archive-toggle">
+        <button class="link-btn" id="show-archive">Prefer to browse? Open the full archive ▸</button>
+      </p>
+    </div>
+  </section>
+
+  <!-- Full archive (classic filterable gallery) -->
+  <section class="section section-alt" id="archive" hidden>
     <div class="container">
       <div class="filter-bar" role="toolbar" aria-label="Filter portfolio">
         {CATS.map((c, i) => (
@@ -138,6 +197,10 @@ const items = [
           </figure>
         ))}
       </div>
+
+      <p class="archive-toggle">
+        <button class="link-btn" id="show-dice">◂ Back to the dice</button>
+      </p>
     </div>
   </section>
 
@@ -153,16 +216,111 @@ const items = [
 </Base>
 
 <script>
-  const chips = document.querySelectorAll(".chip");
-  const pieces = document.querySelectorAll<HTMLElement>(".piece");
-  const count = document.getElementById("count")!;
+  /* ---------- Dice ---------- */
+  // cube rotation (rx, ry) that brings each value to the front
+  const ORIENT: Record<number, [number, number]> = {
+    1: [0, 0],
+    2: [-90, 0],
+    3: [0, -90],
+    4: [0, 90],
+    5: [90, 0],
+    6: [0, 180],
+  };
+  const cubeA = document.getElementById("cube-a")!;
+  const cubeB = document.getElementById("cube-b")!;
+  const status = document.getElementById("dice-status")!;
+  const hand = document.getElementById("hand")!;
+  const rollBtn = document.getElementById("roll") as HTMLButtonElement;
+  const deck = [...document.querySelectorAll<HTMLElement>("#masonry .piece")];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  let spins = 0;
+  let rolling = false;
+
+  const d6 = () => 1 + Math.floor(Math.random() * 6);
+
+  function setFace(cube: HTMLElement, v: number) {
+    const [rx, ry] = ORIENT[v];
+    cube.style.transform = `rotateX(${rx + 360 * spins}deg) rotateY(${ry + 360 * spins}deg)`;
+  }
+
+  function deal(n: number) {
+    // shuffle indices, take n
+    const order = deck.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    hand.innerHTML = "";
+    order.slice(0, n).forEach((idx, i) => {
+      const clone = deck[idx].cloneNode(true) as HTMLElement;
+      clone.classList.add("dealt");
+      clone.style.animationDelay = `${0.08 + i * 0.07}s`;
+      const img = clone.querySelector("img");
+      if (img) img.loading = "eager";
+      hand.appendChild(clone);
+    });
+  }
+
+  function roll(animate = true) {
+    if (rolling) return;
+    rolling = true;
+    const a = d6();
+    const b = d6();
+    const sum = a + b;
+    spins += 2;
+    setFace(cubeA, a);
+    setFace(cubeB, b);
+
+    if (animate && !reduceMotion) {
+      document.querySelectorAll(".die").forEach((d) => {
+        d.classList.remove("hop");
+        void (d as HTMLElement).offsetWidth; // restart animation
+        d.classList.add("hop");
+      });
+      status.textContent = `// rolling…`;
+      setTimeout(() => finish(a, b, sum), 1050);
+    } else {
+      finish(a, b, sum);
+    }
+  }
+
+  function finish(a: number, b: number, sum: number) {
+    const doubles = a === b;
+    status.textContent = doubles
+      ? `// rolled ${a} + ${b} = ${sum} — doubles! house rules: roll again.`
+      : `// rolled ${a} + ${b} — dealing ${sum} of ${deck.length}`;
+    deal(sum);
+    rolling = false;
+  }
+
+  rollBtn.addEventListener("click", () => roll());
+  // opening hand
+  setTimeout(() => roll(), 350);
+
+  /* ---------- Mode toggle ---------- */
+  const diceMode = document.getElementById("dice-mode")!;
+  const archive = document.getElementById("archive")!;
+  document.getElementById("show-archive")!.addEventListener("click", () => {
+    diceMode.hidden = true;
+    archive.hidden = false;
+    window.scrollTo({ top: 0 });
+  });
+  document.getElementById("show-dice")!.addEventListener("click", () => {
+    archive.hidden = true;
+    diceMode.hidden = false;
+    window.scrollTo({ top: 0 });
+  });
+
+  /* ---------- Archive filters ---------- */
+  const chips = document.querySelectorAll(".chip");
+  const count = document.getElementById("count")!;
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       const cat = (chip as HTMLElement).dataset.cat;
       chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
       let n = 0;
-      pieces.forEach((p) => {
+      deck.forEach((p) => {
         const show = cat === "all" || p.dataset.cat === cat;
         p.style.display = show ? "" : "none";
         if (show) n++;
@@ -171,21 +329,22 @@ const items = [
     });
   });
 
+  /* ---------- Lightbox (delegated — works for dealt clones too) ---------- */
   const lb = document.getElementById("lightbox") as HTMLDialogElement;
   const lbImg = document.getElementById("lb-img") as HTMLImageElement;
   const lbTag = document.getElementById("lb-tag")!;
   const lbTitle = document.getElementById("lb-title")!;
   const lbCaption = document.getElementById("lb-caption")!;
 
-  document.querySelectorAll<HTMLElement>(".piece-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      lbImg.src = btn.dataset.full!;
-      lbImg.alt = `${btn.dataset.tag} — ${btn.dataset.title}`;
-      lbTag.textContent = btn.dataset.tag!;
-      lbTitle.textContent = btn.dataset.title!;
-      lbCaption.textContent = btn.dataset.caption!;
-      lb.showModal();
-    });
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLElement>(".piece-btn");
+    if (!btn) return;
+    lbImg.src = btn.dataset.full!;
+    lbImg.alt = `${btn.dataset.tag} — ${btn.dataset.title}`;
+    lbTag.textContent = btn.dataset.tag!;
+    lbTitle.textContent = btn.dataset.title!;
+    lbCaption.textContent = btn.dataset.caption!;
+    lb.showModal();
   });
 
   document.getElementById("lb-close")!.addEventListener("click", () => lb.close());
@@ -195,7 +354,137 @@ const items = [
 </script>
 
 <style>
-  /* Filter bar */
+  /* ---------- Dice table ---------- */
+  .dice-table {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    margin-bottom: 2.25rem;
+  }
+  .dice-btn {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .dice-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .roll-label {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--text-muted);
+    border: 1px solid var(--border-bright);
+    padding: 0.5rem 0.9rem;
+    clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px));
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .dice-btn:hover .roll-label { color: var(--accent); border-color: var(--accent); }
+
+  .die {
+    width: 64px;
+    height: 64px;
+    perspective: 440px;
+    display: inline-block;
+  }
+  .die.hop { animation: hop 1.05s cubic-bezier(0.3, 0.8, 0.3, 1) both; }
+  .die-b.hop { animation-delay: 0.06s; }
+  @keyframes hop {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(-26px) rotate(-7deg); }
+    55% { transform: translateY(2px) rotate(3deg); }
+    72% { transform: translateY(-9px); }
+    100% { transform: translateY(0); }
+  }
+  .cube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.05s cubic-bezier(0.2, 0.65, 0.25, 1.02);
+  }
+  .face {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 55%),
+      var(--surface);
+    border: 1px solid var(--border-bright);
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    padding: 10px;
+    gap: 2px;
+  }
+  .f-front  { transform: translateZ(32px); }
+  .f-back   { transform: rotateY(180deg) translateZ(32px); }
+  .f-right  { transform: rotateY(90deg) translateZ(32px); }
+  .f-left   { transform: rotateY(-90deg) translateZ(32px); }
+  .f-top    { transform: rotateX(90deg) translateZ(32px); }
+  .f-bottom { transform: rotateX(-90deg) translateZ(32px); }
+
+  .pip {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    place-self: center;
+    background: var(--accent);
+    box-shadow: 0 0 7px rgba(49, 170, 183, 0.65);
+  }
+  /* die B rolls in heritage teal */
+  .die-b .pip {
+    background: var(--accent-2);
+    box-shadow: 0 0 7px rgba(54, 226, 207, 0.65);
+  }
+
+  .roll-meta { flex: 1; min-width: 260px; }
+  .status {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin: 0 0 0.4rem;
+  }
+  .hint { color: var(--text-muted); margin: 0; font-size: 0.95rem; }
+  .hint .flair { font-size: 1.1em; color: var(--text); }
+
+  /* ---------- Dealt hand ---------- */
+  .hand:empty { min-height: 40vh; }
+  :global(.dealt) {
+    animation: dealIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes dealIn {
+    from { opacity: 0; transform: translateY(26px) rotate(0.6deg) scale(0.97); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .archive-toggle { margin-top: 2.5rem; text-align: center; }
+  .link-btn {
+    all: unset;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-bright);
+    padding-bottom: 0.2rem;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .link-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .link-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cube { transition: none; }
+    .die.hop { animation: none; }
+    :global(.dealt) { animation: none; }
+  }
+
+  /* ---------- Filter bar ---------- */
   .filter-bar {
     display: flex;
     flex-wrap: wrap;
@@ -232,13 +521,13 @@ const items = [
     color: var(--accent);
   }
 
-  /* Masonry */
+  /* ---------- Masonry & pieces ---------- */
   .masonry { columns: 3 300px; column-gap: 1.25rem; }
-  .piece {
+  :global(.piece) {
     margin: 0 0 1.25rem;
     break-inside: avoid;
   }
-  .piece-btn {
+  :global(.piece-btn) {
     all: unset;
     display: block;
     width: 100%;
@@ -255,11 +544,11 @@ const items = [
     overflow: hidden;
     transition: border-color 0.18s ease, transform 0.18s ease;
   }
-  .piece-btn:hover { border-color: var(--border-bright); transform: translateY(-3px); }
-  .piece-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .piece-btn img { width: 100%; display: block; }
+  :global(.piece-btn:hover) { border-color: var(--border-bright); transform: translateY(-3px); }
+  :global(.piece-btn:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  :global(.piece-btn img) { width: 100%; display: block; }
 
-  .piece-btn figcaption {
+  :global(.piece-btn figcaption) {
     position: absolute;
     inset: auto 0 0 0;
     padding: 1.5rem 1rem 0.8rem;
@@ -271,16 +560,16 @@ const items = [
     translate: 0 8px;
     transition: opacity 0.18s ease, translate 0.18s ease;
   }
-  .piece-btn:hover figcaption,
-  .piece-btn:focus-visible figcaption { opacity: 1; translate: 0 0; }
-  .piece-btn .tag {
+  :global(.piece-btn:hover figcaption),
+  :global(.piece-btn:focus-visible figcaption) { opacity: 1; translate: 0 0; }
+  :global(.piece-btn .tag) {
     font-family: var(--font-mono);
     font-size: 0.64rem;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     color: var(--accent);
   }
-  .piece-btn .title {
+  :global(.piece-btn .title) {
     font-family: var(--font-display);
     font-weight: 600;
     text-transform: uppercase;
@@ -289,10 +578,10 @@ const items = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .piece-btn, .piece-btn figcaption { transition: none; }
+    :global(.piece-btn), :global(.piece-btn figcaption) { transition: none; }
   }
 
-  /* Lightbox */
+  /* ---------- Lightbox ---------- */
   #lightbox {
     background: var(--bg-elev);
     border: 1px solid var(--border-bright);
