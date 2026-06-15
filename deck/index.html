@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital Experiments — Capabilities</title>
+  <meta name="description" content="Digital Experiments — Game UX & Player Research. Capabilities overview: audits, team training, embedded UX leadership, and strategy for game studios and publishers." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== Brand tokens (mirror of the site design system) ===== */
+    :root{
+      --ink:#14131a; --ink-2:#1d1d1d; --paper:#ffffff; --paper-2:#f6f5f2;
+      --line:#e3e1e4; --muted:#6c6a76; --muted-2:#9b99a4;
+      --accent:#5b53e0; --accent-300:#b9b5f4; --accent-tint:#f0effd; --signal:#00c08b;
+      --on-ink:#f5f4f7; --on-ink-muted:#b5b2c2; --on-ink-line:#322f3d;
+      --font-display:"Playfair Display",Georgia,serif;
+      --font-sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      --font-mono:ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-sans);color:var(--ink);background:#0c0b10;line-height:1.5;-webkit-font-smoothing:antialiased;}
+    h1,h2,h3{font-family:var(--font-display);font-weight:540;line-height:1.05;letter-spacing:-.015em;}
+    em{font-style:italic;}
+    .mono{font-family:var(--font-mono);}
+
+    /* ===== Deck scroller ===== */
+    .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;}
+    .slide{
+      position:relative;scroll-snap-align:start;scroll-snap-stop:always;
+      width:100vw;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+      padding:clamp(2.5rem,6vw,6rem) clamp(2rem,7vw,8rem);
+    }
+    .slide__inner{width:100%;max-width:1100px;margin-inline:auto;}
+    /* themes */
+    .s-light{background:var(--paper);color:var(--ink);}
+    .s-soft{background:var(--paper-2);color:var(--ink);}
+    .s-ink{background:var(--ink);color:var(--on-ink);}
+    .s-ink h1,.s-ink h2,.s-ink h3{color:var(--on-ink);}
+    .s-accent{background:linear-gradient(135deg,var(--accent-700,#463fbf),var(--accent) 55%,#6f67ea);color:#fff;}
+    .s-accent h1,.s-accent h2,.s-accent h3{color:#fff;}
+
+    /* ===== Type scale ===== */
+    .eyebrow{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;}
+    .s-ink .eyebrow,.s-accent .eyebrow{color:var(--accent-300);}
+    .s-accent .eyebrow{color:rgba(255,255,255,.8);}
+    .display{font-size:clamp(2.4rem,6vw,5rem);}
+    .h-xl{font-size:clamp(2rem,4.5vw,3.6rem);}
+    .h-lg{font-size:clamp(1.6rem,3.2vw,2.6rem);}
+    .lead{font-size:clamp(1.05rem,1.7vw,1.5rem);color:var(--muted);max-width:46ch;}
+    .s-ink .lead,.s-accent .lead{color:var(--on-ink-muted);}
+    .s-accent .lead{color:rgba(255,255,255,.9);}
+    .kicker{font-size:clamp(1.05rem,1.7vw,1.4rem);max-width:52ch;margin-top:1.25rem;}
+
+    /* ===== Components ===== */
+    .brandbar{position:absolute;top:clamp(1.5rem,3vw,2.5rem);left:clamp(2rem,7vw,8rem);right:clamp(2rem,7vw,8rem);
+      display:flex;align-items:center;justify-content:space-between;font-size:.8rem;color:var(--muted-2);}
+    .s-ink .brandbar,.s-accent .brandbar{color:var(--on-ink-muted);}
+    .brandbar .lockup{display:flex;align-items:center;gap:.55rem;font-family:var(--font-display);font-size:1rem;color:inherit;}
+    .brandbar .lockup b{font-weight:700;color:var(--ink);}
+    .s-ink .brandbar .lockup b,.s-accent .brandbar .lockup b{color:#fff;}
+    .brandbar .rabbit{width:22px;height:26px;}
+
+    .grid{display:grid;gap:1.25rem;}
+    .g-3{grid-template-columns:repeat(3,1fr);}
+    .g-2{grid-template-columns:repeat(2,1fr);}
+    @media (max-width:820px){.g-3,.g-2{grid-template-columns:1fr;}}
+
+    .card{border:1px solid var(--line);border-radius:14px;padding:1.5rem;background:var(--paper);display:flex;flex-direction:column;gap:.5rem;}
+    .s-ink .card,.s-soft .card{background:rgba(255,255,255,.55);}
+    .s-ink .card{background:rgba(255,255,255,.04);border-color:var(--on-ink-line);}
+    .card .tag{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.05em;color:var(--accent);}
+    .s-ink .card .tag{color:var(--accent-300);}
+    .card h3{font-size:1.5rem;}
+    .card h3 em{display:block;font-size:.95rem;color:var(--muted);font-weight:400;margin-top:.2rem;}
+    .s-ink .card h3 em{color:var(--on-ink-muted);}
+    .card p{font-size:.95rem;color:var(--muted);}
+    .s-ink .card p{color:var(--on-ink-muted);}
+    .card .price{margin-top:auto;font-family:var(--font-display);font-size:1.3rem;color:inherit;padding-top:.5rem;}
+    .card .price small{display:block;font-family:var(--font-mono);font-size:.72rem;color:var(--muted-2);}
+
+    /* method steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+    @media (max-width:820px){.steps{grid-template-columns:1fr;}}
+    .step{border-top:2px solid var(--on-ink-line);padding-top:1rem;}
+    .step .n{font-family:var(--font-mono);font-size:.8rem;color:var(--accent-300);}
+    .step h3{font-size:1.6rem;margin:.4rem 0 .5rem;}
+    .step p{color:var(--on-ink-muted);font-size:.98rem;}
+
+    /* case studies */
+    .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem;}
+    @media (max-width:820px){.cases{grid-template-columns:1fr;}}
+    .case{border:1px solid var(--line);border-radius:14px;padding:1.4rem;background:var(--paper);}
+    .case h3{font-size:1.3rem;margin-bottom:.75rem;}
+    .case dt{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
+    .case dd{margin:.15rem 0 .75rem;font-size:.92rem;color:var(--ink-2);}
+    .case .result{font-weight:600;color:var(--ink);}
+
+    .chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;list-style:none;padding:0;}
+    .chips li{font-size:.85rem;font-weight:500;border:1px solid var(--on-ink-line);border-radius:999px;padding:.45rem 1rem;color:var(--on-ink);}
+    .chips li::before{content:"✓ ";color:var(--signal);font-weight:700;}
+
+    .two-col{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+    @media (max-width:820px){.two-col{grid-template-columns:1fr;}}
+    .portrait{aspect-ratio:1;border-radius:20px;background:radial-gradient(120% 120% at 30% 20%,var(--accent),#463fbf 55%,var(--ink));display:grid;place-items:center;color:#fff;}
+    .portrait .rabbit{width:46%;height:46%;color:#fff;opacity:.95;}
+    blockquote{font-family:var(--font-display);font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.25;}
+
+    .big-list{list-style:none;padding:0;display:grid;gap:1rem;margin-top:1.5rem;}
+    .big-list li{display:flex;gap:1rem;align-items:baseline;font-size:clamp(1rem,1.5vw,1.25rem);}
+    .big-list .num{font-family:var(--font-mono);color:var(--accent);font-size:.9rem;flex:none;width:2rem;}
+    .s-ink .big-list .num{color:var(--accent-300);}
+
+    .stat-row{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:2rem;}
+    .stat .figure{font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;}
+    .stat .label{font-size:.9rem;color:var(--on-ink-muted);margin-top:.4rem;max-width:18ch;}
+
+    .cta-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;align-items:center;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;padding:.9rem 1.5rem;border-radius:999px;background:#fff;color:var(--ink);}
+    .btn--out{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5);}
+    .contact{font-family:var(--font-mono);font-size:1.05rem;margin-top:1.5rem;}
+    .fineprint{font-size:.82rem;color:var(--muted-2);margin-top:1.25rem;}
+    .s-ink .fineprint,.s-accent .fineprint{color:var(--on-ink-muted);}
+
+    .pagenum{position:absolute;bottom:clamp(1.25rem,3vw,2.2rem);right:clamp(2rem,7vw,8rem);font-family:var(--font-mono);font-size:.78rem;color:var(--muted-2);}
+    .s-ink .pagenum,.s-accent .pagenum{color:var(--on-ink-muted);}
+
+    /* nav hint */
+    .hint{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:20;
+      font-family:var(--font-mono);font-size:.72rem;color:var(--muted-2);background:rgba(20,19,26,.7);color:#cfcdd8;
+      padding:.4rem .9rem;border-radius:999px;backdrop-filter:blur(6px);transition:opacity .4s;}
+
+    /* ===== Print → clean 16:9 PDF ===== */
+    @page{size:13.333in 7.5in;margin:0;}
+    @media print{
+      body{background:#fff;}
+      .deck{height:auto;overflow:visible;display:block;}
+      .slide{min-height:7.5in;height:7.5in;width:13.333in;page-break-after:always;break-after:page;}
+      .hint{display:none !important;}
+      .s-soft .card{background:var(--paper-2);}
+    }
+    @media (prefers-reduced-motion:reduce){html,.deck{scroll-behavior:auto;}}
+  </style>
+</head>
+<body>
+  <!-- Reusable rabbit logomark (inherits text color via currentColor) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="rabbit" viewBox="0 0 219.11 258.24">
+      <path fill="currentColor" d="M30.86,252.79c-15.97-.26-27.74-9.28-30.29-20.47-.67-2.93-.66-6.08-.4-9.08,.38-4.42,3.29-6.78,8.01-6.85,1.68-.02,3.41,.28,5.04,.72,5.4,1.46,10.61,3.36,15.34,6.98,.59-3.49,1.26-6.67,1.64-9.88,1.27-10.85,5.62-20.8,10.08-30.7,1.44-3.21,3.34-6.24,4.84-9.43,4.99-10.63,13.94-17.69,24.37-23.16,13.38-7.03,27.06-13.56,40.53-20.45,4.77-2.44,9.02-5.55,12.54-9.57,4.94-5.64,6.75-12.04,5.64-19.14-1.32-8.52-2.01-17.01-1.32-25.64,.8-9.93,2.82-19.56,6.54-28.86,2.34-5.85,4.71-11.68,7.11-17.5,3.99-9.67,10.59-17.69,18.25-24.99,1.6-1.53,3.59-2.8,5.61-3.81,3.6-1.81,5.75-1.08,7.43,2.5,.93,1.98,1.42,4.15,1.98,6.27,.37,1.39,.52,2.84,.81,4.52,1.86-1.13,3.43-2.29,5.18-3.12,3.36-1.6,6.07-.79,7.79,2.38,.76,1.4,1.31,3,1.49,4.56,1.08,9.22,.29,18.29-2.64,27.16-2.01,6.11-4.01,12.22-7.27,17.88-.8,1.38-1.3,2.92-2.07,4.7,1.34,.64,2.51,1.27,3.74,1.77,11.15,4.45,21.03,10.76,29.98,18.33,2.4,2.03,4.46,4.51,6.29,7.03,3.04,4.16,2.64,10.06-.88,13.84-3.15,3.37-6.5,6.57-9.88,9.74-8.17,7.66-17.53,13.78-28.37,18.44,.23,3.61,.47,7.21,.7,10.81,.41,6.38,1.44,12.8-.25,19.13-.78,2.93-1.49,6.02-3.04,8.61-3.93,6.59-8.21,12.99-12.53,19.36-4.42,6.5-8.77,13-11.41,20.39-1.91,5.36-2.38,10.87-1.81,16.38,.73,7.08,2.02,14.11,3.14,21.15,.4,2.53-.25,3.79-2.91,4.64-1.02,.33-2.11,.58-3.18,.6-5.74,.11-11.49,.29-17.23,.17-18.34-.37-36.67-.79-55-1.31-8.08-.23-16.15-.81-24.23-1.07-4.03-.13-8.07,.06-12.1,.17-3.03,.08-6.1,.35-7.24-3.2ZM167.88,5.03l-1.22-.31c-1.58,1.57-3.33,3.03-4.71,4.74-2.8,3.47-5.69,6.92-8.05,10.66-8.99,14.25-14.96,29.65-18.71,45.79-1.13,4.88-2.68,9.95-.2,15.02,.36,.73,.11,1.72,.14,2.6,.25,5.95,.27,11.93,.79,17.86,1.15,13.24-3.59,24.11-14.78,32.13-5.52,3.95-11.52,7.4-17.64,10.52-9.53,4.85-19.38,9.15-29.01,13.84-7.81,3.8-14.67,8.75-19.24,15.96-2.69,4.24-5.19,8.61-7.45,13.06-6.32,12.45-9.8,25.69-11.24,39.38-.61,5.78-.54,11.62-.78,17.44-.09,2.13-.18,4.25-.27,6.47,4.52,.87,8.51,.94,12.54,.73,7.75-.39,15.5-.93,23.26-1.02,14.61-.18,29.22-.12,43.83-.12,9.77,0,19.55,.09,29.32,.1,.4,0,.79-.31,1.53-.62-.53-1.84-1.07-3.63-1.56-5.43-3.48-12.98-4.23-25.9,1.09-38.6,2.66-6.36,5.64-12.58,9.64-18.35,3.88-5.6,7.53-11.35,11.18-17.09,1.02-1.61,2.18-3.33,2.47-5.12,.71-4.45,1.17-8.95,1.32-13.44,.2-6.1,.03-12.21-.03-18.32-.02-1.9,.98-2.99,2.84-3.47,.74-.19,1.52-.3,2.28-.38,5.03-.58,9.62-2.11,13.57-5.18,1.54-1.2,3.41-2.04,4.96-3.23,5.28-4.03,10.89-7.79,15.61-12.34,4.67-4.51,4.23-7.53,.63-11.43-5.15-5.58-11.09-10.2-17.71-14.16-6.97-4.16-14.01-8.18-21.74-10.99-2.14-.78-4.34-1.54-6.58-1.9-2.44-.39-4.54-.94-5.23-2.57,.34-2.36,.59-3.98,.82-5.61,.24-1.73,.35-3.47,.72-5.18,1.38-6.4,2.95-12.77,4.26-19.19,1.89-9.28,3.47-18.62,3.62-28.11,.02-1.37-.19-2.75-.3-4.12Zm15,10.56c-2.69,2.67-4.63,4.68-6.67,6.6-2.3,2.16-3.35,4.69-3.64,7.75-.34,3.6-1.1,7.17-1.78,10.73-1.56,8.11-3.2,16.2-6.52,23.83,4.19,1.98,4.44,2.03,8.48,1.6,1.51-3.71,3.21-7.58,4.66-11.53,1.91-5.19,3.61-10.46,5.46-15.68,2.29-6.45,2.94-13.02,1.65-19.73-.18-.92-.79-1.76-1.63-3.57ZM30.66,250.16c-.89-6.7-1.73-12.99-2.57-19.24-2.45-1.23-4.84-2.62-7.39-3.67-3.26-1.34-6.59-2.62-10.01-3.54-2.98-.81-4.16,.17-4.01,3.02,.25,4.75,1.73,9.04,5.14,12.83,4.94,5.49,11.32,8.51,18.84,10.61Z"/>
+    </symbol>
+  </svg>
+
+  <div class="deck" id="deck">
+
+    <!-- 01 · COVER -->
+    <section class="slide s-ink">
+      <div class="brandbar">
+        <span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span>
+        <span class="mono">Capabilities · 2026</span>
+      </div>
+      <div class="slide__inner">
+        <span class="eyebrow">Game UX &amp; Player Research</span>
+        <h1 class="display">We turn game UX<br>into retention<br>and revenue.</h1>
+        <p class="lead" style="margin-top:1.5rem">Expert audits, team training, and embedded UX leadership for game studios and publishers. 25 years in the trenches — from <em>World of Warcraft</em> to today&rsquo;s top social and AAA titles.</p>
+      </div>
+      <span class="pagenum">01</span>
+    </section>
+
+    <!-- 02 · THE STAKES -->
+    <section class="slide s-light">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The stakes</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">The problem</span>
+        <h2 class="display" style="max-width:16ch">Players quit what they can&rsquo;t figure out.</h2>
+        <p class="kicker" style="color:var(--muted)">Onboarding, the store, the core loop — when players drop, it rarely shows up as &ldquo;a UX problem.&rdquo; It shows up as churn and flat spend. By the time the data is undeniable, the fix is expensive.</p>
+      </div>
+      <span class="pagenum">02</span>
+    </section>
+
+    <!-- 03 · UX IS A SYSTEM -->
+    <section class="slide s-soft">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Our point of view</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">Why it matters</span>
+        <h2 class="h-xl" style="max-width:20ch">UX isn&rsquo;t polish. It&rsquo;s the system that decides whether players stay.</h2>
+        <p class="kicker">Most game teams treat user experience as a final coat of paint — or one overloaded person&rsquo;s job. We make UX the whole team&rsquo;s discipline, early enough to matter, and we leave the method behind so it sticks.</p>
+      </div>
+      <span class="pagenum">03</span>
+    </section>
+
+    <!-- 04 · WHAT WE DO -->
+    <section class="slide s-light">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">What we do</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">Three ways to work with us</span>
+        <h2 class="h-lg" style="margin-bottom:1.5rem">Start small. Scale as it works.</h2>
+        <div class="grid g-3">
+          <div class="card">
+            <span class="tag">01 — Audit</span>
+            <h3>Audit <em>Find what&rsquo;s costing you players.</em></h3>
+            <p>Expert teardown of onboarding, core loop, or monetization UX, with a prioritized fix list — in 1–3 weeks.</p>
+            <div class="price">from $7,500<small>fixed fee · 1–3 weeks</small></div>
+          </div>
+          <div class="card">
+            <span class="tag">02 — Workshop</span>
+            <h3>Workshop <em>Make UX your whole team&rsquo;s job.</em></h3>
+            <p>Hands-on training that aligns design, product &amp; engineering around the player and installs a method that sticks.</p>
+            <div class="price">from $15,000<small>2-day sprint / 4–6 wk program</small></div>
+          </div>
+          <div class="card">
+            <span class="tag">03 — Embedded</span>
+            <h3>Embedded <em>Senior UX leadership, inside your team.</em></h3>
+            <p>A principal UX lead embedded 2–3 days a week to direct design, run research, and level up your people.</p>
+            <div class="price">from $20,000/mo<small>2–3 days/wk · 3-mo min</small></div>
+          </div>
+        </div>
+        <p class="fineprint">For studio leadership: a <strong>Fractional Head of Player Experience</strong> — strategy, org design &amp; UX maturity roadmapping. From $8,000/mo.</p>
+      </div>
+      <span class="pagenum">04</span>
+    </section>
+
+    <!-- 05 · HOW TO ENGAGE / LAND-EXPAND -->
+    <section class="slide s-ink">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">How to engage</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">Land &amp; expand</span>
+        <h2 class="h-xl" style="max-width:18ch">A low-risk first step that compounds.</h2>
+        <ul class="big-list">
+          <li><span class="num">→</span><span><strong>Audit</strong> reveals the problems and proves our judgment.</span></li>
+          <li><span class="num">→</span><span><strong>Workshop</strong> builds your team&rsquo;s skill to address them.</span></li>
+          <li><span class="num">→</span><span><strong>Embedded</strong> supplies senior hands to execute.</span></li>
+          <li><span class="num">→</span><span><strong>Advisory</strong> keeps leadership steering UX maturity.</span></li>
+        </ul>
+        <p class="kicker" style="color:var(--on-ink-muted)">We credit 100% of the audit fee toward any Workshop or Embedded engagement booked within 60 days — so the first &ldquo;yes&rdquo; is nearly free.</p>
+      </div>
+      <span class="pagenum">05</span>
+    </section>
+
+    <!-- 06 · METHOD -->
+    <section class="slide s-ink">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The method</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">How we work</span>
+        <h2 class="h-xl">Define → Design → Deploy.</h2>
+        <p class="lead">A method, not a hand-off. The capability stays after we leave.</p>
+        <div class="steps">
+          <div class="step"><div class="n">01</div><h3>Define</h3><p>Find the player problem actually costing you retention or revenue — scored against behavior principles, not opinions in the room.</p></div>
+          <div class="step"><div class="n">02</div><h3>Design</h3><p>Design and test against how players really behave. Prioritize fixes by severity and effort so the team knows what to do next.</p></div>
+          <div class="step"><div class="n">03</div><h3>Deploy</h3><p>Ship alongside your team and install the practice — personas, playtest cadence, a maturity baseline — so UX outlives the engagement.</p></div>
+        </div>
+      </div>
+      <span class="pagenum">06</span>
+    </section>
+
+    <!-- 07 · PROOF / THE WORK -->
+    <section class="slide s-light">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The work</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">Proof, not promises</span>
+        <h2 class="h-lg">Across social casino, AAA, and MMO.</h2>
+        <!-- ⚠️ Replace bracketed result lines with real/anonymized metrics before sending externally. -->
+        <div class="cases">
+          <div class="case">
+            <h3>SciPlay · Jackpot Party</h3>
+            <dl>
+              <dt>Problem</dt><dd>A top-grossing social casino with no in-house UX practice and no shared way to find friction.</dd>
+              <dt>Approach</dt><dd>External UX teardown of core flows, then upskilled the team to fix friction themselves.</dd>
+              <dt>Result</dt><dd class="result"><!-- ⚠️ metric -->Installed a repeatable UX method the team still runs.</dd>
+            </dl>
+          </div>
+          <div class="case">
+            <h3>38 Studios · Copernicus</h3>
+            <dl>
+              <dt>Problem</dt><dd>A sprawling MMO hiding deep systems under a simple interface without overwhelming players.</dd>
+              <dt>Approach</dt><dd>Simplified MMO UI at scale, including systems like the Mana Streamers fast-travel flow.</dd>
+              <dt>Result</dt><dd class="result"><!-- ⚠️ outcome -->Design principles for taming MMO complexity, validated since.</dd>
+            </dl>
+          </div>
+          <div class="case">
+            <h3>Talk · Why UX Fails</h3>
+            <dl>
+              <dt>Format</dt><dd>Conference talk — Game UX Summit.</dd>
+              <dt>Topic</dt><dd>Why UX fails on major game teams, and how to reorganize around the player.</dd>
+              <dt>Result</dt><dd class="result">Industry talk &amp; thought leadership.</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <span class="pagenum">07</span>
+    </section>
+
+    <!-- 08 · THE PEOPLE -->
+    <section class="slide s-soft">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">The people</span></div>
+      <div class="slide__inner two-col">
+        <div class="portrait"><svg class="rabbit"><use href="#rabbit"/></svg></div>
+        <div>
+          <span class="eyebrow">Senior-only. You work with principals.</span>
+          <blockquote>Irena Pereira helped pioneer A/B testing and data-driven design in games before either was standard practice — including the UI players used to customize <em>World of Warcraft</em>.</blockquote>
+          <p class="kicker" style="color:var(--muted)">Today she helps studios and publishers turn UX into a measurable driver of engagement and revenue — on every platform, from MMO to mobile.</p>
+          <p class="contact" style="color:var(--ink-2)">Irena Pereira · Founder &amp; Principal</p>
+        </div>
+      </div>
+      <span class="pagenum">08</span>
+    </section>
+
+    <!-- 09 · HOW TO BUY -->
+    <section class="slide s-ink">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">How to start</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">Built for how studios actually buy</span>
+        <h2 class="h-xl" style="max-width:20ch">Start with a fixed-fee audit. Expand as the wins compound.</h2>
+        <ul class="chips">
+          <li>Fixed-fee audits &amp; workshops</li>
+          <li>NDA-ready</li>
+          <li>Experienced with unreleased IP</li>
+          <li>Embedded alongside producers</li>
+          <li>Senior-only, no junior hand-off</li>
+        </ul>
+      </div>
+      <span class="pagenum">09</span>
+    </section>
+
+    <!-- 10 · CLOSING CTA -->
+    <section class="slide s-accent">
+      <div class="brandbar"><span class="lockup"><svg class="rabbit"><use href="#rabbit"/></svg> <b>Digital</b>&nbsp;Experiments</span><span class="mono">Let&rsquo;s talk</span></div>
+      <div class="slide__inner">
+        <span class="eyebrow">Curious where your game is losing players?</span>
+        <h2 class="display" style="max-width:16ch">Book a free 30-minute UX teardown.</h2>
+        <p class="lead" style="color:rgba(255,255,255,.92)">We&rsquo;ll screen-share your game and point to the three things costing you the most.</p>
+        <p class="contact">irena@digitalexperiments.com&nbsp;&nbsp;·&nbsp;&nbsp;digitalexperiments.com</p>
+        <p class="fineprint" style="color:rgba(255,255,255,.8)">Digital Experiments — Game UX &amp; Player Research</p>
+      </div>
+      <span class="pagenum">10</span>
+    </section>
+
+  </div>
+
+  <div class="hint" id="hint">← → or Space to navigate · press P to print/PDF</div>
+
+  <script>
+    (function(){
+      var deck=document.getElementById('deck');
+      var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      function current(){
+        var i=0,min=Infinity;
+        slides.forEach(function(s,idx){var d=Math.abs(s.getBoundingClientRect().top);if(d<min){min=d;i=idx;}});
+        return i;
+      }
+      function go(n){n=Math.max(0,Math.min(slides.length-1,n));slides[n].scrollIntoView({behavior:'smooth'});}
+      document.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(current()+1);}
+        else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();go(current()-1);}
+        else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(slides.length-1);}
+        else if(e.key==='p'||e.key==='P'){window.print();}
+      });
+      // Fade the hint after a few seconds
+      var hint=document.getElementById('hint');
+      setTimeout(function(){hint.style.opacity='0';},4500);
+      deck.addEventListener('scroll',function(){hint.style.opacity='0';},{once:true});
+    })();
+  </script>
+</body>
+</html>

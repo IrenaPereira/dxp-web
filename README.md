@@ -11,6 +11,8 @@ deploys to any static host.
 .
 ├── index.html          # Homepage (hero, services, method, work, founder, CTA)
 ├── services.html       # Services & pricing (the four-tier ladder)
+├── deck/
+│   └── index.html      # Self-contained capabilities deck (10 slides)
 ├── assets/
 │   ├── css/styles.css  # Entire design system — all theme tokens live in :root
 │   ├── js/main.js      # Mobile nav, reveal-on-scroll, footer year
@@ -51,6 +53,21 @@ and swap in your scheduling URL.
 and pricing come from the strategy docs on the
 `claude/website-partnerships-review-*` branch (`WEBSITE_COPY_DRAFTS.md`,
 `SERVICE_TIERS_AND_PRICING.md`).
+
+## Capabilities deck
+
+`deck/index.html` is a self-contained, on-brand slide deck (10 slides) built on
+the same consulting frame as the site — cover, the stakes, point of view, the
+three tiers + advisory, land-and-expand, the Define→Design→Deploy method, proof,
+the founder, how-to-buy, and a closing CTA.
+
+- **Present:** open `deck/index.html` and use `←` / `→` / `Space` to move between
+  slides (`Home`/`End` jump to first/last).
+- **Export a forwardable PDF:** press `P` (or `Cmd/Ctrl+P`) → "Save as PDF". The
+  print stylesheet lays each slide out as a clean 16:9 page (13.333in × 7.5in).
+- Single file, no dependencies (rabbit logomark is inlined), so it shares cleanly.
+- ⚠️ Two case-study result lines are honest placeholders — swap in real or
+  anonymized metrics before sending externally (search `⚠️` in the file).
 
 ## ⚠️ Before going live — supply real data
 
