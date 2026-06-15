@@ -22,6 +22,7 @@ const links = [
           </li>
         ))}
       </ul>
+      <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot nav-cta">Say hi</a>
     </nav>
     <a href="mailto:sayhi@digitalexperiments.com" class="btn btn-hot say-hi">Say hi</a>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
@@ -133,12 +134,27 @@ const links = [
   [data-open="true"] .nav-toggle span:nth-child(2) { opacity: 0; }
   [data-open="true"] .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+  /* In-menu CTA — only shown inside the mobile dropdown */
+  .nav-cta { display: none; }
+
   @media (max-width: 760px) {
-    .nav-toggle { display: flex; flex: none; }
+    .nav-toggle { display: flex; flex: none; margin-left: auto; }
     .bar { gap: 0.6rem; }
-    .wordmark .mark { font-size: 1.05rem; }
+    .wordmark .mark { font-size: 1.1rem; }
     .wordmark .bunny { height: 22px; margin-right: 0.45rem; }
-    .say-hi { margin-left: auto; padding: 0.55rem 0.85rem; font-size: 0.74rem; }
+    /* drop the bar CTA on mobile — it lives in the menu instead.
+       Explicit props here so the scoped `nav a` rules don't clobber the button. */
+    .say-hi { display: none; }
+    #primary-nav .nav-cta {
+      display: inline-block;
+      margin: 0.85rem var(--gutter) 0.4rem;
+      padding: 0.72rem 1.4rem;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--hot);
+    }
+    #primary-nav .nav-cta:hover { color: var(--hot-bright); }
     nav {
       position: absolute;
       top: 64px;
@@ -151,7 +167,7 @@ const links = [
       max-height: 0;
       transition: max-height 0.25s ease;
     }
-    [data-open="true"] nav { max-height: 70vh; }
+    [data-open="true"] nav { max-height: 80vh; box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5); }
     nav ul {
       flex-direction: column;
       gap: 0;

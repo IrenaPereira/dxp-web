@@ -94,4 +94,16 @@ const year = new Date().getFullYear();
   address { font-style: normal; }
   .meta a:hover { color: var(--text); }
   .copyright { margin: 0; }
+
+  @media (max-width: 760px) {
+    /* keep the long email CTA inside the screen */
+    .cta .btn {
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      font-size: 0.74rem;
+      padding: 0.7rem 1.1rem;
+    }
+    .foot-nav { gap: 1rem 1.5rem; }
+  }
 </style>
