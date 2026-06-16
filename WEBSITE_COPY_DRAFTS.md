@@ -52,7 +52,7 @@ Ready-to-paste copy for the priority pages, written to the partnerships-buyer le
 > **The work**
 > [Top-grossing social casino — Reversing the curve *(name pending clearance)* →]
 > [38 Studios · Project Copernicus — Simplifying MMO UI at scale →]
-> [Unleashed Games — My own studio: the 4D Method, applied end-to-end →] *(see §F)*
+> [Unleashed Games — One game across mobile, console & PC/Mac: cohesion without homogenization →] *(my own studio; see §F)*
 > [Talk — Why UX fails on major game teams →]
 
 ### A6. Methodology teaser
@@ -151,13 +151,20 @@ A forwardable PDF is how partnerships actually spreads inside a publisher. Keep 
 > **On Unleashed Games.** I'm also founder and CEO of Unleashed Games, a game studio. I'm upfront about that because you should know exactly who you're hiring. My consulting practice partners *with* studios and publishers: **your confidential IP is protected under NDA and never crosses into Unleashed, and while we're working together I won't take a competing engagement in your specific genre or title space.** If anything, building my own studio is why my advice is grounded in shipping reality, not theory.
 
 ### F2. The proof-of-practice case study *(this is the asset that makes "hire the consultant" land)*
-> ## Unleashed Games — the 4D Method, applied end-to-end
+> ## Unleashed Games — one game, three platforms, the 4D Method end-to-end
 > *(Label clearly: "My own studio — where I prove the methods I bring to your team." Not presented as a client engagement.)*
 >
-> **Problem.** [The product/player problem Unleashed set out to solve.]
-> **Approach.** I led UX and product from the ground up using the exact 4D Method I bring to clients — Discover → Define → Develop → Deliver, with gated decisions at each step. [Specifics: research, prototyping, playtesting, the gates you actually held.]
-> **Result.** [⚠️ What it produced — funding raised, players/testers, retention, a shipped milestone. Use real, cleared figures; same honest-attribution rule as the other studies.]
-> **Why it matters to you.** I don't just advise from the sidelines. I've made the hard calls — budget, scope, risk — as the person accountable for the outcome. That's the judgment you're hiring.
+> **Problem.** We were building a game meant to live across **mobile, console, and PC/Mac** — and players expect *one* game, with a single identity and mental model, no matter where they play. But a UI that's simply ported feels wrong everywhere: a phone isn't a controller isn't a keyboard-and-mouse. The challenge was **cohesion without homogenization** — an experience that's unmistakably the same game, yet feels genuinely native on each platform.
+>
+> **Approach.** I led UX and product from the ground up using the exact 4D Method I bring to clients — with a gated decision at each step:
+> - **Discover.** Researched how players actually behave on each platform — thumb-reach and one-handed play on mobile, lean-back controller navigation on console, information density and hotkeys on PC/Mac — to separate what *must* stay constant from what *must* flex.
+> - **Define.** Set the rule before building: identity, visual language, and core flow are **universal**; input model, layout density, and ergonomics are **platform-specific**. Captured it as a single shared design system with platform-adaptive rules — one source of truth that expresses differently per device.
+> - **Develop.** Prototyped on real hardware with engineering, art, and input working together — adaptive components and tokens (touch targets, controller focus order, cursor/focus states, safe areas, console cert/TRC constraints) rather than three hand-built UIs.
+> - **Deliver.** Playtested on every platform against two bars: *do players recognize it as one game?* and *does it feel right here?* — validated against cost and team capability, and shipped a prioritized cross-platform build plan.
+>
+> **Result.** A cohesive cross-platform UX system that holds one identity while adapting natively to mobile, console, and PC/Mac — built once and expressed per platform, instead of three diverging UIs to maintain. [⚠️ Add a cleared hard metric if available — e.g., playtest cohesion/satisfaction scores, reduced per-platform rework, faster platform bring-up.]
+>
+> **Why it matters to you.** Cross-platform cohesion is one of the hardest problems in game UX, and I made these calls as the person accountable for the outcome — not as an advisor on the sidelines. That's the judgment you're hiring.
 
 **Why this is worth the conflict-of-interest risk:** for a "hire the consultant" site, *operator credibility* is the strongest possible differentiator over every other UX consultant — and transparency converts the studio-founder fact from a hidden liability into a stated asset. Bury it and a publisher discovers it themselves → distrust. Lead with it, bounded → credibility.
 
