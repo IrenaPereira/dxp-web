@@ -230,6 +230,7 @@ const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "fba572ba-28d5-431
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
   #cf-submit { margin-top: 0.4rem; }
+  #cf-submit[hidden] { display: none; } /* id+attr beats .btn's display:inline-block */
   .form-msg {
     margin: 1.1rem 0 0;
     padding: 0.8rem 1rem;
