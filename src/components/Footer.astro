@@ -1,6 +1,11 @@
 ---
 const year = new Date().getFullYear();
 const needs = ["UX Workshop", "UI/UX Audit", "Embedded UX & UI team", "UX Strategy", "Not sure yet"];
+
+// Web3Forms access key — get a free one at https://web3forms.com (enter
+// sayhi@digitalexperiments.com; the key is public/client-side by design).
+// Overridable at build time via PUBLIC_WEB3FORMS_KEY; falls back to the key below.
+const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "fba572ba-28d5-431e-bf46-058e16129056";
 ---
 
 <footer id="contact" class="site-footer">
@@ -22,8 +27,11 @@ const needs = ["UX Workshop", "UI/UX Audit", "Embedded UX & UI team", "UX Strate
       </ul>
     </div>
 
-    <!-- right: contact form (posts to contact.php on DreamHost) -->
-    <form id="contact-form" class="contact-form hud" action="/contact.php" method="POST" novalidate>
+    <!-- right: contact form (submits to Web3Forms — static-host friendly) -->
+    <form id="contact-form" class="contact-form hud" action="https://api.web3forms.com/submit" method="POST" novalidate>
+      <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+      <input type="hidden" name="subject" value="New inquiry — digitalexperiments.com" />
+      <input type="hidden" name="from_name" value="Digital Experiments website" />
       <div class="row">
         <div class="field">
           <label for="cf-name">Name</label>
@@ -52,10 +60,11 @@ const needs = ["UX Workshop", "UI/UX Audit", "Embedded UX & UI team", "UX Strate
         <textarea id="cf-message" name="message" rows="4" placeholder="An open-world MMO that needs a fast-travel system…" required></textarea>
       </div>
 
-      <!-- honeypot -->
+      <!-- honeypot (Web3Forms rejects the submission if botcheck is set) -->
       <div class="hp" aria-hidden="true">
         <label for="cf-company-url">Company URL</label>
         <input id="cf-company-url" name="company_url" type="text" tabindex="-1" autocomplete="off" />
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
       </div>
 
       <button type="submit" class="btn" id="cf-submit">Send message</button>
@@ -101,13 +110,13 @@ const needs = ["UX Workshop", "UI/UX Audit", "Embedded UX & UI team", "UX Strate
           body: new FormData(form),
           headers: { Accept: "application/json" },
         });
-        const data = await res.json().catch(() => ({ ok: res.ok }));
-        if (res.ok && data.ok) {
+        const data = await res.json().catch(() => ({ success: res.ok }));
+        if (res.ok && data.success) {
           form.reset();
           show("Got it — thanks! We'll be in touch within a day or two.", "ok");
           btn.hidden = true;
         } else {
-          show(data.error || "Something went wrong. Please email us directly.", "err");
+          show(data.message || "Something went wrong. Please email sayhi@digitalexperiments.com.", "err");
           btn.disabled = false;
           btn.textContent = label;
         }
