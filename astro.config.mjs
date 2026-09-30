@@ -2,8 +2,8 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-// Served from GitHub Pages on the apex custom domain digitalexperiments.com.
-// Custom apex domain → site is the bare domain and base stays "/".
+// Served from GitHub Pages on the custom domain www.digitalexperiments.com
+// (apex redirects to www). Custom domain → base stays "/".
 export default defineConfig({
-  site: 'https://digitalexperiments.com',
+  site: 'https://www.digitalexperiments.com',
 });
