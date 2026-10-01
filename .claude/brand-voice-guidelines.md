@@ -13,6 +13,17 @@
 
 ---
 
+## Positioning Update — 2026-09-30 (founder direction, AUTHORITATIVE; supersedes "games only")
+
+- **Headline / positioning line:** "Branding, GTM, & experience design." Supporting line: "Branding and GTM for groundbreaking consumer experiences."
+- **Audience:** game studios **and consumer brands**. Games stay the heritage and the core proof; the "DXP only does games" line under Competitive Positioning is retired.
+- **Two service tracks** (canonical names live in `src/data/services.ts`):
+  - Track A — Product & UX: Embedded UX & UI, UX Strategy, UI/UX Audits, Team Workshops & Training
+  - Track B — Brand & GTM: Market Analysis, GTM Strategy, Branding & Marketing, Websites & Ecommerce
+- **New founder pedigree (label as founder credit, not DXP engagements):** Irena built REALTOR.com, Homebuilder.com, and Hollywood Stock Exchange, and ran the websites for Weider Publications' magazine brands (Muscle & Fitness, Fit Pregnancy, and others). Monopoly Go GTM clarification (in-house at Scopely) is the bridge credit between games and GTM.
+
+---
+
 ## Executive Summary
 
 Digital Experiments is a veteran game UX/UI studio whose actual differentiator is **embedded speed**: senior designers inside a client's team within 24 hours, shipping production Figma files within days. The brand voice exists to make a stressed game-studio buyer — a producer, creative director, or studio head under ship pressure — feel that relief is specific, fast, and proven.
@@ -160,7 +171,7 @@ Variations observed in sources:
 ### Competitive Positioning
 - **vs. hiring in-house**: A senior game UX hire takes 3–6 months to find and one bad hire to regret. DXP is producing inside your team this week, and scales down when you ship.
 - **vs. freelancers**: A freelancer gives you hands; DXP gives you a senior team with 20 years of shipped-game judgment, process, and continuity.
-- **vs. generalist UX agencies**: Game UX is not product UX — players aren't users, fun isn't efficiency. DXP only does games.
+- **vs. generalist agencies**: Most agencies do brand *or* product *or* launch. DXP does all three with one senior team, and brings game-grade engagement thinking to consumer brands. (Updated 2026-09-30: no longer games-only.)
 - **vs. status quo (ship it as-is)**: Confusing UX is invisible in dev and brutal in reviews. Fixing it after launch costs players you won't get back.
 
 ---

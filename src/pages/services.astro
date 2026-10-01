@@ -1,0 +1,216 @@
+---
+import Base from "../layouts/Base.astro";
+import { tracks, productServices, growthServices } from "../data/services";
+
+const groups = [
+  { key: "product", meta: tracks.product, items: productServices },
+  { key: "growth", meta: tracks.growth, items: growthServices },
+];
+
+// The full arc — enter at any stage, same senior team throughout.
+const arc = [
+  { step: "Map", body: "Market analysis and audience research. Who buys, who competes, where the gap is." },
+  { step: "Plan", body: "Positioning, messaging, and a GTM plan with metrics attached." },
+  { step: "Build", body: "Product UX, the website, and the store, designed as one experience." },
+  { step: "Launch", body: "Campaigns, creative, and A/B tests that turn attention into revenue." },
+];
+
+// Pedigree, not DXP engagements. Label the person and the employer.
+const receipts = [
+  {
+    name: "Monopoly Go",
+    note: "In-house at Scopely",
+    body: "Irena led GTM clarification around an aligned player-persona strategy, then drove gameplay changes that built an organic UA loop through social design.",
+  },
+  {
+    name: "REALTOR.com & Homebuilder.com",
+    note: "Founder credit",
+    body: "Before games, Irena built two of the web's biggest home-search destinations and pioneered A/B testing and data-driven design along the way.",
+  },
+  {
+    name: "Weider Publications",
+    note: "Founder credit",
+    body: "Irena ran the websites for Weider's magazine brands, including Muscle & Fitness and Fit Pregnancy. That meant audience growth, content, and ad revenue on a publishing schedule.",
+  },
+  {
+    name: "Hollywood Stock Exchange",
+    note: "Founder credit",
+    body: "Irena built the fantasy market for movie fans, an early proof that a consumer product grows faster when it plays like a game.",
+  },
+];
+---
+
+<Base
+  title="Services — Digital Experiments"
+  description="Branding and GTM for groundbreaking consumer experiences: UX, market analysis, GTM strategy, marketing, websites and ecommerce for game studios and consumer brands. Senior team, embedded in days."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Branding, GTM, &amp; experience design</p>
+      <h1>Build it right. <em class="flair">Launch it loud.</em></h1>
+      <p class="lede">
+        Great UX nobody finds is a tree falling in an empty forest. We take
+        game studios and consumer brands from market map to launch day:
+        product UX, branding, go-to-market strategy, marketing, and the websites and
+        stores that close the sale. Same senior team, every stage.
+      </p>
+    </div>
+  </section>
+
+  <!-- The arc -->
+  <section class="arc-band">
+    <div class="container">
+      <ol class="arc">
+        {arc.map((a, i) => (
+          <li>
+            <span class="arc-n">0{i + 1}</span>
+            <h2>{a.step}</h2>
+            <p>{a.body}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="arc-note">Enter at any stage. Most clients start with an audit or a market map.</p>
+    </div>
+  </section>
+
+  {groups.map((g, gi) => (
+    <section id={g.key} class:list={["section", { "section-alt": gi % 2 === 1 }]}>
+      <div class="container">
+        <p class="eyebrow">{g.meta.label}</p>
+        <h2 class="section-title">{g.meta.title}</h2>
+        <p class="track-lede">{g.meta.lede}</p>
+        <div class="svc-grid">
+          {g.items.map((s) => (
+            <article class="svc hud">
+              <p class="kind">[{s.n}]</p>
+              <h3>{s.title}</h3>
+              <p class="blurb">{s.blurb}</p>
+              <p class="when"><span>When</span> {s.when}</p>
+              <ul>
+                {s.skills.map((k) => <li>{k}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Receipts -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Receipts</p>
+      <h2 class="section-title">Growth isn't new to us. <em class="flair">It's where we started.</em></h2>
+      <div class="receipts">
+        {receipts.map((r) => (
+          <article class="receipt">
+            <p class="kind">{r.note}</p>
+            <h3>{r.name}</h3>
+            <p>{r.body}</p>
+          </article>
+        ))}
+      </div>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-hot">Start a project</a>
+        <a href="/work" class="btn">See our work</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-alt { background: var(--bg-elev); border-block: 1px solid var(--border); }
+  .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+  .track-lede { color: var(--text-muted); max-width: 640px; margin: 0 0 2.5rem; }
+
+  /* Arc */
+  .arc-band {
+    border-block: 1px solid var(--border);
+    background: var(--bg-elev);
+    padding-block: clamp(2.5rem, 6vw, 3.75rem);
+  }
+  .arc {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .arc li { border-top: 1px solid var(--border-bright); padding-top: 1.2rem; }
+  .arc-n {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    letter-spacing: 0.22em;
+    font-size: 0.8rem;
+  }
+  .arc h2 { font-size: clamp(1.4rem, 2.6vw, 1.8rem); margin: 0.6rem 0 0.5rem; }
+  .arc p { color: var(--text-muted); margin: 0; font-size: 0.95rem; }
+  .arc-note {
+    margin: 2rem 0 0;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  @media (max-width: 860px) { .arc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .arc { grid-template-columns: 1fr; } }
+
+  /* Service cards */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  @media (max-width: 700px) { .svc-grid { grid-template-columns: 1fr; } }
+  .svc { padding: 1.75rem; }
+  .kind {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin: 0 0 0.6rem;
+  }
+  .svc h3 { font-size: 1.3rem; }
+  .blurb { color: var(--text-muted); font-size: 0.95rem; }
+  .when { font-size: 0.92rem; color: var(--text); margin: 0; }
+  .when span {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    color: var(--hot);
+    margin-right: 0.4em;
+  }
+  .svc ul {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .svc li {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .svc li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+
+  /* Receipts */
+  .receipts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .receipt { border-top: 1px solid var(--border-bright); padding-top: 1.2rem; }
+  .receipt h3 { font-size: 1.25rem; }
+  .receipt p:last-child { color: var(--text-muted); margin: 0; }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.75rem; }
+</style>

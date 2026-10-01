@@ -1,62 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 
-// Full capabilities from the DXP capabilities deck.
-const pillars = [
-  {
-    n: "01",
-    title: "Embedded UX & UI",
-    blurb: "Your senior hands this sprint — embedded in your team, working Figma files in days.",
-    skills: [
-      "Prototyping",
-      "Wireframing / Greyboxing",
-      "UX Design",
-      "UI Design",
-      "UI Animation",
-      "UI Implementation",
-    ],
-  },
-  {
-    n: "02",
-    title: "UX Strategy",
-    blurb: "Senior thinking that sets direction before a single screen is drawn.",
-    skills: [
-      "Game Brand Design",
-      "UI Art Direction",
-      "Vision Clarification",
-      "Vision & Slide Deck Design",
-      "Product / Market Fit",
-      "Persona Development",
-      "Design Systems",
-    ],
-  },
-  {
-    n: "03",
-    title: "Team Workshops & Training",
-    blurb: "We level up the team you already have — and leave it stronger than we found it.",
-    skills: [
-      "Lean UX Training",
-      "Maturing UX Practices",
-      "Team Health & Collaboration",
-      "Design Workshops",
-      "Process Design",
-      "Service Design",
-    ],
-  },
-  {
-    n: "04",
-    title: "UI/UX Audits",
-    blurb: "A senior teardown of your existing game — what's hurting players, why, and what to fix first.",
-    skills: [
-      "Heuristic Evaluation",
-      "FTUE / Onboarding Review",
-      "Usability Review",
-      "Readability & Accessibility",
-      "Competitive Benchmarking",
-      "Prioritized Recommendations",
-    ],
-  },
-];
+import { services as pillars } from "../data/services";
 
 const extras = [
   {
@@ -92,17 +37,19 @@ const extras = [
 
 <Base
   title="About — Digital Experiments"
-  description="Digital Experiments is a game UX studio that embeds senior designers in your team — Embedded UX & UI, UX Strategy, and Team Workshops & Training."
+  description="Digital Experiments is a senior UX and growth studio for game studios and consumer brands — from Embedded UX & UI to GTM strategy, marketing, websites, and ecommerce."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">About</p>
       <h1>We're Digital Experiments.</h1>
       <p class="lede">
-        A game UX studio that embeds senior designers inside game teams —
-        within days, not months. Twenty years of shipped UX across Valorant,
-        World of Warcraft, Monopoly Go, and more, from sprint-level execution
-        to senior strategic vision.
+        A senior UX and growth studio for game studios and consumer brands,
+        embedded in your team within days, not months. Twenty-five years of shipped
+        UX on Valorant, World of Warcraft, and Monopoly Go, and of building and
+        growing consumer products like REALTOR.com, Homebuilder.com, Hollywood
+        Stock Exchange, and the Weider magazine sites. Product, market, launch:
+        same team.
       </p>
     </div>
   </section>
@@ -119,11 +66,12 @@ const extras = [
     </div>
   </section>
 
-  <!-- Design services: the three pillars -->
+  <!-- Services: both tracks, from src/data/services.ts -->
   <section class="section section-alt">
     <div class="container">
-      <p class="eyebrow">Design services</p>
+      <p class="eyebrow">Services</p>
       <h2 class="section-title">Full capabilities</h2>
+      <p class="phil" style="margin-bottom:2.5rem">Product &amp; UX on one side, growth &amp; GTM on the other. <a href="/services" class="inline-link">See how they fit together →</a></p>
       <div class="pillars">
         {pillars.map((p) => (
           <article class="pillar hud">
@@ -165,6 +113,8 @@ const extras = [
     margin: 0 0 1rem;
   }
   .phil { color: var(--text-muted); max-width: 680px; margin: 0; }
+  .inline-link { color: var(--accent); border-bottom: 1px solid currentColor; }
+  .inline-link:hover { color: var(--accent-bright); }
 
   .section-alt { background: var(--bg-elev); border-block: 1px solid var(--border); }
   .section-title { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: 2.5rem; }

@@ -1,28 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-
-const services = [
-  {
-    n: "01",
-    title: "Ideation workshops",
-    body: "Our UX processes are one and many. Collaborative sessions that help your product scale to the next level.",
-  },
-  {
-    n: "02",
-    title: "UI/UX design",
-    body: "The core of our projects: the interfaces and their usability. Everything from design to implementation.",
-  },
-  {
-    n: "03",
-    title: "Audits & UXR",
-    body: "Lean UX research, retrospectives, and turning player & market data into a concrete action plan.",
-  },
-  {
-    n: "04",
-    title: "Embedded designers",
-    body: "DE designers and artists working inside your team — for a sprint, a season, or a console cycle.",
-  },
-];
+import { tracks, productServices, growthServices } from "../data/services";
 
 const work = [
   {
@@ -56,7 +34,7 @@ const cpoShots = [
 ];
 
 const stats = [
-  { value: "20+", label: "years of games UX" },
+  { value: "25+", label: "years of building products" },
   { value: "24h", label: "from first ping to embedded" },
   { value: "AAA→indie", label: "studios shipped with" },
   { value: "100%", label: "remote, senior team" },
@@ -92,19 +70,21 @@ const ticker = [
   <section class="hero">
     <img src="/brand/bunny-white.svg" alt="" aria-hidden="true" class="hero-bunny" />
     <div class="container">
-      <p class="eyebrow reveal reveal-1">Game UX studio — better design, better games</p>
+      <p class="eyebrow reveal reveal-1">Build it right. Launch it loud.</p>
       <h1>
-        <span class="line reveal reveal-2">senior game UX,</span>
+        <span class="line reveal reveal-2">Branding, GTM, &amp;</span>
+        <span class="line reveal reveal-2">experience design</span>
         <span class="line flair reveal reveal-3">
-          <span class="typed" aria-hidden="true">embedded in days.</span><i class="cursor" aria-hidden="true"></i>
-          <span class="sr-only">embedded in days.</span>
+          <span class="typed" aria-hidden="true">for games.</span><i class="cursor" aria-hidden="true"></i>
+          <span class="sr-only">for games, groundbreaking technologies, entertainment, consumers, and products.</span>
         </span>
       </h1>
       <p class="lede reveal reveal-3">
-        Digital Experiments embeds senior game UX designers in your team
-        within 24 hours — the same team that shipped UX on Valorant, World of
-        Warcraft, and Monopoly Go. New retention opportunities surfaced within
-        the week, and the revenue that follows.
+        Digital Experiments is your distribution hack. We map your market before
+        you draw your first pixel, so deep research shapes the product, not just
+        the launch. We shipped UX on Valorant, World of Warcraft, and Monopoly
+        Go, and built REALTOR.com and Hollywood Stock Exchange. Now we embed in
+        your team within days.
       </p>
       <div class="actions reveal reveal-4">
         <a href="/work" class="btn">See our work</a>
@@ -154,7 +134,7 @@ const ticker = [
       <p class="eyebrow">Why it matters</p>
       <p class="statement-line">UX gets bolted on <em class="flair">way too late</em>.</p>
       <p class="statement-sub">
-        We embed early — when a fix still costs a sprint, not a relaunch.
+        So does the launch plan. We embed early — when a fix still costs a sprint, not a relaunch.
       </p>
     </div>
   </section>
@@ -163,16 +143,22 @@ const ticker = [
   <section id="services" class="section">
     <div class="container">
       <p class="eyebrow">What we do</p>
-      <h2 class="section-title">One team, the whole <em class="flair">UX pipeline</em></h2>
-      <div class="grid">
-        {services.map((s) => (
-          <article class="svc">
-            <span class="svc-n">{s.n}</span>
-            <h3>{s.title}</h3>
-            <p>{s.body}</p>
-          </article>
-        ))}
-      </div>
+      <h2 class="section-title">Two tracks, one <em class="flair">senior team</em></h2>
+      {[{ meta: tracks.product, items: productServices }, { meta: tracks.growth, items: growthServices }].map((g) => (
+        <div class="track">
+          <p class="track-label">{g.meta.label}</p>
+          <div class="grid">
+            {g.items.map((s) => (
+              <a href="/services" class="svc">
+                <span class="svc-n">{s.n}</span>
+                <h3>{s.title}</h3>
+                <p>{s.blurb}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+      <a href="/services" class="text-link">All services →</a>
     </div>
   </section>
 
@@ -225,50 +211,41 @@ const ticker = [
       <p class="eyebrow">03 — About</p>
       <h2 class="section-title">Start with the problem. Then sprinkle in <em class="flair">delight</em>.</h2>
       <p class="lede">
-        We're a senior, distributed team of game UX specialists. We solve the
-        problems that matter first, then layer in the craft that makes a game
-        feel great — and we leave your team stronger than we found it.
+        We're a senior, distributed team of game UX and growth specialists,
+        with twenty-five years of building products people play and the launches
+        that find them. We solve the problems that matter first, then layer in
+        the craft, and we leave your team stronger than we found it.
       </p>
     </div>
   </section>
 </Base>
 
 <script>
-  // Typewriter: cycle value-prop phrases after the static "senior game UX,".
+  // Typewriter: cycle the target customer after "experience design".
   const PHRASES = [
-    "embedded in days.",
-    "revenue incoming.",
-    "retention lifted.",
-    "fewer drop-offs.",
-    "more dailies.",
-    "churn reduced.",
-    "shipped fast.",
-    "built to retain.",
-    "players hooked.",
-    "no ramp-up.",
+    "for games.",
+    "for groundbreaking technologies.",
+    "for entertainment.",
+    "for consumers.",
+    "for products.",
   ];
   const typed = document.querySelector<HTMLElement>(".hero .typed");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (typed && !reduce) {
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-    let last = -1;
-    const next = () => {
-      let i;
-      do { i = Math.floor(Math.random() * PHRASES.length); }
-      while (i === last && PHRASES.length > 1);
-      last = i;
-      return PHRASES[i];
-    };
     (async () => {
-      let current = (typed.textContent || "").trim();
-      await sleep(1600);
+      let i = 0;
+      let current = PHRASES[0];
+      await sleep(1800);
       while (true) {
-        for (let n = current.length; n >= 0; n--) { typed.textContent = current.slice(0, n); await sleep(30); }
+        // backspace only the part after "for "
+        for (let n = current.length; n >= 4; n--) { typed.textContent = current.slice(0, n); await sleep(30); }
         await sleep(220);
-        const phrase = next();
-        for (let n = 1; n <= phrase.length; n++) { typed.textContent = phrase.slice(0, n); await sleep(58); }
+        i = (i + 1) % PHRASES.length;
+        const phrase = PHRASES[i];
+        for (let n = 5; n <= phrase.length; n++) { typed.textContent = phrase.slice(0, n); await sleep(58); }
         current = phrase;
-        await sleep(1800);
+        await sleep(2000);
       }
     })();
   }
@@ -297,7 +274,7 @@ const ticker = [
   }
   .hero .container { position: relative; }
   .hero h1 {
-    font-size: clamp(2.7rem, 8.5vw, 5.8rem);
+    font-size: clamp(2.3rem, 6.2vw, 4.6rem);  /* longest typed phrase fits one line ≥620px */
     font-weight: 500;
     letter-spacing: -0.015em;
     line-height: 1.03;
@@ -305,6 +282,8 @@ const ticker = [
   }
   .hero h1 .line { display: block; }
   .hero h1 .flair { color: var(--accent); padding-right: 0.08em; }
+  /* phones: long phrases wrap — reserve two lines so typing doesn't shove the page */
+  @media (max-width: 620px) { .hero h1 .flair { min-height: 2.06em; } }
   .cursor {
     display: inline-block;
     width: 0.1em;
@@ -446,8 +425,19 @@ const ticker = [
     font-size: 0.82rem;
     margin-bottom: 1rem;
   }
-  .svc h3 { font-size: clamp(1.3rem, 2.2vw, 1.65rem); margin: 0 0 0.8rem; }
+  .svc h3 { font-size: clamp(1.3rem, 2.2vw, 1.65rem); margin: 0 0 0.8rem; transition: color 0.15s ease; }
   .svc p { color: var(--text-muted); margin: 0; }
+  a.svc { display: block; color: inherit; }
+  a.svc:hover h3 { color: var(--accent-bright); }
+  .track { margin-bottom: 3rem; }
+  .track-label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    color: var(--hot);
+    margin: 0 0 1.25rem;
+  }
 
   /* Statement band — borrowed from the social campaign's poster voice */
   .statement-band {
