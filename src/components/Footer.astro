@@ -84,8 +84,8 @@ const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "fba572ba-28d5-431
       <a href="/team">Team</a>
     </nav>
     <p class="copyright">
-      <span class="wordmark">digital<b>experiments</b></span>
-      <span class="legal">© {year} — better design, better games.</span>
+      <span class="wordmark"><img src="/brand/bunny-white.svg" alt="" aria-hidden="true" class="bunny" />digital<b>experiments</b></span>
+      <span class="legal">© {year} — build it right, launch it loud.</span>
       <span class="waves">make waves</span>
     </p>
   </div>
@@ -284,6 +284,8 @@ const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "fba572ba-28d5-431
   }
   .copyright .wordmark { font-family: var(--font-serif); font-size: 1.05rem; color: var(--text); }
   .copyright .wordmark b { font-weight: 700; }
+  .copyright .wordmark { display: inline-flex; align-items: center; align-self: center; }
+  .copyright .wordmark .bunny { height: 22px; width: auto; margin-right: 0.5rem; opacity: 0.85; }
   .waves {
     font-family: var(--font-script);
     font-size: 1.15em;
