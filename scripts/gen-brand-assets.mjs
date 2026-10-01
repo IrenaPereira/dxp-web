@@ -41,10 +41,10 @@ ${bunny(330, 350, 150, TEAL, 0.06)}
 const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <rect width="1200" height="630" fill="${INK}"/>
 ${bunny(815, 30, 600, TEAL, 0.06)}
-<text x="90" y="120" font-family="${MONO}" font-size="26" letter-spacing="6" fill="${TEAL}">// GAME UX STUDIO</text>
-<text x="86" y="300" font-family="${SERIF}" font-weight="500" font-size="96" fill="${PAPER}">senior game UX,</text>
-<text x="86" y="412" font-family="${SERIF}" font-weight="500" font-style="italic" font-size="96" fill="${TEAL}">embedded in days.</text>
-<text x="90" y="520" font-family="${SERIF}" font-size="30" fill="${MUTE}">In your team in 24 hours. Working Figma files within the week.</text>
+<text x="90" y="120" font-family="${MONO}" font-size="26" letter-spacing="6" fill="${TEAL}">// BUILD IT RIGHT. LAUNCH IT LOUD.</text>
+<text x="86" y="300" font-family="${SERIF}" font-weight="500" font-size="96" fill="${PAPER}">Branding, GTM, &amp;</text>
+<text x="86" y="412" font-family="${SERIF}" font-weight="500" font-style="italic" font-size="96" fill="${TEAL}">experience design.</text>
+<text x="90" y="520" font-family="${SERIF}" font-size="30" fill="${MUTE}">Your distribution hack: market research before the first pixel.</text>
 ${bunny(90, 556, 46, PAPER)}
 <text x="142" y="600" font-family="${SERIF}" font-size="44" fill="${PAPER}"><tspan font-weight="400">digital</tspan><tspan font-weight="700">experiments</tspan></text>
 </svg>`;
